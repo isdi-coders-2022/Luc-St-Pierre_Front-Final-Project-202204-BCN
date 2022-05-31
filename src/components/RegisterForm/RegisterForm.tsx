@@ -7,7 +7,7 @@ interface IRegisterForm {
   password?: string;
 }
 
-const RegisterForm = (): JSX.Element => {
+function RegisterForm(): JSX.Element {
   const initialForm: IRegisterForm = {
     name: "",
     username: "",
@@ -229,6 +229,6 @@ const RegisterForm = (): JSX.Element => {
       </div>
     </div>
   );
-};
+}
 
 export default RegisterForm;
