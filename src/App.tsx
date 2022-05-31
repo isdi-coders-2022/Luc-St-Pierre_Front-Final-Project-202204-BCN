@@ -1,9 +1,9 @@
-import RegisterForm from "./components/RegisterForm/RegisterForm";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function App() {
   return (
     <div>
-      <RegisterForm />
+      <RegisterPage />
     </div>
   );
 }
