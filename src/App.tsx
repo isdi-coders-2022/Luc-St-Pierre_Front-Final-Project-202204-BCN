@@ -1,9 +1,9 @@
-import "./App.css";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline">Airbnb</h1>
+    <div>
+      <RegisterForm />
     </div>
   );
 }
