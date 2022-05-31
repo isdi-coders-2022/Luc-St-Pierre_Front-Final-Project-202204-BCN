@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 interface IRegisterForm {
   name?: string;
@@ -16,6 +16,13 @@ const RegisterForm = (): JSX.Element => {
   };
 
   const [formData, setFormData] = useState<IRegisterForm>(initialForm);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setFormData({
+      ...formData,
+      [event.target.id]: event.target.value,
+    });
+  };
 
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[568px]">
@@ -56,8 +63,9 @@ const RegisterForm = (): JSX.Element => {
               <div className="mt-1">
                 <input
                   id="name"
-                  name="name"
-                  type="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  type="text"
                   autoComplete="off"
                   className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                   placeholder="Name"
@@ -72,8 +80,9 @@ const RegisterForm = (): JSX.Element => {
               <div className="mt-1">
                 <input
                   id="username"
-                  name="username"
-                  type="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  type="text"
                   autoComplete="off"
                   className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                   placeholder="Username"
@@ -88,7 +97,8 @@ const RegisterForm = (): JSX.Element => {
               <div className="mt-1">
                 <input
                   id="email"
-                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   type="email"
                   autoComplete="off"
                   className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
@@ -104,7 +114,8 @@ const RegisterForm = (): JSX.Element => {
               <div className="mt-1">
                 <input
                   id="password"
-                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                   type="password"
                   autoComplete="off"
                   className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
