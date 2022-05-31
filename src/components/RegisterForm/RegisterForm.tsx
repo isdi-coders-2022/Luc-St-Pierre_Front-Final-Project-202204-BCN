@@ -7,7 +7,7 @@ interface IRegisterForm {
   password?: string;
 }
 
-const RegisterForm = (): JSX.Element => {
+function RegisterForm(): JSX.Element {
   const initialForm: IRegisterForm = {
     name: "",
     username: "",
@@ -67,6 +67,7 @@ const RegisterForm = (): JSX.Element => {
               </label>
               <div className="mt-1">
                 <input
+                  data-testid="inputName"
                   type="text"
                   id="name"
                   value={formData.name}
@@ -84,6 +85,7 @@ const RegisterForm = (): JSX.Element => {
               </label>
               <div className="mt-1">
                 <input
+                  data-testid="inputUsername"
                   id="username"
                   value={formData.username}
                   onChange={handleChange}
@@ -101,6 +103,7 @@ const RegisterForm = (): JSX.Element => {
               </label>
               <div className="mt-1">
                 <input
+                  data-testid="inputEmail"
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
@@ -118,6 +121,7 @@ const RegisterForm = (): JSX.Element => {
               </label>
               <div className="mt-1">
                 <input
+                  data-testid="inputPassword"
                   id="password"
                   value={formData.password}
                   onChange={handleChange}
@@ -229,6 +233,6 @@ const RegisterForm = (): JSX.Element => {
       </div>
     </div>
   );
-};
+}
 
 export default RegisterForm;
