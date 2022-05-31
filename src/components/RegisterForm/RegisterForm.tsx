@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 interface IRegisterForm {
   name?: string;
@@ -22,6 +22,11 @@ const RegisterForm = (): JSX.Element => {
       ...formData,
       [event.target.id]: event.target.value,
     });
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    setFormData(formData);
   };
 
   return (
@@ -55,17 +60,17 @@ const RegisterForm = (): JSX.Element => {
         </div>
 
         <div className="px-4 sm:px-6">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit} noValidate>
             <div>
               <label htmlFor="name" className="sr-only">
                 Name
               </label>
               <div className="mt-1">
                 <input
+                  type="text"
                   id="name"
                   value={formData.name}
                   onChange={handleChange}
-                  type="text"
                   autoComplete="off"
                   className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                   placeholder="Name"
