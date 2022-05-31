@@ -67,6 +67,7 @@ function RegisterForm(): JSX.Element {
               </label>
               <div className="mt-1">
                 <input
+                  data-testid="inputName"
                   type="text"
                   id="name"
                   value={formData.name}
@@ -84,6 +85,7 @@ function RegisterForm(): JSX.Element {
               </label>
               <div className="mt-1">
                 <input
+                  data-testid="inputUsername"
                   id="username"
                   value={formData.username}
                   onChange={handleChange}
@@ -101,6 +103,7 @@ function RegisterForm(): JSX.Element {
               </label>
               <div className="mt-1">
                 <input
+                  data-testid="inputEmail"
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
@@ -118,6 +121,7 @@ function RegisterForm(): JSX.Element {
               </label>
               <div className="mt-1">
                 <input
+                  data-testid="inputPassword"
                   id="password"
                   value={formData.password}
                   onChange={handleChange}
