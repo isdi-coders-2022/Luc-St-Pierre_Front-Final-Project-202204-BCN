@@ -21,5 +21,17 @@ describe("Given a RegisterForm component", () => {
 
       expect(expectedText).toBeInTheDocument();
     });
+
+    test("It should display a form with 3 inputs of type text", () => {
+      render(
+        <BrowserRouter>
+          <RegisterForm />
+        </BrowserRouter>
+      );
+
+      const expectedTextBox = screen.getAllByRole("textbox");
+
+      expect(expectedTextBox).toHaveLength(3);
+    });
   });
 });
