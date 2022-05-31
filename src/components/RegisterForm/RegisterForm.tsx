@@ -1,4 +1,34 @@
-const RegisterForm = () => {
+import { ChangeEvent, FormEvent, useState } from "react";
+
+interface IRegisterForm {
+  name?: string;
+  username?: string;
+  email?: string;
+  password?: string;
+}
+
+const RegisterForm = (): JSX.Element => {
+  const initialForm: IRegisterForm = {
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+  };
+
+  const [formData, setFormData] = useState<IRegisterForm>(initialForm);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setFormData({
+      ...formData,
+      [event.target.id]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    setFormData(formData);
+  };
+
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[568px]">
       <div className="bg-white pb-8 drop-shadow-[0_8px_28px_rgba(0,0,0,0.28)] sm:rounded-xl">
@@ -30,16 +60,17 @@ const RegisterForm = () => {
         </div>
 
         <div className="px-4 sm:px-6">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit} noValidate>
             <div>
               <label htmlFor="name" className="sr-only">
                 Name
               </label>
               <div className="mt-1">
                 <input
+                  type="text"
                   id="name"
-                  name="name"
-                  type="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   autoComplete="off"
                   className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                   placeholder="Name"
@@ -54,8 +85,9 @@ const RegisterForm = () => {
               <div className="mt-1">
                 <input
                   id="username"
-                  name="username"
-                  type="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  type="text"
                   autoComplete="off"
                   className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                   placeholder="Username"
@@ -70,7 +102,8 @@ const RegisterForm = () => {
               <div className="mt-1">
                 <input
                   id="email"
-                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   type="email"
                   autoComplete="off"
                   className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
@@ -86,7 +119,8 @@ const RegisterForm = () => {
               <div className="mt-1">
                 <input
                   id="password"
-                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                   type="password"
                   autoComplete="off"
                   className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
