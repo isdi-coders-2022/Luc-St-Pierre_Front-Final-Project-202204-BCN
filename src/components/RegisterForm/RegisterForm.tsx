@@ -1,4 +1,22 @@
-const RegisterForm = () => {
+import { useState } from "react";
+
+interface IRegisterForm {
+  name?: string;
+  username?: string;
+  email?: string;
+  password?: string;
+}
+
+const RegisterForm = (): JSX.Element => {
+  const initialForm: IRegisterForm = {
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+  };
+
+  const [formData, setFormData] = useState<IRegisterForm>(initialForm);
+
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[568px]">
       <div className="bg-white pb-8 drop-shadow-[0_8px_28px_rgba(0,0,0,0.28)] sm:rounded-xl">
