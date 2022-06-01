@@ -171,7 +171,7 @@ function RegisterForm(): JSX.Element {
             <div className="mt-6 grid grid-cols-3 gap-3">
               <div>
                 <a
-                  href="#"
+                  href="/facebook"
                   className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                 >
                   <span className="sr-only">Sign in with Facebook</span>
@@ -192,7 +192,7 @@ function RegisterForm(): JSX.Element {
 
               <div>
                 <a
-                  href="#"
+                  href="/twitter"
                   className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                 >
                   <span className="sr-only">Sign in with Twitter</span>
@@ -209,7 +209,7 @@ function RegisterForm(): JSX.Element {
 
               <div>
                 <a
-                  href="#"
+                  href="/github"
                   className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                 >
                   <span className="sr-only">Sign in with GitHub</span>
