@@ -28,7 +28,7 @@ function LoginForm(): JSX.Element {
 
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[568px]">
-      <div className="bg-white pb-8 drop-shadow-[0_8px_28px_rgba(0,0,0,0.28)] sm:rounded-xl">
+      <div className="bg-white pb-8 shadow-3xl border border-[#e8ebed] sm:rounded-xl">
         <div className="sm:mx-auto sm:w-full sm:max-w-[568px]">
           <div className="flex items-center justify-between px-4 sm:px-6 border-b-2 border-[#EBEBEB]">
             <svg
