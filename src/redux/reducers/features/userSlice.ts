@@ -6,6 +6,7 @@ const initialState: IinitialState = {
   username: "",
   image: "",
   id: "",
+  authenticated: false,
 };
 
 export const userSlice = createSlice({
