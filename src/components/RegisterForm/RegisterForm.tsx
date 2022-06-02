@@ -1,13 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
 interface IRegisterForm {
-  name?: string;
-  username?: string;
-  email?: string;
-  password?: string;
+  name: string;
+  username: string;
+  email: string;
+  password: string;
 }
 
-function RegisterForm(): JSX.Element {
+const RegisterForm = (): JSX.Element => {
   const initialForm: IRegisterForm = {
     name: "",
     username: "",
@@ -233,6 +233,6 @@ function RegisterForm(): JSX.Element {
       </div>
     </div>
   );
-}
+};
 
 export default RegisterForm;
