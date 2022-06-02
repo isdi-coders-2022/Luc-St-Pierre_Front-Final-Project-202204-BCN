@@ -1,20 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/store/hooks";
 import { registerThunk } from "../../redux/thunks/userThunks";
 import { IRegisterForm } from "../../types/user.types";
 
-// interface IRegisterForm {
-//   name: string;
-//   username: string;
-//   email: string;
-//   password: string;
-//   image: string;
-//   id: string;
-//   authenticated: boolean;
-// }
-
 const RegisterForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const initialForm: IRegisterForm = {
     name: "",
@@ -39,6 +31,7 @@ const RegisterForm = (): JSX.Element => {
     event.preventDefault();
     dispatch(registerThunk(formData));
     setFormData(initialForm);
+    navigate("/login");
   };
 
   return (
