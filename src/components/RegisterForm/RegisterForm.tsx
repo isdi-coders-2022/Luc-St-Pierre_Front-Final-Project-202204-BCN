@@ -1,18 +1,29 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useAppDispatch } from "../../redux/store/hooks";
+import { registerThunk } from "../../redux/thunks/userThunks";
+import { IRegisterForm } from "../../types/user.types";
 
-interface IRegisterForm {
-  name: string;
-  username: string;
-  email: string;
-  password: string;
-}
+// interface IRegisterForm {
+//   name: string;
+//   username: string;
+//   email: string;
+//   password: string;
+//   image: string;
+//   id: string;
+//   authenticated: boolean;
+// }
 
 const RegisterForm = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+
   const initialForm: IRegisterForm = {
     name: "",
     username: "",
     email: "",
     password: "",
+    image: "",
+    id: "",
+    authenticated: false,
   };
 
   const [formData, setFormData] = useState<IRegisterForm>(initialForm);
@@ -26,7 +37,8 @@ const RegisterForm = (): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    setFormData(formData);
+    dispatch(registerThunk(formData));
+    setFormData(initialForm);
   };
 
   return (

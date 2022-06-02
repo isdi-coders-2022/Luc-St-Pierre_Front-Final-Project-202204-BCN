@@ -37,3 +37,18 @@ export interface IRegisterData {
   id: string;
   authenticated: boolean;
 }
+
+export interface ILoginForm {
+  username: string;
+  password: string;
+}
+
+export interface IRegisterForm {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  image: string;
+  id: string;
+  authenticated: boolean;
+}
