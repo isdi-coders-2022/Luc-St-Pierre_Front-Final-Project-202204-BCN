@@ -23,6 +23,7 @@ const App = () => {
     if (token || name) {
       const userData: IDecodedToken = jwtDecode(token as string);
       dispatch(logInActionCreator(userData));
+
       navigate("/home");
     }
   }, [dispatch, navigate, name]);
