@@ -5,6 +5,7 @@ const initialState: UserData = {
   id: "",
   name: "",
   username: "",
+  image: "",
   authenticated: false,
 };
 
