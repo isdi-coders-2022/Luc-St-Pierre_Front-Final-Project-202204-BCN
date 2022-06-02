@@ -1,20 +1,21 @@
-export interface UserData {
-  id: string;
+export interface IinitialState {
   name: string;
   username: string;
   image: string;
-  authenticated: boolean;
+  id: string;
+}
+export interface IUserData {
+  username: string;
+  password: string;
 }
 
-export interface LoginData {
+export interface ILoginData {
   token: string;
 }
 
-export interface DecodedToken {
+export interface IDecodedToken {
   name: string;
   username: string;
   image: string;
-  authenticated: boolean;
   id: string;
-  iat: number;
 }
