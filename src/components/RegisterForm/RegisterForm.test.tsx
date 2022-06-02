@@ -1,10 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { store } from "../../redux/store/store";
 import RegisterForm from "./RegisterForm";
 
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
+const mockUseDispatch = jest.fn();
+
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: () => mockUseDispatch,
 }));
 
 describe("Given a RegisterForm component", () => {
@@ -14,7 +19,9 @@ describe("Given a RegisterForm component", () => {
 
       render(
         <BrowserRouter>
-          <RegisterForm />
+          <Provider store={store}>
+            <RegisterForm />
+          </Provider>
         </BrowserRouter>
       );
 
@@ -26,7 +33,9 @@ describe("Given a RegisterForm component", () => {
     test("It should display a form with 3 inputs of type text", () => {
       render(
         <BrowserRouter>
-          <RegisterForm />
+          <Provider store={store}>
+            <RegisterForm />
+          </Provider>
         </BrowserRouter>
       );
 
@@ -36,38 +45,25 @@ describe("Given a RegisterForm component", () => {
     });
   });
 
-  describe("When the user write 'Test', 'testX', 'testx@gmail.com' and 'passwordX' for name, username, email and password", () => {
-    test("Then it should fill all inputs with the values of 'Test', 'textX', 'testx@gmail.com', 'passwordX'", () => {
-      const name = "Test";
-      const username = "textX";
-      const email = "testx@gmail.com";
-      const password = "passwordX";
-      const textButton = "Sign up";
-
+  describe("When it's Sign up button is clicked", () => {
+    test("Then it should call the dispatch middleware", () => {
       render(
         <BrowserRouter>
-          <RegisterForm />
+          <Provider store={store}>
+            <RegisterForm />
+          </Provider>
         </BrowserRouter>
       );
 
-      const expectedElement1 = screen.queryByTestId("inputName");
-      const expectedElement2 = screen.queryByTestId("inputUsername");
-      const expectedElement3 = screen.queryByTestId("inputEmail");
-      const expectedElement4 = screen.queryByTestId("inputPassword");
+      const textBoxes = screen.getAllByRole("textbox");
+      const password = screen.getByText("Password");
+      userEvent.type(password, "abcd1234");
+      textBoxes.forEach((textbox) => userEvent.type(textbox, "tester"));
 
-      userEvent.type(expectedElement1 as HTMLElement, name);
-      userEvent.type(expectedElement2 as HTMLElement, username);
-      userEvent.type(expectedElement3 as HTMLElement, email);
-      userEvent.type(expectedElement4 as HTMLElement, password);
+      const button = screen.getByRole("button", { name: /Sign up/i });
+      userEvent.click(button);
 
-      const expectedButton = screen.getByText(textButton);
-      userEvent.click(expectedButton);
-
-      expect(expectedElement1).toHaveValue(name);
-      expect(expectedElement2).toHaveValue(username);
-      expect(expectedElement3).toHaveValue(email);
-      expect(expectedElement4).toHaveValue(password);
-      expect(expectedButton).not.toBeDisabled();
+      expect(mockUseDispatch).toHaveBeenCalled();
     });
   });
 });

@@ -5,6 +5,7 @@ export interface Props {
 export interface IinitialState {
   name: string;
   username: string;
+  email: string;
   image: string;
   id: string;
   authenticated: boolean;
@@ -14,13 +15,39 @@ export interface IUserCredentials {
   password: string;
 }
 
-export interface ILoginData {
+export interface ILoginResponse {
   token: string;
 }
 
 export interface IDecodedToken {
   name: string;
   username: string;
+  email: string;
+  image: string;
+  id: string;
+  authenticated: boolean;
+}
+
+export interface IRegisterData {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  image: string;
+  id: string;
+  authenticated: boolean;
+}
+
+export interface ILoginForm {
+  username: string;
+  password: string;
+}
+
+export interface IRegisterForm {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
   image: string;
   id: string;
   authenticated: boolean;

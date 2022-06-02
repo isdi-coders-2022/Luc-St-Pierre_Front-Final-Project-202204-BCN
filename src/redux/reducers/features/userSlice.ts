@@ -4,6 +4,7 @@ import { IinitialState } from "../../../types/user.types";
 const initialState: IinitialState = {
   name: "",
   username: "",
+  email: "",
   image: "",
   id: "",
   authenticated: false,
@@ -16,9 +17,13 @@ export const userSlice = createSlice({
     login: (user, action: PayloadAction<IinitialState>) => ({
       ...action.payload,
     }),
+    register: (user, action: PayloadAction<IinitialState>) => ({
+      ...action.payload,
+    }),
   },
 });
 
-export const { login: logInActionCreator } = userSlice.actions;
+export const { login: logInActionCreator, register: registerActionCreator } =
+  userSlice.actions;
 
 export default userSlice.reducer;
