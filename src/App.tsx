@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import AuthenticationCheck from "./components/AuthenticationCheck/AuthenticationCheck";
+import Layout from "./components/Layout/Layout";
 
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -35,7 +36,9 @@ const App = () => {
           path="/home"
           element={
             <AuthenticationCheck>
-              <HomePage />
+              <Layout>
+                <HomePage />
+              </Layout>
             </AuthenticationCheck>
           }
         />
