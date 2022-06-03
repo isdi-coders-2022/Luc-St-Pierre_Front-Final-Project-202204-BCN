@@ -4,6 +4,8 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
+import Layout from "./components/Layout/Layout";
+import HomePage from "./pages/HomePage";
 
 describe("Given an App component", () => {
   describe("When it's rendered", () => {
@@ -16,6 +18,22 @@ describe("Given an App component", () => {
         </BrowserRouter>
       );
       const expectedText = screen.getByText(/Welcome to Airbnb/i);
+      expect(expectedText).toBeInTheDocument();
+    });
+
+    test("Then it should display 1 link 'Become a Host'", () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <Layout>
+              <HomePage />
+            </Layout>
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const expectedText = screen.getByText(/Language and region/i);
+
       expect(expectedText).toBeInTheDocument();
     });
   });
