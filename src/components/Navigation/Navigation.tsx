@@ -1,6 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { SearchIcon } from "@heroicons/react/solid";
 
 const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(" ");
@@ -8,22 +9,63 @@ const classNames = (...classes: string[]) => {
 
 const Navigation = (): JSX.Element => {
   return (
-    <Disclosure as="nav" className="bg-white border-b-2 border-gray-100">
+    <Disclosure
+      as="nav"
+      className="bg-white border-0 md:border-b-2 md:border-gray-100"
+    >
       {({ open }) => (
         <>
-          <div className="max-w-full mx-auto px-4 sm:px-10 xl:px-20">
+          <div className="max-w-full mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
             <div className="flex justify-between h-20">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
                   <img
-                    className="lg:block h-8 w-auto"
+                    className="hidden lg:block h-8 w-auto"
                     src="../assets/airbnb-logo.png"
+                    alt="airbnb-logo"
+                  />
+                  <img
+                    className="hidden md:block lg:hidden h-8 w-auto"
+                    src="../assets/logo-icon.png"
                     alt="airbnb-logo"
                   />
                 </div>
               </div>
 
-              <div className="sm:ml-6 sm:flex sm:items-center">
+              <div className="min-w-0 max-h-[56px] flex-1 md:px-6 lg:px-0 xl:col-span-6 md:hidden self-center border border-gray-200 shadow-4xl rounded-full">
+                <div className="h-full flex items-center md:max-w-3xl md:mx-auto lg:max-w-none lg:mx-0 xl:px-0">
+                  <div className="w-full h-full flex justify-between items-center">
+                    <div>
+                      <label htmlFor="search" className="sr-only">
+                        Search
+                      </label>
+                      <div className="relative pl-5">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 pl-4 flex items-center">
+                          <SearchIcon
+                            className="h-5 w-5 text-[#222222]"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <input
+                          id="search"
+                          name="search"
+                          className="block w-full bg-white py-2 pl-8 pr-3 font-semibold text-sm placeholder-[#222222] focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                          placeholder="Where to?"
+                          type="search"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="h-[56px] flex items-center justify-center">
+                      <button className="flex justify-center items-center h-[36px] w-[36px] mx-[10px] rounded-full border-2 border-gray-200">
+                        <img src="/assets/show-filters.png" alt="filters" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="hidden md:flex md:ml-6 md:items-center">
                 <a
                   href="/user"
                   className="block px-4 py-2 text-sm text-[#333333] font-semibold"
