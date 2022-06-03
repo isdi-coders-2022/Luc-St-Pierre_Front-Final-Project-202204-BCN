@@ -1,10 +1,15 @@
+import Navigation from "../Navigation/Navigation";
+
 interface Props {
   children: JSX.Element;
 }
 
 const Layout = ({ children }: Props): JSX.Element => {
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
+    <>
+      <Navigation />
+      <div className="container px-4 sm:px-10 xl:px-20">{children}</div>
+    </>
   );
 };
 
