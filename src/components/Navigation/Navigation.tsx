@@ -33,7 +33,7 @@ const Navigation = (): JSX.Element => {
 
                 <button
                   type="button"
-                  className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none"
+                  className="bg-white p-1.5 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none"
                 >
                   <span className="sr-only">Language and region</span>
                   <svg
@@ -54,10 +54,24 @@ const Navigation = (): JSX.Element => {
 
                 <Menu as="div" className="ml-3 relative">
                   <div>
-                    <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none">
+                    <Menu.Button className="bg-white w-[77px] h-[42px] inline-flex items-center rounded-full text-sm focus:outline-none border border-[#CCCCCC] pl-[12px] pr-[5px] py-[5px] hover:shadow-5xl transition-shadow ease-out delay-100 ">
                       <span className="sr-only">Open user menu</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-[4] w-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M4 6h16M4 12h16M4 18h16"
+                        />
+                      </svg>
                       <img
-                        className="h-7 w-7 rounded-full"
+                        className="h-[30px] w-[30px] rounded-full ml-3"
                         src="../assets/avatar.png"
                         alt=""
                       />
