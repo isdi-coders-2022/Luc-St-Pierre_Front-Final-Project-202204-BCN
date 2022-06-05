@@ -3,13 +3,16 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import getClassNames from "../../utils/getClassNames";
-import { useAppDispatch } from "../../redux/store/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
 import { logOutActionCreator } from "../../redux/reducers/features/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const Navigation = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { authenticated } = useAppSelector((state) => state.user);
+
+  const token = localStorage.getItem("token");
 
   const handleLogout = () => {
     dispatch(logOutActionCreator());
@@ -138,63 +141,142 @@ const Navigation = (): JSX.Element => {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-[240px] border border-gray-100 rounded-2xl shadow-4xl py-1 bg-white ">
-                      <div className="border-0 border-b-2 py-1 border-gray-100">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="/register"
-                              className={getClassNames(
-                                active ? "bg-gray-50" : "",
-                                "block px-4 py-3 text-sm text-[#222222]"
+                      {token ? (
+                        <>
+                          <div className="border-0 border-b-2 py-1 border-gray-100">
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href="/register"
+                                  className={getClassNames(
+                                    active ? "bg-gray-50" : "",
+                                    "block px-4 py-3 text-sm text-[#222222]"
+                                  )}
+                                >
+                                  Notifications
+                                </a>
                               )}
-                            >
-                              Sign up
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="/login"
-                              className={getClassNames(
-                                active ? "bg-gray-50" : "",
-                                "block px-4 py-3 text-sm text-[#222222]"
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href="/login"
+                                  className={getClassNames(
+                                    active ? "bg-gray-50" : "",
+                                    "block px-4 py-3 text-sm text-[#222222]"
+                                  )}
+                                >
+                                  Wishlists
+                                </a>
                               )}
-                            >
-                              Log in
-                            </a>
-                          )}
-                        </Menu.Item>
-                      </div>
+                            </Menu.Item>
+                          </div>
 
-                      <div className="py-1 border-gray-100">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="/become"
-                              className={getClassNames(
-                                active ? "bg-gray-50" : "",
-                                "block px-4 py-3 text-sm text-[#222222]"
+                          <div className="border-0 border-b-2 py-1 border-gray-100">
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href="/become"
+                                  className={getClassNames(
+                                    active ? "bg-gray-50" : "",
+                                    "block px-4 py-3 text-sm text-[#222222]"
+                                  )}
+                                >
+                                  Host your home
+                                </a>
                               )}
-                            >
-                              Host your home
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <button
-                              className={getClassNames(
-                                active ? "bg-gray-50 w-full" : "",
-                                "w-full flex  px-4 py-3 text-sm text-[#222222]"
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href="/become"
+                                  className={getClassNames(
+                                    active ? "bg-gray-50" : "",
+                                    "block px-4 py-3 text-sm text-[#222222]"
+                                  )}
+                                >
+                                  Account
+                                </a>
                               )}
-                              onClick={handleLogout}
-                            >
-                              Log out
-                            </button>
-                          )}
-                        </Menu.Item>
-                      </div>
+                            </Menu.Item>
+                          </div>
+                          <div className="py-1">
+                            <Menu.Item>
+                              {({ active }) => (
+                                <button
+                                  className={getClassNames(
+                                    active ? "bg-gray-50 w-full" : "",
+                                    "w-full flex  px-4 py-3 text-sm text-[#222222]"
+                                  )}
+                                  onClick={handleLogout}
+                                >
+                                  Log out
+                                </button>
+                              )}
+                            </Menu.Item>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="border-0 border-b-2 py-1 border-gray-100">
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href="/register"
+                                  className={getClassNames(
+                                    active ? "bg-gray-50" : "",
+                                    "block px-4 py-3 text-sm text-[#222222]"
+                                  )}
+                                >
+                                  Log in
+                                </a>
+                              )}
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href="/login"
+                                  className={getClassNames(
+                                    active ? "bg-gray-50" : "",
+                                    "block px-4 py-3 text-sm text-[#222222]"
+                                  )}
+                                >
+                                  Sign up
+                                </a>
+                              )}
+                            </Menu.Item>
+                          </div>
+
+                          <div className="py-1 border-gray-100">
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href="/become"
+                                  className={getClassNames(
+                                    active ? "bg-gray-50" : "",
+                                    "block px-4 py-3 text-sm text-[#222222]"
+                                  )}
+                                >
+                                  Host your home
+                                </a>
+                              )}
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <button
+                                  className={getClassNames(
+                                    active ? "bg-gray-50 w-full" : "",
+                                    "w-full flex  px-4 py-3 text-sm text-[#222222]"
+                                  )}
+                                  onClick={handleLogout}
+                                >
+                                  Log out
+                                </button>
+                              )}
+                            </Menu.Item>
+                          </div>
+                        </>
+                      )}
                     </Menu.Items>
                   </Transition>
                 </Menu>
