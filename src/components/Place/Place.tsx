@@ -22,10 +22,10 @@ const Place = ({
 }: Props): JSX.Element => {
   return (
     <>
-      <div className="relative w-full min-h-80 aspect-w-1 aspect-h-1 rounded-xl overflow-hidden group-hover:opacity-75 sm:h-[346px] md:h-[276px] lg:h-[301px] xl:h-[301px] 2xl:h-[324px] lg:aspect-none">
+      <div className="relative w-full min-h-80 aspect-w-1 aspect-h-1 rounded-xl overflow-hidden group-hover:opacity-75 h-[429px] sm:h-[346px] md:h-[276px] lg:h-[301px] xl:h-[301px] 2xl:h-[324px] lg:aspect-none">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-7 w-7 absolute cursor-pointer top-4 right-4"
+          className="h-7 w-7 absolute cursor-pointer top-3.5 right-3.5"
           fill="#22222290"
           viewBox="0 0 24 24"
           stroke="white"
@@ -43,7 +43,7 @@ const Place = ({
           className="w-full h-full object-center object-cover lg:w-full lg:h-full"
         />
       </div>
-      <div className="mt-4 flex justify-between">
+      <div className="mt-2 flex justify-between">
         <div>
           <h3 className="text-[15px] font-semibold text-gray-900">
             <a href="/test">
