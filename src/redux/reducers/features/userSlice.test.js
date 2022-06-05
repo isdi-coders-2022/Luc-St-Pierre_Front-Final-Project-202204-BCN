@@ -20,7 +20,7 @@ describe("Given a userSlice reducer", () => {
         email: "test@test.com",
         image: "",
         id: "1234567890",
-        authenticated: false,
+        authenticated: true,
       };
 
       const loginAction = logInActionCreator(user);
