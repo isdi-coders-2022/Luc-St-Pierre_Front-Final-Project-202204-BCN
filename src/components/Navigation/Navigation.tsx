@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 const Navigation = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { authenticated } = useAppSelector((state) => state.user);
 
   const token = localStorage.getItem("token");
 
