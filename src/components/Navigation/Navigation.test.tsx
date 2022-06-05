@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import HomePage from "../../pages/HomePage";
 import { store } from "../../redux/store/store";
 import Layout from "../Layout/Layout";
+import Navigation from "./Navigation";
 
 describe("Given a Navigation component", () => {
   describe("When it's rendered", () => {
@@ -42,5 +43,22 @@ describe("Given a Navigation component", () => {
 
       expect(SignUp[0]).toBeInTheDocument();
     });
+  });
+
+  test("Then it should display the menu items button", () => {
+    render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <Navigation />
+        </Provider>
+      </BrowserRouter>
+    );
+
+    const logoutButton = screen.getByRole("button", {
+      name: "Open user menu",
+    });
+    userEvent.click(logoutButton);
+
+    expect(logoutButton).toBeInTheDocument();
   });
 });
