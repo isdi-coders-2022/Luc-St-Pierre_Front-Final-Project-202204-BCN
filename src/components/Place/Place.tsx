@@ -16,6 +16,8 @@ const Place = ({
     numberOfGuests,
     image,
     creator,
+    rating,
+    kilometers,
   },
 }: Props): JSX.Element => {
   return (
@@ -49,14 +51,16 @@ const Place = ({
               {title}
             </a>
           </h3>
-          <p className="text-[15px] text-[#666666]">323 kilometers away</p>
+          <p className="text-[15px] text-[#666666]">
+            {kilometers} Kilometers away
+          </p>
           <p className="text-[15px] text-[#666666]">Jun 20 - 25</p>
           <p className="mt-1 text-[15px] font-semibold text-[#222222]">
             € {price} <span className=" font-normal">night</span>
           </p>
         </div>
         <div className="flex max-h-[18px]">
-          <p className="text-sm text-gray-900"> {price}</p>
+          <p className="text-sm text-gray-900"> {rating}</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-4 w-4 self-end"
