@@ -2,10 +2,7 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
-
-const classNames = (...classes: string[]) => {
-  return classes.filter(Boolean).join(" ");
-};
+import getClassNames from "../../utils/getClassNames";
 
 const Navigation = (): JSX.Element => {
   return (
@@ -133,7 +130,7 @@ const Navigation = (): JSX.Element => {
                         {({ active }) => (
                           <a
                             href="/register"
-                            className={classNames(
+                            className={getClassNames(
                               active ? "bg-gray-50" : "",
                               "block px-4 py-3 text-sm text-[#222222]"
                             )}
@@ -146,7 +143,7 @@ const Navigation = (): JSX.Element => {
                         {({ active }) => (
                           <a
                             href="/login"
-                            className={classNames(
+                            className={getClassNames(
                               active ? "bg-gray-50" : "",
                               "block px-4 py-3 text-sm text-[#222222]"
                             )}
@@ -159,7 +156,7 @@ const Navigation = (): JSX.Element => {
                         {({ active }) => (
                           <a
                             href="/become"
-                            className={classNames(
+                            className={getClassNames(
                               active ? "bg-gray-50" : "",
                               "block px-4 py-3 text-sm text-[#222222]"
                             )}
