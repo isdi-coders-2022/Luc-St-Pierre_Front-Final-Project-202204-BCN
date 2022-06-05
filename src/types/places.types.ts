@@ -14,3 +14,7 @@ export interface IPlace {
   numberOfGuests: number;
   creator: string;
 }
+
+export interface getAllPlacesResponse {
+  places: IPlace[];
+}
