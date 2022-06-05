@@ -3,8 +3,20 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import getClassNames from "../../utils/getClassNames";
+import { useAppDispatch } from "../../redux/store/hooks";
+import { logOutActionCreator } from "../../redux/reducers/features/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logOutActionCreator());
+    localStorage.removeItem("token");
+    navigate("/home");
+  };
+
   return (
     <Disclosure
       as="nav"
@@ -171,15 +183,15 @@ const Navigation = (): JSX.Element => {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="/become"
+                            <button
                               className={getClassNames(
-                                active ? "bg-gray-50" : "",
-                                "block px-4 py-3 text-sm text-[#222222]"
+                                active ? "bg-gray-50 w-full" : "",
+                                "w-full flex  px-4 py-3 text-sm text-[#222222]"
                               )}
+                              onClick={handleLogout}
                             >
                               Log out
-                            </a>
+                            </button>
                           )}
                         </Menu.Item>
                       </div>
