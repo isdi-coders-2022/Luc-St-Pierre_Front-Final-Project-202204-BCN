@@ -18,3 +18,7 @@ export interface IPlace {
 export interface getAllPlacesResponse {
   places: IPlace[];
 }
+
+export interface Props {
+  showAllPlaces: IPlace[];
+}
