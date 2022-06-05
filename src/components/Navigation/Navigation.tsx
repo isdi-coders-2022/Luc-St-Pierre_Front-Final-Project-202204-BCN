@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import getClassNames from "../../utils/getClassNames";
-import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
+import { useAppDispatch } from "../../redux/store/hooks";
 import { logOutActionCreator } from "../../redux/reducers/features/userSlice";
 import { useNavigate } from "react-router-dom";
 
