@@ -1,7 +1,3 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-
 const Categories = () => {
   return (
     <div className="bg-white border-0 md:border-b-2 md:border-gray-100 pt-4">
