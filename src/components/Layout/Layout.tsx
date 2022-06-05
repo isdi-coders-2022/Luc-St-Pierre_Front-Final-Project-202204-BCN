@@ -8,7 +8,7 @@ const Layout = ({ children }: Props): JSX.Element => {
   return (
     <>
       <Navigation />
-      <div className="container px-4 sm:px-10 xl:px-20">{children}</div>
+      <div className="container px-4 sm:px-6 md:px-10 lg:px-20">{children}</div>
     </>
   );
 };
