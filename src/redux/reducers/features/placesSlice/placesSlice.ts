@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPlace } from "../../../../types/places.types";
-// import { IinitialState } from "../../../../types/places.types";
 
 interface IinitialState {
   allPlaces: IPlace[];
