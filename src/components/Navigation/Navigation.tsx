@@ -147,7 +147,7 @@ const Navigation = (): JSX.Element => {
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="/register"
+                                  href="/notifications"
                                   className={getClassNames(
                                     active ? "bg-gray-50" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
@@ -160,7 +160,7 @@ const Navigation = (): JSX.Element => {
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="/login"
+                                  href="/wishlists"
                                   className={getClassNames(
                                     active ? "bg-gray-50" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
@@ -176,7 +176,7 @@ const Navigation = (): JSX.Element => {
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="/become"
+                                  href="/homes"
                                   className={getClassNames(
                                     active ? "bg-gray-50" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
@@ -189,7 +189,7 @@ const Navigation = (): JSX.Element => {
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="/become"
+                                  href="/account"
                                   className={getClassNames(
                                     active ? "bg-gray-50" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
