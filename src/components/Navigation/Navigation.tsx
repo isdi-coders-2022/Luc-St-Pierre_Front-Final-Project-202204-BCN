@@ -15,7 +15,7 @@ const Navigation = (): JSX.Element => {
     >
       {({ open }) => (
         <>
-          <div className="max-w-full mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
+          <div className="max-w-full mx-auto px-4 sm:px-6 md:px-10 xl:px-20">
             <div className="flex justify-between h-20">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">

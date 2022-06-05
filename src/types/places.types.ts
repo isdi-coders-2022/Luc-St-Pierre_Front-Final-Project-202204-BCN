@@ -10,8 +10,9 @@ export interface IPlace {
   placeType: string;
   price: number;
   numberOfRooms: number;
-  numberOfbeds: number;
+  numberOfBeds: number;
   numberOfGuests: number;
+  image: string;
   creator: string;
 }
 
