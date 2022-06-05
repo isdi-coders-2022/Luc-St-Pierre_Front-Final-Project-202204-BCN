@@ -14,6 +14,8 @@ export interface IPlace {
   numberOfGuests: number;
   image: string;
   creator: string;
+  rating: number;
+  kilometers: number;
 }
 
 export interface getAllPlacesResponse {
