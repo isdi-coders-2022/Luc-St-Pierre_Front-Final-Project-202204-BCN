@@ -4,11 +4,11 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import AuthenticationCheck from "./components/AuthenticationCheck/AuthenticationCheck";
 import Layout from "./components/Layout/Layout";
+import BecomeAHostPage from "./pages/BecomeAHostPage";
 
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import BecomeAHostPage from "./pages/BecomeAHostPage";
 
 import { logInActionCreator } from "./redux/reducers/features/userSlice";
 import { useAppDispatch } from "./redux/store/hooks";
