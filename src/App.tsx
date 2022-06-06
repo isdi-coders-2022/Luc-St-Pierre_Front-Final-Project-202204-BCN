@@ -8,6 +8,7 @@ import Layout from "./components/Layout/Layout";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import BecomeAHostPage from "./pages/BecomeAHostPage";
 
 import { logInActionCreator } from "./redux/reducers/features/userSlice";
 import { useAppDispatch } from "./redux/store/hooks";
@@ -42,6 +43,8 @@ const App = () => {
             </AuthenticationCheck>
           }
         />
+
+        <Route path="/host/become-a-host" element={<BecomeAHostPage />} />
       </Routes>
     </div>
   );
