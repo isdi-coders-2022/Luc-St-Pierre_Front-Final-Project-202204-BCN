@@ -5,6 +5,7 @@ const BecomeAHostPage = () => {
         <div className="object-cover">
           <iframe
             className="h-screen w-full aspect-video"
+            title="A Host waves from their living room and adjusts their sofa. Another Host takes a photo in their plant-filled space. Finally, two Hosts sit beside each other and wave hello."
             src="https://a0.muscache.com/v/8b/04/8b0456c7-13f8-54bc-889a-7cf549f144a3/8b0456c713f854bc889a7cf549f144a3_4000k_1.mp4"
             allow="autoplay"
           />
