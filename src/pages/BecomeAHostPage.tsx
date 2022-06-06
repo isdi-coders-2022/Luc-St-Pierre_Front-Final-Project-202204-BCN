@@ -1,6 +1,3 @@
-import React from "react";
-import ReactPlayer from "react-player";
-
 const BecomeAHostPage = () => {
   return (
     <div className="flex w-full relative">
