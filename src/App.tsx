@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import AuthenticationCheck from "./components/AuthenticationCheck/AuthenticationCheck";
 import Layout from "./components/Layout/Layout";
+import BecomeAHostFormPage from "./pages/BecomeAHostFormPage";
 import BecomeAHostPage from "./pages/BecomeAHostPage";
 
 import HomePage from "./pages/HomePage";
@@ -45,6 +46,10 @@ const App = () => {
         />
 
         <Route path="/host/become-a-host" element={<BecomeAHostPage />} />
+        <Route
+          path="/host/become-a-host/property-type-group"
+          element={<BecomeAHostFormPage />}
+        />
       </Routes>
     </div>
   );

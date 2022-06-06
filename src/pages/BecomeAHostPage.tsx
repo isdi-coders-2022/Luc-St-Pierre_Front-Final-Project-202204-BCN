@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const BecomeAHostPage = () => {
   return (
     <div className="flex w-full relative">
@@ -41,7 +43,9 @@ const BecomeAHostPage = () => {
                   type="submit"
                   className="flex justify-center max-h-[48px] text-center py-4 px-6 border border-transparent rounded-md shadow-sm leading-none text-base font-medium text-white bg-[#DE3151] hover:bg-[#f43054] focus:outline-none"
                 >
-                  Let's go!
+                  <NavLink to="/host/become-a-host/property-type-group">
+                    Let's go!
+                  </NavLink>
                 </button>
               </div>
             </div>
