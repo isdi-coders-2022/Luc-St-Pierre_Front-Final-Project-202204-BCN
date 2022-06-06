@@ -78,7 +78,7 @@ const Navigation = (): JSX.Element => {
 
               <div className="hidden md:flex md:ml-6 md:items-center">
                 <a
-                  href="/user"
+                  href="/host/become-a-host"
                   className="block px-4 py-2 text-sm text-[#333333] font-semibold"
                 >
                   Become a Host
@@ -175,7 +175,7 @@ const Navigation = (): JSX.Element => {
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="/homes"
+                                  href="/host/become-a-host"
                                   className={getClassNames(
                                     active ? "bg-gray-50" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
