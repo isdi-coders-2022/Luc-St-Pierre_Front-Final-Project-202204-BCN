@@ -27,7 +27,7 @@ const BecomeAHostFormPage = () => {
       </div>
 
       <div className="bg-white h-screen z-0 ml-[50vw] w-1/2 flex-[1_1_50%] text-white">
-        <div className="mt-[88px] flex flex-col items-center justify-center mb-[82px] overflow-y-auto px-[48px] h-[calc(100%_-_calc(88px_+_82px))]">
+        <div className="mt-[88px] flex flex-col items-center justify-center mb-[82px] overflow-y-auto px-[48px] h-[calc(100vh_-_calc(88px_+_82px))]">
           <HostForm />
         </div>
 

@@ -6,6 +6,7 @@ export const placesMock = [
     address: "34 Llurai",
     city: "Mongat",
     placeType: "House",
+    placeDescription: "casa",
     price: 86,
     numberOfRooms: 3,
     numberOfBeds: 2,
