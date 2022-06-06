@@ -8,6 +8,7 @@ export interface IPlace {
   address: string;
   city: string;
   placeType: string;
+  placeDescription: string;
   price: number;
   numberOfRooms: number;
   numberOfBeds: number;
