@@ -44,9 +44,8 @@ const HostForm = (): JSX.Element => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(addPlaceThunk(formData));
-    // setFormData(initialForm);
-    console.log(formData);
-    // navigate("/home");
+    setFormData(initialForm);
+    navigate("/home");
   };
 
   return (
