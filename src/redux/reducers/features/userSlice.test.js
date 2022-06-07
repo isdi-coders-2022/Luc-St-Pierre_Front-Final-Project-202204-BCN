@@ -1,5 +1,6 @@
 import userReducer, {
   logInActionCreator,
+  logOutActionCreator,
   registerActionCreator,
 } from "./userSlice";
 
@@ -51,6 +52,33 @@ describe("Given a userSlice reducer", () => {
       };
 
       const registerAction = registerActionCreator(user);
+
+      const receivedState = userReducer(initialState, registerAction);
+
+      expect(receivedState).toEqual(user);
+    });
+  });
+
+  describe("When it's invoked with a logout action", () => {
+    test("Then it should return the user", () => {
+      const initialState = {
+        name: "",
+        username: "",
+        email: "",
+        image: "",
+        id: "",
+        authenticated: false,
+      };
+      const user = {
+        name: "",
+        username: "",
+        email: "",
+        image: "",
+        id: "",
+        authenticated: false,
+      };
+
+      const registerAction = logOutActionCreator(user);
 
       const receivedState = userReducer(initialState, registerAction);
 
