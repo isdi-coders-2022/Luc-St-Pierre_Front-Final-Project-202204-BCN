@@ -7,5 +7,8 @@ export const localStorageMock = (() => {
     setItem(key: string, value: string) {
       store[key] = value.toString();
     },
+    removeItem(key: string) {
+      delete store[key];
+    },
   };
 })();
