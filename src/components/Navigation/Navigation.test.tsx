@@ -377,7 +377,7 @@ describe("Given a Navigation component", () => {
     });
   });
 
-  describe("When it's invoked and user click on the link 'Host your home'", () => {
+  describe("When it's invoked and user click on the link 'host your home'", () => {
     test("Then it should invoke the dispatch action logout action creator", async () => {
       removeStorage(
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWRhZjYwMDY2YzllYjYzMTdmNDA5YSIsIm5hbWUiOiJsdWNhbWlubyIsInVzZXJuYW1lIjoiTGVhcm5pbmdYIiwiaWF0IjoxNjU0NTAxMjI0LCJleHAiOjE2NTQ1MDQ4MjR9.AMUNN7ZH6lu5vgXu7ZXzkN6UdYdR3kWbj7rZyRPkRao"
@@ -406,7 +406,7 @@ describe("Given a Navigation component", () => {
     });
   });
 
-  describe("When it's invoked and user click on the link 'Log out'", () => {
+  describe("When it's invoked and user click on the link 'log out'", () => {
     test("Then it should invoke the dispatch action logout action creator", async () => {
       removeStorage(
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWRhZjYwMDY2YzllYjYzMTdmNDA5YSIsIm5hbWUiOiJsdWNhbWlubyIsInVzZXJuYW1lIjoiTGVhcm5pbmdYIiwiaWF0IjoxNjU0NTAxMjI0LCJleHAiOjE2NTQ1MDQ4MjR9.AMUNN7ZH6lu5vgXu7ZXzkN6UdYdR3kWbj7rZyRPkRao"
