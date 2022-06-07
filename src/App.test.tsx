@@ -94,8 +94,6 @@ describe("Given an App component", () => {
 
       const getStoreActionState = store.getState();
 
-      console.log(getStoreActionState);
-
       expect(window.localStorage.getItem("token")).toBe(
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWRhZjYwMDY2YzllYjYzMTdmNDA5YSIsIm5hbWUiOiJsdWNhbWlubyIsInVzZXJuYW1lIjoiTGVhcm5pbmdYIiwiaWF0IjoxNjU0NTAxMjI0LCJleHAiOjE2NTQ1MDQ4MjR9.AMUNN7ZH6lu5vgXu7ZXzkN6UdYdR3kWbj7rZyRPkRao"
       );
