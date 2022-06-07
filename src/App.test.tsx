@@ -81,7 +81,7 @@ describe("Given an App component", () => {
           exp: 1654504824,
           authenticated: true,
         },
-        places: { allPlaces: [] },
+        places: [],
       };
 
       render(
@@ -98,7 +98,7 @@ describe("Given an App component", () => {
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWRhZjYwMDY2YzllYjYzMTdmNDA5YSIsIm5hbWUiOiJsdWNhbWlubyIsInVzZXJuYW1lIjoiTGVhcm5pbmdYIiwiaWF0IjoxNjU0NTAxMjI0LCJleHAiOjE2NTQ1MDQ4MjR9.AMUNN7ZH6lu5vgXu7ZXzkN6UdYdR3kWbj7rZyRPkRao"
       );
 
-      expect(getStoreActionState).toEqual(expectedToken);
+      expect(getStoreActionState).toStrictEqual(expectedToken);
     });
   });
 });
