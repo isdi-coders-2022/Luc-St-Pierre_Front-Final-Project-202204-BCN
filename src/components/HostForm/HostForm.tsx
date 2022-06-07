@@ -5,9 +5,13 @@ import { IPlace } from "../../types/places.types";
 import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
 
-const HostForm = (): JSX.Element => {
-  const [step, setStep] = useState(2);
+interface Props {
+  nextStep: () => any;
+  prevStep: () => any;
+  step: number;
+}
 
+const HostForm = ({ nextStep, prevStep, step }: Props) => {
   const initialForm: IPlace = {
     title: "",
     description: "",
@@ -26,14 +30,6 @@ const HostForm = (): JSX.Element => {
   };
 
   const [formData, setFormData] = useState<IPlace>(initialForm);
-
-  const nextStep = () => {
-    setStep(step + 1);
-  };
-
-  const prevStep = () => {
-    setStep(step - 1);
-  };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setFormData({

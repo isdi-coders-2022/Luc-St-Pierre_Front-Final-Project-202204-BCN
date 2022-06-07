@@ -65,14 +65,14 @@ const StepTwo = ({ nextStep, prevStep, handleChange, formData }: Props) => {
               className={({ checked, active }) =>
                 getClassNames(
                   checked ? "border-transparent" : "border-gray-300",
-                  active ? "border-[#222222] bg-[#F7F7F7]" : "",
+                  active ? "bg-[#F7F7F7]" : "",
                   "relative block min-h-[122px] max-w-[464px] max-h-[142px] bg-white border-2 border-transparent rounded-xl px-6 py-4 cursor-pointer sm:flex sm:justify-between sm:flex-col focus:outline-none hover:border-[#222222] hover:border-2"
                 )
               }
             >
               {({ active, checked }) => (
                 <>
-                  <span className="flex items-center">
+                  <span className="flex items-center z-50">
                     <span className="text-sm flex flex-col">
                       <RadioGroup.Label
                         as="span"
@@ -84,7 +84,7 @@ const StepTwo = ({ nextStep, prevStep, handleChange, formData }: Props) => {
                   </span>
                   <RadioGroup.Description
                     as="span"
-                    className="mt-2 flex text-sm flex-col text-left"
+                    className="mt-2 flex text-sm flex-col text-left z-50"
                   >
                     <div className="">
                       <span className="text-[#666666]">
@@ -94,10 +94,8 @@ const StepTwo = ({ nextStep, prevStep, handleChange, formData }: Props) => {
                   </RadioGroup.Description>
                   <span
                     className={getClassNames(
-                      active ? "border-2" : "border",
-                      checked
-                        ? "border-2 border-[#222222]"
-                        : "border-transparent",
+                      active ? "border-2 bg-[#F7F7F7]" : "border",
+                      checked ? "border-[#222222]" : "border-transparent",
                       "absolute -inset-px rounded-xl pointer-events-none hover:border-[#222222] hover:border-2"
                     )}
                     aria-hidden="true"
