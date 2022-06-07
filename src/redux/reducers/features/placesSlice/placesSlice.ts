@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPlace } from "../../../../types/places.types";
 
-// interface IinitialState {
-//   allPlaces: IPlace[];
-// }
-
 const initialState: IPlace[] = [];
 
 export const placesSlice = createSlice({
@@ -14,9 +10,16 @@ export const placesSlice = createSlice({
     loadPlaces: (places, action: PayloadAction<IPlace[]>) => [
       ...action.payload,
     ],
+    addPlace: (places, action: PayloadAction<IPlace>) => [
+      ...places,
+      action.payload,
+    ],
   },
 });
 
-export const { loadPlaces: loadPlacesActionCreator } = placesSlice.actions;
+export const {
+  loadPlaces: loadPlacesActionCreator,
+  addPlace: addPlaceActionCreator,
+} = placesSlice.actions;
 
 export default placesSlice.reducer;
