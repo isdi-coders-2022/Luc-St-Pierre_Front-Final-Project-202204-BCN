@@ -1,6 +1,9 @@
 import axios from "axios";
 import { getAllPlacesResponse } from "../../types/places.types";
-import { loadPlacesActionCreator } from "../reducers/features/placesSlice/placesSlice";
+import {
+  addPlaceActionCreator,
+  loadPlacesActionCreator,
+} from "../reducers/features/placesSlice/placesSlice";
 import { AppDispatch } from "../store/store";
 
 const baseUrl = process.env.REACT_APP_API_URL;
@@ -17,6 +20,26 @@ export const loadPlacesThunk =
       });
 
       dispatch(loadPlacesActionCreator(places));
+    } catch (error: any) {
+      return error.message;
+    }
+  };
+
+export const addPlaceThunk =
+  (placeData: any) => async (dispatch: AppDispatch) => {
+    try {
+      const {
+        data: { newPlace },
+      } = await axios.post(`${baseUrl}hosts/places`, placeData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      });
+
+      if (newPlace) {
+        dispatch(addPlaceActionCreator(newPlace));
+        dispatch(loadPlacesThunk(localStorage.token));
+      }
     } catch (error: any) {
       return error.message;
     }
