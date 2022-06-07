@@ -26,7 +26,9 @@ const HostForm = ({ nextStep, prevStep, step }: Props) => {
     image: "",
     creator: "",
     rating: 0,
+    isListed: false,
     kilometers: 0,
+    category: "",
   };
 
   const [formData, setFormData] = useState<IPlace>(initialForm);

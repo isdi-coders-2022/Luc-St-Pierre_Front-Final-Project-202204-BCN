@@ -19,7 +19,9 @@ const initialForm: IPlace = {
   image: "",
   creator: "",
   rating: 0,
+  isListed: false,
   kilometers: 0,
+  category: "",
 };
 
 const mockUseNavigate = jest.fn();

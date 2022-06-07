@@ -7,15 +7,17 @@ import { loadPlacesThunk } from "../redux/thunks/placesThunks";
 function HomePage() {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(loadPlacesThunk());
-  }, [dispatch]);
+  const token = localStorage.getItem("token");
 
-  const { allPlaces } = useAppSelector((state) => state.places);
+  useEffect(() => {
+    dispatch(loadPlacesThunk(token as string));
+  }, [dispatch, token]);
+
+  const places = useAppSelector((state) => state.places);
 
   return (
     <div>
-      <PlacesList showAllPlaces={allPlaces} />
+      <PlacesList showAllPlaces={places} />
     </div>
   );
 }

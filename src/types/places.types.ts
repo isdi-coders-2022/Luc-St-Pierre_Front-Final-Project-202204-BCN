@@ -16,7 +16,9 @@ export interface IPlace {
   image: string;
   creator: string;
   rating: number;
+  isListed: boolean;
   kilometers: number;
+  category: string;
 }
 
 export interface getAllPlacesResponse {
