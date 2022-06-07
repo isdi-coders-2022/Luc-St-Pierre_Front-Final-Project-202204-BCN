@@ -1,18 +1,7 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import HostForm from "../components/HostForm/HostForm";
 
 const BecomeAHostFormPage = () => {
-  const [step, setStep] = useState<number>(1);
-
-  const nextStep = () => {
-    setStep(step + 1);
-  };
-
-  const prevStep = () => {
-    setStep(step - 1);
-  };
-
   return (
     <div className="flex w-full relative">
       <div className="absolute left-0 w-1/2">
@@ -39,19 +28,15 @@ const BecomeAHostFormPage = () => {
 
       <div className="bg-white h-screen z-0 ml-[50vw] w-1/2 flex-[1_1_50%] text-white">
         <div className="mt-[88px] flex flex-col items-center justify-center mb-[82px] overflow-y-auto px-[48px] h-[calc(100vh_-_calc(88px_+_82px))]">
-          <HostForm nextStep={nextStep} prevStep={prevStep} step={step} />
+          <HostForm />
         </div>
 
         <div className="w-1/2 z-10 fixed bottom-0">
           <div className="border-t-2 border-gray-200">
             <div className="flex py-4 justify-between items-center">
               <div className="ml-12">
-                <button
-                  onClick={prevStep}
-                  className="flex justify-center max-h-[48px] text-center py-4 px-6 border border-transparent rounded-md shadow-sm leading-none text-base font-medium text-[#222222] underline focus:outline-none"
-                >
-                  {/* <NavLink to="/host/become-a-host">Back</NavLink> */}
-                  Back
+                <button className="flex justify-center max-h-[48px] text-center py-4 px-6 border border-transparent rounded-md shadow-sm leading-none text-base font-medium text-[#222222] underline focus:outline-none">
+                  <NavLink to="/host/become-a-host">Back</NavLink>
                 </button>
               </div>
 
@@ -59,12 +44,10 @@ const BecomeAHostFormPage = () => {
                 <button
                   type="submit"
                   className="flex justify-center max-h-[48px] text-center py-4 px-6 border border-transparent rounded-[8px] shadow-sm leading-none text-base font-medium text-white bg-[#222222] hover:bg-black focus:outline-none"
-                  onClick={nextStep}
                 >
-                  {/* <NavLink to="/host/become-a-host/property-type-group">
+                  <NavLink to="/host/become-a-host/property-type-group">
                     Next
-                  </NavLink> */}
-                  Next
+                  </NavLink>
                 </button>
               </div>
             </div>
