@@ -3,21 +3,21 @@ import { getAllPlacesResponse } from "../../types/places.types";
 import { loadPlacesActionCreator } from "../reducers/features/placesSlice/placesSlice";
 import { AppDispatch } from "../store/store";
 
-export const loadPlacesThunk = () => async (dispatch: AppDispatch) => {
-  const token = localStorage.getItem("token");
+const baseUrl = process.env.REACT_APP_API_URL;
 
-  if (token) {
-    const {
-      data: { places },
-    } = await axios.get<getAllPlacesResponse>(
-      `${process.env.REACT_APP_API_URL}hosts/places`,
-      {
+export const loadPlacesThunk =
+  (token: string) => async (dispatch: AppDispatch) => {
+    try {
+      const {
+        data: { places },
+      } = await axios.get<getAllPlacesResponse>(`${baseUrl}hosts/places`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
-    );
+      });
 
-    dispatch(loadPlacesActionCreator(places));
-  }
-};
+      dispatch(loadPlacesActionCreator(places));
+    } catch (error: any) {
+      return error.message;
+    }
+  };

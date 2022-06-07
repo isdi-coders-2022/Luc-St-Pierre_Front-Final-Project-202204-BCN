@@ -1,4 +1,5 @@
 import { placesMock } from "../../../../mocks/placesMocks";
+import { IPlace } from "../../../../types/places.types";
 import placesReducer, { loadPlacesActionCreator } from "./placesSlice";
 
 describe("Given a placesReducer reducer", () => {
@@ -8,9 +9,7 @@ describe("Given a placesReducer reducer", () => {
         type: "places/unknownAction",
       };
 
-      const initialState = {
-        allPlaces: [],
-      };
+      const initialState: IPlace[] = [];
 
       const receivedState = placesReducer(initialState, action);
 
@@ -22,13 +21,11 @@ describe("Given a placesReducer reducer", () => {
     test("Then it should return the same list of places", async () => {
       const action = loadPlacesActionCreator(placesMock);
 
-      const initialState = {
-        allPlaces: [],
-      };
+      const initialState: IPlace[] = [];
 
-      const { allPlaces } = placesReducer(initialState, action);
+      const places = placesReducer(initialState, action);
 
-      expect(allPlaces).toEqual(placesMock);
+      expect(places).toEqual(placesMock);
     });
   });
 });

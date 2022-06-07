@@ -78,7 +78,7 @@ describe("Given a userSlice reducer", () => {
         authenticated: false,
       };
 
-      const registerAction = logOutActionCreator(user);
+      const registerAction = logOutActionCreator();
 
       const receivedState = userReducer(initialState, registerAction);
 
