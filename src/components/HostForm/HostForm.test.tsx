@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { IPlace } from "../../types/places.types";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import StepOne from "./StepOne";
+import HostForm from "./HostForm";
 
 const initialForm: IPlace = {
   title: "",
@@ -35,7 +35,7 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("Given a HostForm component", () => {
-  describe("When it's invoked with StepOne", () => {
+  describe("When it's invoked", () => {
     test("Then it should return the expected radio button 'Apartment'", () => {
       jest.mock("jwt-decode", () => () => ({
         user: {
@@ -68,19 +68,15 @@ describe("Given a HostForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={mockStore}>
-            <StepOne
-              nextStep={mockNextStep}
-              handleChange={mockHandleChange}
-              formData={mockFormData}
-            />
+            <HostForm />
           </Provider>
         </BrowserRouter>
       );
 
-      const expectedRadio = screen.getByRole("radio", {
-        name: "Apartment",
+      const expectedText = screen.getByRole("textbox", {
+        name: "Description",
       });
-      expect(expectedRadio).toBeInTheDocument();
+      expect(expectedText).toBeInTheDocument();
     });
   });
 });
