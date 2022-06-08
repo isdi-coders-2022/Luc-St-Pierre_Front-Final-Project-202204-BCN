@@ -2,6 +2,11 @@ export interface Props {
   children: JSX.Element;
 }
 
+export interface IUser {
+  username: string;
+  image: string;
+}
+
 export interface IinitialState {
   name: string;
   username: string;
