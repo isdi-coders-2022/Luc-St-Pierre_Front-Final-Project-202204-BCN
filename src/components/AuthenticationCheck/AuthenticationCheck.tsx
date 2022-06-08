@@ -7,14 +7,14 @@ interface Props {
 }
 
 const AuthenticationCheck = ({ children }: Props) => {
-  const { name } = useAppSelector((state) => state.user);
+  const { authenticated } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!name) navigate("/login");
-  }, [name, navigate]);
+    if (authenticated) navigate("/home");
+  }, [authenticated, navigate]);
 
-  if (name) {
+  if (!authenticated) {
     return children;
   }
 
