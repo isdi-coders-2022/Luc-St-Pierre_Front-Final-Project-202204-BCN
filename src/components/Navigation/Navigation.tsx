@@ -22,7 +22,7 @@ const Navigation = (): JSX.Element => {
   return (
     <Disclosure
       as="nav"
-      className="bg-white border-0 md:border-b-2 md:border-gray-100"
+      className="bg-white border-0 md:border-b-2 md:border-gray-100 z-50"
     >
       {({ open }) => (
         <>
@@ -105,7 +105,7 @@ const Navigation = (): JSX.Element => {
                   </svg>
                 </button>
 
-                <Menu as="div" className="ml-3 relative">
+                <Menu as="div" className="ml-3 relative z-50">
                   <div>
                     <Menu.Button className="bg-white w-[77px] h-[42px] inline-flex items-center rounded-full text-sm focus:outline-none border border-[#CCCCCC] pl-[12px] pr-[5px] py-[5px] hover:shadow-5xl transition-shadow ease-out delay-100 ">
                       <span className="sr-only">Open user menu</span>
@@ -148,7 +148,7 @@ const Navigation = (): JSX.Element => {
                                 <a
                                   href="/notifications"
                                   className={getClassNames(
-                                    active ? "bg-gray-50" : "",
+                                    active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
@@ -161,7 +161,7 @@ const Navigation = (): JSX.Element => {
                                 <a
                                   href="/wishlists"
                                   className={getClassNames(
-                                    active ? "bg-gray-50" : "",
+                                    active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
@@ -177,7 +177,7 @@ const Navigation = (): JSX.Element => {
                                 <a
                                   href="/host/become-a-host"
                                   className={getClassNames(
-                                    active ? "bg-gray-50" : "",
+                                    active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
@@ -190,7 +190,7 @@ const Navigation = (): JSX.Element => {
                                 <a
                                   href="/account"
                                   className={getClassNames(
-                                    active ? "bg-gray-50" : "",
+                                    active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
@@ -204,7 +204,7 @@ const Navigation = (): JSX.Element => {
                               {({ active }) => (
                                 <button
                                   className={getClassNames(
-                                    active ? "bg-gray-50 w-full" : "",
+                                    active ? "bg-gray-100 w-full" : "",
                                     "w-full flex  px-4 py-3 text-sm text-[#222222]"
                                   )}
                                   onClick={handleLogout}
@@ -223,7 +223,7 @@ const Navigation = (): JSX.Element => {
                                 <a
                                   href="/register"
                                   className={getClassNames(
-                                    active ? "bg-gray-50" : "",
+                                    active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
@@ -236,7 +236,7 @@ const Navigation = (): JSX.Element => {
                                 <a
                                   href="/login"
                                   className={getClassNames(
-                                    active ? "bg-gray-50" : "",
+                                    active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
@@ -252,7 +252,7 @@ const Navigation = (): JSX.Element => {
                                 <a
                                   href="/become"
                                   className={getClassNames(
-                                    active ? "bg-gray-50" : "",
+                                    active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >

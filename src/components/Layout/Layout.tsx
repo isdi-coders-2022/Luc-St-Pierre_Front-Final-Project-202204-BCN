@@ -10,7 +10,7 @@ const Layout = ({ children }: Props): JSX.Element => {
     <>
       <Navigation />
       <Categories />
-      <div className=" px-4 sm:px-6 md:px-10 xl:px-20">{children}</div>
+      <div className="px-4 sm:px-6 md:px-10 xl:px-20">{children}</div>
     </>
   );
 };
