@@ -1,6 +1,7 @@
 import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import Authenticated from "./components/Authenticated/Authenticated";
 
 import AuthenticationCheck from "./components/AuthenticationCheck/AuthenticationCheck";
 import Layout from "./components/Layout/Layout";
@@ -36,17 +37,31 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/login"
+          element={
+            <AuthenticationCheck>
+              <LoginPage />
+            </AuthenticationCheck>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <AuthenticationCheck>
+              <RegisterPage />
+            </AuthenticationCheck>
+          }
+        />
 
         <Route
           path="/home"
           element={
-            <AuthenticationCheck>
+            <Authenticated>
               <Layout>
                 <HomePage />
               </Layout>
-            </AuthenticationCheck>
+            </Authenticated>
           }
         />
 

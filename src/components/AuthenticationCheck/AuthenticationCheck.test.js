@@ -16,14 +16,14 @@ jest.mock("../../redux/store/hooks", () => ({
 
 describe("Given a AuthenticationCheck wrapper component", () => {
   describe("When it's invoked with no user authentication", () => {
-    test("Then it should call the navigate to login page", () => {
+    test("Then it should call the navigate to home page", () => {
       render(
         <AuthenticationCheck>
           <h1>Airbnb</h1>
         </AuthenticationCheck>
       );
 
-      expect(mockUseNavigate).toHaveBeenCalledWith("/login");
+      expect(mockUseNavigate).toHaveBeenCalledWith("/home");
     });
   });
 });
