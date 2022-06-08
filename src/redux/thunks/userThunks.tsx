@@ -15,7 +15,7 @@ import { AppDispatch } from "../store/store";
 export const loginThunk =
   (user: IUserCredentials) => async (dispatch: AppDispatch) => {
     const { data } = await axios.post<ILoginResponse>(
-      `${process.env.REACT_APP_API_URL}users/login`,
+      `${process.env.REACT_APP_API_URL}user/login`,
       user
     );
 
@@ -32,7 +32,7 @@ export const loginThunk =
 export const registerThunk =
   (user: IRegisterData) => async (dispatch: AppDispatch) => {
     await axios.post<ILoginResponse>(
-      `${process.env.REACT_APP_API_URL}users/register`,
+      `${process.env.REACT_APP_API_URL}user/register`,
       user
     );
 
