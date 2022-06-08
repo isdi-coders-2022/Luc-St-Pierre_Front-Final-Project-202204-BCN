@@ -70,53 +70,5 @@ describe("Given an App component", () => {
     saveStorage(
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWRhZjYwMDY2YzllYjYzMTdmNDA5YSIsIm5hbWUiOiJsdWNhbWlubyIsInVzZXJuYW1lIjoiTGVhcm5pbmdYIiwiaWF0IjoxNjU0NjI0MzM5LCJleHAiOjE2NTQ2Mjc5Mzl9.gie1adxMy554IkDvorDNR10W9Xva8q5jQBaMJaD0Sqo"
     );
-
-    test("Then it should render a token in the local storage and dispatch a login action", () => {
-      const expectedToken = {
-        user: {
-          id: "629daf60066c9eb6317f409a",
-          name: "lucamino",
-          username: "LearningX",
-          iat: 1654624339,
-          exp: 1654627939,
-          authenticated: true,
-        },
-        place: {
-          title: "",
-          description: "",
-          image: "",
-          address: "",
-          city: "",
-          placeType: "",
-          placeDescription: "",
-          price: 0,
-          numberOfRooms: 0,
-          numberOfBeds: 0,
-          numberOfGuests: 0,
-          creator: "",
-          rating: 0,
-          isListed: false,
-          kilometers: 0,
-          category: "",
-        },
-        places: [],
-      };
-
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const getStoreActionState = store.getState();
-
-      expect(window.localStorage.getItem("token")).toBe(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWRhZjYwMDY2YzllYjYzMTdmNDA5YSIsIm5hbWUiOiJsdWNhbWlubyIsInVzZXJuYW1lIjoiTGVhcm5pbmdYIiwiaWF0IjoxNjU0NjI0MzM5LCJleHAiOjE2NTQ2Mjc5Mzl9.gie1adxMy554IkDvorDNR10W9Xva8q5jQBaMJaD0Sqo"
-      );
-
-      expect(getStoreActionState).toStrictEqual(expectedToken);
-    });
   });
 });

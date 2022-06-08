@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import AuthenticationCheck from "./AuthenticationCheck";
 
 const mockUseNavigate = jest.fn();
@@ -7,11 +7,10 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockUseNavigate,
 }));
 
-let mockName = "";
+let mockAuthenticated = true;
 
 jest.mock("../../redux/store/hooks", () => ({
-  ...jest.requireActual("../../redux/store/hooks"),
-  useAppSelector: () => ({ name: mockName }),
+  useAppSelector: () => ({ authenticated: mockAuthenticated }),
 }));
 
 describe("Given a AuthenticationCheck wrapper component", () => {
@@ -24,6 +23,20 @@ describe("Given a AuthenticationCheck wrapper component", () => {
       );
 
       expect(mockUseNavigate).toHaveBeenCalledWith("/home");
+    });
+
+    test("Then it should render it's children when the use is authenticated", () => {
+      mockAuthenticated = false;
+
+      render(
+        <AuthenticationCheck>
+          <h1>Airbnb</h1>
+        </AuthenticationCheck>
+      );
+
+      const expectedHeader = screen.getByRole("heading", { name: "Airbnb" });
+
+      expect(expectedHeader).toBeInTheDocument();
     });
   });
 });
