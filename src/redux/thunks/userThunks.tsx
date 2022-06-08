@@ -6,10 +6,7 @@ import {
   IRegisterData,
   IUserCredentials,
 } from "../../types/user.types";
-import {
-  logInActionCreator,
-  registerActionCreator,
-} from "../reducers/features/userSlice";
+import { logInActionCreator } from "../reducers/features/userSlice";
 import { AppDispatch } from "../store/store";
 
 const baseUrl = process.env.REACT_APP_API_URL;
@@ -40,8 +37,18 @@ export const loginThunk =
   };
 
 export const registerThunk =
-  (user: IRegisterData) => async (dispatch: AppDispatch) => {
-    await axios.post<ILoginResponse>(`${baseUrl}user/register`, user);
+  (userData: any, password: string) => async (dispatch: AppDispatch) => {
+    try {
+      const { data } = await axios.post(`${baseUrl}user/register`, userData);
 
-    dispatch(registerActionCreator(user));
+      if (data) {
+        const newUserData = {
+          username: data.new_user.username,
+          password: password,
+        };
+        dispatch(loginThunk(newUserData));
+      }
+    } catch (error: any) {
+      return error;
+    }
   };
