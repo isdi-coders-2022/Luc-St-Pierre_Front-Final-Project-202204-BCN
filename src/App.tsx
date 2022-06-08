@@ -12,20 +12,25 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 
 import { logInActionCreator } from "./redux/reducers/features/userSlice";
-import { useAppDispatch } from "./redux/store/hooks";
-import { IDecodedToken } from "./types/user.types";
+import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
+import { IinitialState } from "./types/places.types";
+import { IDecodedToken, IState } from "./types/user.types";
 
 const App = () => {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
+  const { authenticated } = useAppSelector(
+    (state: { user: IState }) => state.user
+  );
 
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
     if (token) {
-      const userData: IDecodedToken = jwtDecode(token);
-      dispatch(logInActionCreator(userData));
+      const { username, email, image }: IDecodedToken = jwtDecode(token);
+      dispatch(logInActionCreator({ username, email, image }));
     }
-  }, [dispatch]);
+  }, [dispatch, token, authenticated]);
 
   return (
     <div>
