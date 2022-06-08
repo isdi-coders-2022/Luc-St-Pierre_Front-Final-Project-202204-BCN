@@ -5,7 +5,7 @@ interface Props {
   children: JSX.Element;
 }
 
-const Authentication = ({ children }: Props) => {
+const Authenticated = ({ children }: Props) => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
@@ -18,4 +18,4 @@ const Authentication = ({ children }: Props) => {
   return children;
 };
 
-export default Authentication;
+export default Authenticated;
