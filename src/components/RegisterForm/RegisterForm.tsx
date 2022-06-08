@@ -14,8 +14,6 @@ const RegisterForm = (): JSX.Element => {
     email: "",
     password: "",
     image: "",
-    id: "",
-    authenticated: false,
   };
 
   const [formData, setFormData] = useState<IRegisterForm>(initialForm);
@@ -29,7 +27,7 @@ const RegisterForm = (): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    dispatch(registerThunk(formData));
+    dispatch(registerThunk(formData, formData.password));
     setFormData(initialForm);
     navigate("/login");
   };

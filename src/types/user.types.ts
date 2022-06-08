@@ -60,6 +60,4 @@ export interface IRegisterForm {
   email: string;
   password: string;
   image: string;
-  id: string;
-  authenticated: boolean;
 }
