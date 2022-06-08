@@ -2,15 +2,15 @@ export interface Props {
   children: JSX.Element;
 }
 
+export interface IState {
+  userData: IUser;
+  authenticated: boolean;
+}
+
 export interface IUser {
   username: string;
   email: string;
   image: string;
-}
-
-export interface IState {
-  userData: IUser;
-  authenticated: boolean;
 }
 
 export interface IinitialState {

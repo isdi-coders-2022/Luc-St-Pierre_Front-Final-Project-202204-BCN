@@ -1,88 +1,60 @@
+import { mockUserAuthenticated } from "../../../mocks/mockUser";
 import userReducer, {
   logInActionCreator,
   logOutActionCreator,
-  registerActionCreator,
 } from "./userSlice";
 
 describe("Given a userSlice reducer", () => {
   describe("When it's invoked with a login action with a user", () => {
     test("Then it should return the user", () => {
       const initialState = {
-        name: "",
-        username: "",
-        email: "",
-        image: "",
-        id: "",
+        userData: {
+          username: "",
+          email: "",
+          image: "",
+        },
         authenticated: false,
       };
-      const user = {
-        name: "Lucamino",
-        username: "LearningX",
-        email: "test@test.com",
-        image: "",
-        id: "1234567890",
+      const userData = mockUserAuthenticated;
+
+      const expectedState = {
+        userData: mockUserAuthenticated,
         authenticated: true,
       };
 
-      const loginAction = logInActionCreator(user);
+      const loginAction = logInActionCreator(userData);
 
-      const receivedState = userReducer(initialState, loginAction);
+      const userState = userReducer(initialState, loginAction);
 
-      expect(receivedState).toEqual(user);
+      expect(userState).toEqual(expectedState);
     });
   });
 
-  describe("When it's invoked with a register action with a user", () => {
-    test("Then it should return the user", () => {
+  describe("When it's invoked with a user with data and a logout action", () => {
+    test("Then it should return a empty state with authenticated set to false", () => {
       const initialState = {
-        name: "",
-        username: "",
-        email: "",
-        image: "",
-        id: "",
-        authenticated: false,
-      };
-      const user = {
-        name: "Lucamino",
-        username: "LearningX",
-        email: "test@test.com",
-        image: "",
-        id: "1234567890",
-        authenticated: false,
+        userData: {
+          username: "LearningX",
+          email: "lucamino@gmail.com",
+          image: "image",
+        },
+        authenticated: true,
       };
 
-      const registerAction = registerActionCreator(user);
-
-      const receivedState = userReducer(initialState, registerAction);
-
-      expect(receivedState).toEqual(user);
-    });
-  });
-
-  describe("When it's invoked with a logout action", () => {
-    test("Then it should return the user", () => {
-      const initialState = {
-        name: "",
-        username: "",
-        email: "",
-        image: "",
-        id: "",
-        authenticated: false,
-      };
-      const user = {
-        name: "",
-        username: "",
-        email: "",
-        image: "",
-        id: "",
+      const expectedState = {
+        userData: {
+          username: "",
+          email: "",
+          image: "",
+        },
         authenticated: false,
       };
 
-      const registerAction = logOutActionCreator();
+      const logoutAction = logOutActionCreator();
 
-      const receivedState = userReducer(initialState, registerAction);
+      const userState = userReducer(initialState, logoutAction);
 
-      expect(receivedState).toEqual(user);
+      expect(userState).toEqual(expectedState);
     });
   });
 });
