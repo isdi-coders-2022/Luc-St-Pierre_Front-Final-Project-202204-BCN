@@ -3,7 +3,6 @@ import jwtDecode from "jwt-decode";
 import {
   IDecodedToken,
   ILoginResponse,
-  IRegisterData,
   IUserCredentials,
 } from "../../types/user.types";
 import { logInActionCreator } from "../reducers/features/userSlice";
