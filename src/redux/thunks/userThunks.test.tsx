@@ -1,7 +1,6 @@
-import axios from "axios";
 import { mockUserAuthenticated } from "../../mocks/mockUser";
 import { logInActionCreator } from "../reducers/features/userSlice";
-import { loginThunk, registerThunk } from "./userThunks";
+import { loginThunk } from "./userThunks";
 
 jest.mock("jwt-decode", () => () => ({
   username: "LearningX",
