@@ -21,7 +21,10 @@ const RegisterForm = (): JSX.Element => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setFormData({
       ...formData,
-      [event.target.id]: event.target.value,
+      [event.target.id]:
+        event.target.type === "file"
+          ? event.target.files?.[0] || ""
+          : event.target.value,
     });
   };
 
@@ -31,9 +34,16 @@ const RegisterForm = (): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    dispatch(registerThunk(formData, formData.password));
+
+    const newFormData = new FormData();
+    newFormData.append("name", formData.name);
+    newFormData.append("username", formData.username);
+    newFormData.append("email", formData.email);
+    newFormData.append("password", formData.password);
+    newFormData.append("image", formData.image);
+
+    dispatch(registerThunk(newFormData, formData.password));
     setFormData(initialForm);
-    navigate("/login");
   };
 
   return (
@@ -136,6 +146,20 @@ const RegisterForm = (): JSX.Element => {
                   autoComplete="off"
                   className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                   placeholder="Password"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="image" className="sr-only">
+                Avatar
+              </label>
+              <div className="mt-1">
+                <input
+                  id="image"
+                  onChange={handleChange}
+                  type="file"
+                  className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                 />
               </div>
             </div>
