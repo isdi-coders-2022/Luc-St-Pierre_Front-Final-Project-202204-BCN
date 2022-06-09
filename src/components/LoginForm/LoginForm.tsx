@@ -1,10 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/store/hooks";
 import { loginThunk } from "../../redux/thunks/userThunks";
 import { ILoginForm } from "../../types/user.types";
 
 const LoginForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const initialForm: ILoginForm = {
     username: "",
@@ -18,6 +20,10 @@ const LoginForm = (): JSX.Element => {
       ...formData,
       [event.target.id]: event.target.value,
     });
+  };
+
+  const navigateToRegister = () => {
+    navigate("/register");
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -110,14 +116,13 @@ const LoginForm = (): JSX.Element => {
                 Don't have an account?
               </span>
 
-              <a
-                href="/register"
-                type="submit"
+              <button
+                onClick={navigateToRegister}
                 className="py-3 pr-4 text-sm hover:text-[#DE3151] cursor-pointer"
               >
                 {" "}
                 Sign Up
-              </a>
+              </button>
             </div>
 
             <div className="relative">
