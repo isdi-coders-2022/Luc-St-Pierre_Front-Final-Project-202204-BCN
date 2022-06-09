@@ -25,6 +25,10 @@ const RegisterForm = (): JSX.Element => {
     });
   };
 
+  const navigateToLogin = () => {
+    navigate("/login");
+  };
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     dispatch(registerThunk(formData, formData.password));
@@ -152,14 +156,13 @@ const RegisterForm = (): JSX.Element => {
                 Already have an account?
               </span>
 
-              <a
-                href="/login"
-                type="submit"
+              <button
                 className="py-3 pr-4 text-sm hover:text-[#DE3151] cursor-pointer"
+                onClick={navigateToLogin}
               >
                 {" "}
                 Sign In
-              </a>
+              </button>
             </div>
 
             <div className="relative">

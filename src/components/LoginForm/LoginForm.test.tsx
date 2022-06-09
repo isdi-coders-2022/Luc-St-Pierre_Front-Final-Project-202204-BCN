@@ -42,7 +42,9 @@ describe("Given a LoginForm component", () => {
 
       const username: HTMLLabelElement = screen.getByLabelText(labelUsername);
       const password: HTMLLabelElement = screen.getByLabelText(labelPassword);
-      const submitButton: HTMLButtonElement = screen.getByRole("button");
+      const submitButton: HTMLButtonElement = screen.getByRole("button", {
+        name: "Sign in",
+      });
 
       userEvent.type(username, inputTextValue);
       userEvent.type(password, inputTextValue);

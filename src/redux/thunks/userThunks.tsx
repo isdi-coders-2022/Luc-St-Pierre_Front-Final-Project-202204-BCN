@@ -33,15 +33,6 @@ export const loginThunk =
     } catch (error: any) {
       return error.message;
     }
-
-    // const { name, username, email, image, id, authenticated }: IDecodedToken =
-    //   jwtDecode<IDecodedToken>(data.token);
-
-    // localStorage.setItem("token", data.token);
-
-    // dispatch(
-    //   logInActionCreator({ name, username, email, image, id, authenticated })
-    // );
   };
 
 export const registerThunk =
