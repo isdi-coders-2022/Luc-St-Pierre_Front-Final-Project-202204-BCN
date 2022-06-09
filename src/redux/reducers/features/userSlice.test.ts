@@ -10,6 +10,7 @@ describe("Given a userSlice reducer", () => {
       const initialState = {
         userData: {
           username: "",
+          name: "",
           email: "",
           image: "",
         },
@@ -35,6 +36,7 @@ describe("Given a userSlice reducer", () => {
       const initialState = {
         userData: {
           username: "LearningX",
+          name: "lucamino",
           email: "lucamino@gmail.com",
           image: "image",
         },
@@ -44,6 +46,7 @@ describe("Given a userSlice reducer", () => {
       const expectedState = {
         userData: {
           username: "",
+          name: "",
           email: "",
           image: "",
         },
