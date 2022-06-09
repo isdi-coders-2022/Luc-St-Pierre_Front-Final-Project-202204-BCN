@@ -24,13 +24,16 @@ const App = () => {
   );
 
   const token = localStorage.getItem("token");
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    if (token) {
-      const { username, email, image }: IDecodedToken = jwtDecode(token);
-      dispatch(logInActionCreator({ username, email, image }));
+    if (token as string) {
+      const { username, name, email, image }: IDecodedToken = jwtDecode(
+        token as string
+      );
+      dispatch(logInActionCreator({ username, name, email, image }));
     }
-  }, [dispatch, token, authenticated]);
+  }, [dispatch, token, authenticated, baseUrl]);
 
   return (
     <div>
@@ -64,10 +67,21 @@ const App = () => {
           }
         />
 
-        <Route path="/host/become-a-host" element={<BecomeAHostPage />} />
+        <Route
+          path="/host/become-a-host"
+          element={
+            <Authenticated>
+              <BecomeAHostPage />
+            </Authenticated>
+          }
+        />
         <Route
           path="/host/become-a-host/property-type-group"
-          element={<BecomeAHostFormPage />}
+          element={
+            <Authenticated>
+              <BecomeAHostFormPage />
+            </Authenticated>
+          }
         />
       </Routes>
     </div>

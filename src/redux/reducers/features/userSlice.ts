@@ -4,6 +4,7 @@ import { IState, IUser } from "../../../types/user.types";
 const initialState: IState = {
   userData: {
     username: "",
+    name: "",
     email: "",
     image: "",
   },
@@ -21,6 +22,7 @@ export const userSlice = createSlice({
     logOut: (user) => ({
       userData: {
         username: "",
+        name: "",
         email: "",
         image: "",
       },

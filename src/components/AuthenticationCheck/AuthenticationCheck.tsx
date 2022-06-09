@@ -16,9 +16,9 @@ const AuthenticationCheck = ({ children }: Props) => {
 
   if (!authenticated) {
     return children;
+  } else {
+    return null;
   }
-
-  return null;
 };
 
 export default AuthenticationCheck;

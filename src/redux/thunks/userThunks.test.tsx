@@ -4,6 +4,7 @@ import { loginThunk } from "./userThunks";
 
 jest.mock("jwt-decode", () => () => ({
   username: "LearningX",
+  name: "lucamino",
   email: "lucamino@gmail.com",
   image: "image",
 }));
@@ -27,30 +28,3 @@ describe("Given a LoginThunk middleware", () => {
     });
   });
 });
-
-// describe("Given a registerThunk middleware", () => {
-//   describe("When it's called and receives the new user data", () => {
-//     test("Then it should call the dispatch with the registerActionCreator", async () => {
-//       const newUser = {
-//         name: "userTest",
-//         username: "LearningX",
-//         email: "test@test.com",
-//         password: "abcd1234",
-//         image: "",
-//         id: "",
-//         authenticated: false,
-//       };
-
-//       const dispatch = jest.fn();
-
-//       axios.post = jest
-//         .fn()
-//         .mockResolvedValue({ data: { username: "LearningX" } });
-
-//       const retister = registerThunk(newUser);
-//       await retister(dispatch);
-
-//       expect(dispatch).toHaveBeenCalled();
-//     });
-//   });
-// });

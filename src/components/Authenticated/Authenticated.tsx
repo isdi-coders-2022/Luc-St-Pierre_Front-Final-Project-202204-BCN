@@ -1,19 +1,20 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../redux/store/hooks";
 
 interface Props {
   children: JSX.Element;
 }
 
 const Authenticated = ({ children }: Props) => {
-  const token = localStorage.getItem("token");
+  const { userData } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token) {
+    if (!userData.name) {
       navigate("/login");
     }
-  }, [navigate, token]);
+  }, [navigate, userData.name]);
 
   return children;
 };

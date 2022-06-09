@@ -17,8 +17,17 @@ export const loginThunk =
         data: { token },
       } = await axios.post<ILoginResponse>(`${baseUrl}user/login`, userData);
       if (token) {
-        const { username, email, image }: IDecodedToken = jwtDecode(token);
-        dispatch(logInActionCreator({ username, email, image }));
+        const { username, name, email, image }: IDecodedToken =
+          jwtDecode(token);
+
+        const authenticatedUser = {
+          username,
+          name,
+          email,
+          image,
+        };
+
+        dispatch(logInActionCreator(authenticatedUser));
         localStorage.setItem("token", token);
       }
     } catch (error: any) {

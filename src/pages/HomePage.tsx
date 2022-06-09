@@ -6,14 +6,13 @@ import { loadPlacesThunk } from "../redux/thunks/placesThunks";
 
 function HomePage() {
   const dispatch = useAppDispatch();
+  const places = useAppSelector((state) => state.places);
 
   const token = localStorage.getItem("token");
 
   useEffect(() => {
     dispatch(loadPlacesThunk(token as string));
   }, [dispatch, token]);
-
-  const places = useAppSelector((state) => state.places);
 
   return (
     <div>
