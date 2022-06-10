@@ -1,30 +1,30 @@
 export interface IinitialState {
-  allPlaces: IPlace[];
+  allPlaces: IRegisterPlace[];
 }
 
-export interface IPlace {
+export interface IRegisterPlace {
   title: string;
   description: string;
   address: string;
   city: string;
   placeType: string;
   placeDescription: string;
-  price: number;
-  numberOfRooms: number;
-  numberOfBeds: number;
-  numberOfGuests: number;
+  price: string;
+  numberOfRooms: string;
+  numberOfBeds: string;
+  numberOfGuests: string;
   image: string;
+  imageBackup?: string;
   creator: string;
-  rating: number;
-  isListed: boolean;
-  kilometers: number;
+  rating: string;
+  kilometers: string;
   category: string;
 }
 
 export interface getAllPlacesResponse {
-  places: IPlace[];
+  places: IRegisterPlace[];
 }
 
 export interface Props {
-  showAllPlaces: IPlace[];
+  showAllPlaces: IRegisterPlace[];
 }

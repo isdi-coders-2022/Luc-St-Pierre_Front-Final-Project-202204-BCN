@@ -1,51 +1,67 @@
-import { ChangeEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/store/hooks";
 import { addPlaceThunk } from "../../redux/thunks/placesThunks";
 
-import { IPlace } from "../../types/places.types";
+import { IRegisterPlace } from "../../types/places.types";
 
 const HostForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const initialForm: IPlace = {
+  const initialForm: IRegisterPlace = {
     title: "",
     description: "",
     address: "",
     city: "",
     placeType: "",
     placeDescription: "",
-    price: 0,
-    numberOfRooms: 0,
-    numberOfBeds: 0,
-    numberOfGuests: 0,
+    price: "",
+    numberOfRooms: "",
+    numberOfBeds: "",
+    numberOfGuests: "",
     image: "",
     creator: "",
-    rating: 0,
-    isListed: false,
-    kilometers: 0,
+    rating: "",
+    kilometers: "",
     category: "",
   };
 
-  const [formData, setFormData] = useState<IPlace>(initialForm);
+  const [formData, setFormData] = useState<IRegisterPlace>(initialForm);
 
-  const handleChange = (
-    event: ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ): void => {
+  const handleChange = (event: any): void => {
     setFormData({
       ...formData,
-      [event.target.id]: event.target.value,
+      [event.target.id]:
+        event.target.type === "file"
+          ? event.target.files?.[0] || ""
+          : event.target.value,
     });
   };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+
+    const newFormData = new FormData();
+    newFormData.append("title", formData.title);
+    newFormData.append("description", formData.description);
+    newFormData.append("address", formData.address);
+    newFormData.append("city", formData.city);
+    newFormData.append("placeType", formData.placeType);
+    newFormData.append("placeDescription", formData.placeDescription);
+    newFormData.append("price", formData.price);
+    newFormData.append("numberOfBeds", formData.numberOfBeds);
+    newFormData.append("numberOfGuests", formData.numberOfGuests);
+    newFormData.append("image", formData.image);
+    newFormData.append("creator", formData.creator);
+    newFormData.append("rating", formData.rating);
+    newFormData.append("kilometers", formData.kilometers);
+    newFormData.append("category", formData.category);
+
     dispatch(addPlaceThunk(formData));
+    console.log("formData: ", formData);
     setFormData(initialForm);
-    navigate("/home");
+    // navigate("/home");
   };
 
   return (
@@ -236,20 +252,18 @@ const HostForm = (): JSX.Element => {
                     />
                   </div>
 
-                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                    <label
-                      htmlFor="image"
-                      className="relative cursor-pointer bg-white rounded-md font-light text-[#222222] hover:text-[#222222]00 focus-within:outline-none"
-                    >
-                      <span>Upload image</span>
+                  <div>
+                    <label htmlFor="image" className="sr-only">
+                      Avatar
+                    </label>
+                    <div className="mt-1">
                       <input
                         id="image"
-                        value={formData.image}
                         onChange={handleChange}
                         type="file"
-                        className="sr-only"
+                        className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                       />
-                    </label>
+                    </div>
                   </div>
                 </div>
               </div>

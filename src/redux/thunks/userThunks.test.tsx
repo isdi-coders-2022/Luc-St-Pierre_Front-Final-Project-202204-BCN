@@ -7,6 +7,7 @@ jest.mock("jwt-decode", () => () => ({
   name: "lucamino",
   email: "lucamino@gmail.com",
   image: "image",
+  imageBackup: "image",
 }));
 
 describe("Given a LoginThunk middleware", () => {

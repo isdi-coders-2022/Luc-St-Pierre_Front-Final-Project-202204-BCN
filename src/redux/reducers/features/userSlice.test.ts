@@ -13,6 +13,7 @@ describe("Given a userSlice reducer", () => {
           name: "",
           email: "",
           image: "",
+          imageBackup: "",
         },
         authenticated: false,
       };
@@ -39,6 +40,7 @@ describe("Given a userSlice reducer", () => {
           name: "lucamino",
           email: "lucamino@gmail.com",
           image: "image",
+          imageBackup: "image",
         },
         authenticated: true,
       };
@@ -49,6 +51,7 @@ describe("Given a userSlice reducer", () => {
           name: "",
           email: "",
           image: "",
+          imageBackup: "",
         },
         authenticated: false,
       };

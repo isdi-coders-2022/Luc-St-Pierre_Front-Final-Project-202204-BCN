@@ -28,10 +28,11 @@ const App = () => {
 
   useEffect(() => {
     if (token as string) {
-      const { username, name, email, image }: IDecodedToken = jwtDecode(
-        token as string
+      const { username, name, email, image, imageBackup }: IDecodedToken =
+        jwtDecode(token as string);
+      dispatch(
+        logInActionCreator({ username, name, email, image, imageBackup })
       );
-      dispatch(logInActionCreator({ username, name, email, image }));
     }
   }, [dispatch, token, authenticated, baseUrl]);
 

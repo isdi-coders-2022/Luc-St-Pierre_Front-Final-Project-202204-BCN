@@ -12,6 +12,7 @@ export interface IUser {
   name: string;
   email: string;
   image: string;
+  imageBackup: string;
 }
 
 export interface IinitialState {
@@ -36,6 +37,7 @@ export interface IDecodedToken {
   username: string;
   email: string;
   image: string;
+  imageBackup: string;
   id: string;
   authenticated: boolean;
 }
@@ -46,6 +48,7 @@ export interface IRegisterData {
   email: string;
   password: string;
   image: string;
+  imageBackup: string;
   id: string;
   authenticated: boolean;
 }
@@ -60,5 +63,5 @@ export interface IRegisterForm {
   username: string;
   email: string;
   password: string;
-  image: string;
+  image: string | File;
 }

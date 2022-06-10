@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import App from "../../App";
 import { localStorageMock } from "../../mocks/localStorageMock";
+import { mockUserAuthenticated } from "../../mocks/mockUser";
 import HomePage from "../../pages/HomePage";
 import { store } from "../../redux/store/store";
 import Layout from "../Layout/Layout";
@@ -39,6 +40,8 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("Given a Navigation component", () => {
+  const userData = mockUserAuthenticated;
+
   describe("When it's rendered", () => {
     test("Then it should display 1 link 'Become a Host'", () => {
       render(
@@ -80,7 +83,7 @@ describe("Given a Navigation component", () => {
     render(
       <BrowserRouter>
         <Provider store={store}>
-          <Navigation />
+          <Navigation userData={userData} />
         </Provider>
       </BrowserRouter>
     );
@@ -98,7 +101,7 @@ describe("Given a Navigation component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navigation />
+            <Navigation userData={userData} />
           </Provider>
         </BrowserRouter>
       );
@@ -173,7 +176,7 @@ describe("Given a Navigation component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navigation />
+            <Navigation userData={userData} />
           </Provider>
         </BrowserRouter>
       );
@@ -204,7 +207,7 @@ describe("Given a Navigation component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navigation />
+            <Navigation userData={userData} />
           </Provider>
         </BrowserRouter>
       );
@@ -235,7 +238,7 @@ describe("Given a Navigation component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navigation />
+            <Navigation userData={userData} />
           </Provider>
         </BrowserRouter>
       );
@@ -266,7 +269,7 @@ describe("Given a Navigation component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navigation />
+            <Navigation userData={userData} />
           </Provider>
         </BrowserRouter>
       );
@@ -297,7 +300,7 @@ describe("Given a Navigation component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navigation />
+            <Navigation userData={userData} />
           </Provider>
         </BrowserRouter>
       );
@@ -328,7 +331,7 @@ describe("Given a Navigation component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navigation />
+            <Navigation userData={userData} />
           </Provider>
         </BrowserRouter>
       );
@@ -357,7 +360,7 @@ describe("Given a Navigation component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navigation />
+            <Navigation userData={userData} />
           </Provider>
         </BrowserRouter>
       );
@@ -386,7 +389,7 @@ describe("Given a Navigation component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navigation />
+            <Navigation userData={userData} />
           </Provider>
         </BrowserRouter>
       );
@@ -415,7 +418,7 @@ describe("Given a Navigation component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navigation />
+            <Navigation userData={userData} />
           </Provider>
         </BrowserRouter>
       );

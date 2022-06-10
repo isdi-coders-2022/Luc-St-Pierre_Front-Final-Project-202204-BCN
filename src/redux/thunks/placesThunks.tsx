@@ -27,14 +27,15 @@ export const loadPlacesThunk =
 
 export const addPlaceThunk =
   (placeData: any) => async (dispatch: AppDispatch) => {
+    console.log("addPlaceThunk");
     try {
       const {
         data: { newPlace },
       } = await axios.post(`${baseUrl}hosts/places`, placeData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
+        headers: { Authorization: `Bearer ${localStorage.token}` },
       });
+
+      console.log("newPlace: ", newPlace);
 
       if (newPlace) {
         dispatch(addPlaceActionCreator(newPlace));

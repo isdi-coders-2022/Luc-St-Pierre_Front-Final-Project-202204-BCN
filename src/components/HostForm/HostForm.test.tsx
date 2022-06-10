@@ -1,26 +1,25 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
-import { IPlace } from "../../types/places.types";
+import { IRegisterPlace } from "../../types/places.types";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import HostForm from "./HostForm";
 
-const initialForm: IPlace = {
+const initialForm: IRegisterPlace = {
   title: "",
   description: "",
   address: "",
   city: "",
   placeType: "",
   placeDescription: "",
-  price: 0,
-  numberOfRooms: 0,
-  numberOfBeds: 0,
-  numberOfGuests: 0,
+  price: "",
+  numberOfRooms: "",
+  numberOfBeds: "",
+  numberOfGuests: "",
   image: "",
   creator: "",
-  rating: 0,
-  isListed: false,
-  kilometers: 0,
+  rating: "",
+  kilometers: "",
   category: "",
 };
 
