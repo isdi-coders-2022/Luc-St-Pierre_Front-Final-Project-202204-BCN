@@ -3,4 +3,5 @@ export const mockUserAuthenticated = {
   name: "lucamino",
   email: "lucamino@gmail.com",
   image: "image",
+  imageBackup: "image",
 };

@@ -17,14 +17,17 @@ export const loginThunk =
         data: { token },
       } = await axios.post<ILoginResponse>(`${baseUrl}user/login`, userData);
       if (token) {
-        const { username, name, email, image }: IDecodedToken =
+        const { username, name, email, image, imageBackup }: IDecodedToken =
           jwtDecode(token);
+
+        console.log("imageBackup: ", imageBackup);
 
         const authenticatedUser = {
           username,
           name,
           email,
           image,
+          imageBackup,
         };
 
         dispatch(logInActionCreator(authenticatedUser));

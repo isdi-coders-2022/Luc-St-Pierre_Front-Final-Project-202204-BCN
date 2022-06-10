@@ -6,8 +6,13 @@ import getClassNames from "../../utils/getClassNames";
 import { useAppDispatch } from "../../redux/store/hooks";
 import { logOutActionCreator } from "../../redux/reducers/features/userSlice";
 import { useNavigate } from "react-router-dom";
+import { IUser } from "../../types/user.types";
 
-const Navigation = (): JSX.Element => {
+const Navigation = ({
+  userData: { username, image, imageBackup },
+}: {
+  userData: IUser;
+}): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -18,6 +23,8 @@ const Navigation = (): JSX.Element => {
     localStorage.removeItem("token");
     navigate("/home");
   };
+
+  console.log(image, imageBackup);
 
   return (
     <Disclosure
@@ -125,7 +132,7 @@ const Navigation = (): JSX.Element => {
                       </svg>
                       <img
                         className="h-[30px] w-[30px] rounded-full ml-3"
-                        src="../assets/avatar.png"
+                        src={image ? imageBackup : "../assets/avatar.png"}
                         alt=""
                       />
                     </Menu.Button>

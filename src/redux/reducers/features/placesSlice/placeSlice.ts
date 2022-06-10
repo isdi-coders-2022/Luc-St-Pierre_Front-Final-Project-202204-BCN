@@ -1,22 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPlace } from "../../../../types/places.types";
+import { IRegisterPlace } from "../../../../types/places.types";
 
-const initialState: IPlace = {
+const initialState: IRegisterPlace = {
   title: "",
   description: "",
   image: "",
+  imageBackup: "",
   address: "",
   city: "",
   placeType: "",
   placeDescription: "",
-  price: 0,
-  numberOfRooms: 0,
-  numberOfBeds: 0,
-  numberOfGuests: 0,
+  price: "",
+  numberOfRooms: "",
+  numberOfBeds: "",
+  numberOfGuests: "",
   creator: "",
-  rating: 0,
-  isListed: false,
-  kilometers: 0,
+  rating: "",
+  kilometers: "",
   category: "",
 };
 
@@ -24,7 +24,7 @@ export const placeSlice = createSlice({
   name: "place",
   initialState,
   reducers: {
-    loadPlace: (place, action: PayloadAction<IPlace>) => ({
+    loadPlace: (place, action: PayloadAction<IRegisterPlace>) => ({
       ...action.payload,
     }),
   },

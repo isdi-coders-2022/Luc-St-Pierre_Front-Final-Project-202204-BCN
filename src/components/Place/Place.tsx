@@ -1,7 +1,7 @@
-import { IPlace } from "../../types/places.types";
+import { IRegisterPlace } from "../../types/places.types";
 
 interface Props {
-  place: IPlace;
+  place: IRegisterPlace;
 }
 const Place = ({
   place: {
@@ -15,6 +15,7 @@ const Place = ({
     numberOfBeds,
     numberOfGuests,
     image,
+    imageBackup,
     creator,
     rating,
     kilometers,
@@ -38,7 +39,7 @@ const Place = ({
           />
         </svg>
         <img
-          src={image}
+          src={image ? imageBackup : "/images/generic-place.png"}
           alt={title}
           className="w-full h-full object-center object-cover lg:w-full lg:h-full"
         />

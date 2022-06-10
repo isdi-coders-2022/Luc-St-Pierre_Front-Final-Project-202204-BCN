@@ -7,6 +7,7 @@ const initialState: IState = {
     name: "",
     email: "",
     image: "",
+    imageBackup: "",
   },
   authenticated: false,
 };
@@ -25,6 +26,7 @@ export const userSlice = createSlice({
         name: "",
         email: "",
         image: "",
+        imageBackup: "",
       },
       authenticated: false,
     }),
