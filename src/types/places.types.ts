@@ -1,8 +1,8 @@
 export interface IinitialState {
-  allPlaces: IRegisterPlace[];
+  places: IPlace[];
 }
 
-export interface IRegisterPlace {
+export interface IPlace {
   title: string;
   description: string;
   address: string;
@@ -13,7 +13,8 @@ export interface IRegisterPlace {
   numberOfRooms: string;
   numberOfBeds: string;
   numberOfGuests: string;
-  image: string;
+  country: string;
+  image: string | File;
   imageBackup?: string;
   creator: string;
   rating: string;
@@ -21,10 +22,30 @@ export interface IRegisterPlace {
   category: string;
 }
 
+// export interface IRegisterPlaceForm {
+//   title: string;
+//   description: string;
+//   address: string;
+//   city: string;
+//   placeType: string;
+//   placeDescription: string;
+//   price: string;
+//   numberOfRooms: string;
+//   numberOfBeds: string;
+//   numberOfGuests: string;
+//   country: string;
+//   image: string | File;
+//   imageBackup?: string;
+//   creator: string;
+//   rating: string;
+//   kilometers: string;
+//   category: string;
+// }
+
 export interface getAllPlacesResponse {
-  places: IRegisterPlace[];
+  places: IPlace[];
 }
 
-export interface Props {
-  showAllPlaces: IRegisterPlace[];
-}
+// export interface Props {
+//   showAllPlaces: IRegisterPlaceForm[];
+// }

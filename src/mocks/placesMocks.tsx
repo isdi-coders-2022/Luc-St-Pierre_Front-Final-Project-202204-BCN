@@ -11,6 +11,7 @@ export const placesMock = [
     numberOfRooms: "3",
     numberOfBeds: "2",
     numberOfGuests: "3",
+    country: "Canada",
     creator: "629b88b726b95714b076c60a",
     rating: "4.88",
     isListed: true,

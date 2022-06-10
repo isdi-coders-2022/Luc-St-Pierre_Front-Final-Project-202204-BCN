@@ -1,32 +1,10 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
-import { IRegisterPlace } from "../../types/places.types";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import HostForm from "./HostForm";
 
-const initialForm: IRegisterPlace = {
-  title: "",
-  description: "",
-  address: "",
-  city: "",
-  placeType: "",
-  placeDescription: "",
-  price: "",
-  numberOfRooms: "",
-  numberOfBeds: "",
-  numberOfGuests: "",
-  image: "",
-  creator: "",
-  rating: "",
-  kilometers: "",
-  category: "",
-};
-
 const mockUseNavigate = jest.fn();
-const mockNextStep = jest.fn();
-const mockHandleChange = jest.fn();
-const mockFormData = initialForm;
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),

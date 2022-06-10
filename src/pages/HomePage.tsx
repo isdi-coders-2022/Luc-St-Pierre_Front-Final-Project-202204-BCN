@@ -16,7 +16,7 @@ function HomePage() {
 
   return (
     <div>
-      <PlacesList showAllPlaces={places} />
+      <PlacesList places={places} />
     </div>
   );
 }
