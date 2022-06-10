@@ -24,8 +24,6 @@ const Navigation = ({
     navigate("/home");
   };
 
-  console.log(image, imageBackup);
-
   return (
     <Disclosure
       as="nav"
