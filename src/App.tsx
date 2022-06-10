@@ -7,6 +7,8 @@ import AuthenticationCheck from "./components/AuthenticationCheck/Authentication
 import Layout from "./components/Layout/Layout";
 import BecomeAHostFormPage from "./pages/BecomeAHostFormPage";
 import BecomeAHostPage from "./pages/BecomeAHostPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -37,7 +39,8 @@ const App = () => {
   }, [dispatch, token, authenticated, baseUrl]);
 
   return (
-    <div>
+    <>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route
@@ -85,7 +88,7 @@ const App = () => {
           }
         />
       </Routes>
-    </div>
+    </>
   );
 };
 
