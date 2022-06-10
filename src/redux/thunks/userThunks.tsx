@@ -53,7 +53,7 @@ export const registerThunk =
 
       if (data) {
         const newUserData = {
-          username: data.new_user.username,
+          username: data.username,
           password: password,
         };
         setLoadingOffWithMessage("User created successfully", false);
