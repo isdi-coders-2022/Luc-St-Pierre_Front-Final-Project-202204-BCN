@@ -12,7 +12,7 @@ export interface IUser {
   name: string;
   email: string;
   image: string;
-  imageBackup: string;
+  imageBackup?: string;
 }
 
 export interface IinitialState {

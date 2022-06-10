@@ -22,11 +22,10 @@ export const loginThunk =
       const {
         data: { token },
       } = await axios.post<ILoginResponse>(`${baseUrl}user/login`, userData);
+
       if (token) {
         const { username, name, email, image, imageBackup }: IDecodedToken =
           jwtDecode(token);
-
-        console.log("imageBackup: ", imageBackup);
 
         const authenticatedUser = {
           username,
@@ -53,7 +52,7 @@ export const registerThunk =
 
       if (data) {
         const newUserData = {
-          username: data.new_user.username,
+          username: data.username,
           password: password,
         };
         setLoadingOffWithMessage("User created successfully", false);
