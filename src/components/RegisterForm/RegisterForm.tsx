@@ -150,6 +150,7 @@ const RegisterForm = (): JSX.Element => {
                   id="image"
                   onChange={handleImageInputChange}
                   type="file"
+                  accept="image/*"
                   className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                 />
               </div>

@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/store/hooks";
 import { addPlaceThunk } from "../../redux/thunks/placesThunks";
-
-import { IRegisterPlace } from "../../types/places.types";
+import { IPlace } from "../../types/places.types";
 
 const HostForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
   // const navigate = useNavigate();
 
-  const initialForm: IRegisterPlace = {
+  const initialForm: IPlace = {
     title: "",
     description: "",
     address: "",
@@ -20,6 +19,7 @@ const HostForm = (): JSX.Element => {
     numberOfRooms: "",
     numberOfBeds: "",
     numberOfGuests: "",
+    country: "",
     image: "",
     creator: "",
     rating: "",
@@ -27,15 +27,26 @@ const HostForm = (): JSX.Element => {
     category: "",
   };
 
-  const [formData, setFormData] = useState<IRegisterPlace>(initialForm);
+  const [formData, setFormData] = useState<IPlace>(initialForm);
 
-  const handleChange = (event: any): void => {
+  const handleChange = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ): void => {
     setFormData({
       ...formData,
-      [event.target.id]:
-        event.target.type === "file"
-          ? event.target.files?.[0] || ""
-          : event.target.value,
+      [event.target.id]: event.target.value,
+    });
+  };
+
+  const handleImageInputChange = (
+    event: ChangeEvent<HTMLInputElement>
+  ): void => {
+    setFormData({
+      ...formData,
+      image: event.target.files?.[0] as File,
     });
   };
 
@@ -52,6 +63,7 @@ const HostForm = (): JSX.Element => {
     newFormData.append("price", formData.price);
     newFormData.append("numberOfBeds", formData.numberOfBeds);
     newFormData.append("numberOfGuests", formData.numberOfGuests);
+    newFormData.append("country", formData.country);
     newFormData.append("image", formData.image);
     newFormData.append("creator", formData.creator);
     newFormData.append("rating", formData.rating);
@@ -65,7 +77,7 @@ const HostForm = (): JSX.Element => {
   };
 
   return (
-    <div className="mt-10 sm:mt-0">
+    <div className="mt-28">
       <div className="md:grid md:grid-cols-3 md:gap-6">
         <div className="mt-5 md:mt-0 md:col-span-3">
           <form onSubmit={handleSubmit} noValidate>
@@ -85,7 +97,7 @@ const HostForm = (): JSX.Element => {
                       value={formData.title}
                       onChange={handleChange}
                       autoComplete="off"
-                      className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                      className="mt-1 appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                     />
                   </div>
 
@@ -102,11 +114,11 @@ const HostForm = (): JSX.Element => {
                       value={formData.description}
                       onChange={handleChange}
                       autoComplete="off"
-                      className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                      className="mt-1 appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                     />
                   </div>
 
-                  <div className="col-span-6 sm:col-span-4">
+                  <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="address"
                       className="block text-base font-light text-[#222222]"
@@ -119,8 +131,28 @@ const HostForm = (): JSX.Element => {
                       value={formData.address}
                       onChange={handleChange}
                       autoComplete="off"
-                      className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                      className="mt-1 appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                     />
+                  </div>
+
+                  <div className="col-span-6 sm:col-span-3">
+                    <label
+                      htmlFor="country"
+                      className="block text-base font-light text-[#222222]"
+                    >
+                      Country
+                    </label>
+                    <select
+                      id="country"
+                      value={formData.country}
+                      onChange={handleChange}
+                      autoComplete="off"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] sm:text-sm"
+                    >
+                      <option>Canada</option>
+                      <option>Spain</option>
+                      <option>France</option>
+                    </select>
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">
@@ -140,6 +172,26 @@ const HostForm = (): JSX.Element => {
                       <option>Barcelona</option>
                       <option>Madrid</option>
                       <option>Girona</option>
+                    </select>
+                  </div>
+
+                  <div className="col-span-6 sm:col-span-3">
+                    <label
+                      htmlFor="category"
+                      className="block text-base font-light text-[#222222]"
+                    >
+                      Category
+                    </label>
+                    <select
+                      id="category"
+                      value={formData.category}
+                      onChange={handleChange}
+                      autoComplete="off"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] sm:text-sm"
+                    >
+                      <option>House</option>
+                      <option>Loft</option>
+                      <option>Unique</option>
                     </select>
                   </div>
 
@@ -179,7 +231,7 @@ const HostForm = (): JSX.Element => {
                       value={formData.placeDescription}
                       onChange={handleChange}
                       autoComplete="off"
-                      className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                      className="mt-1 appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                     />
                   </div>
 
@@ -197,7 +249,7 @@ const HostForm = (): JSX.Element => {
                       value={formData.price}
                       onChange={handleChange}
                       autoComplete="off"
-                      className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                      className="mt-1 appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                     />
                   </div>
 
@@ -214,7 +266,7 @@ const HostForm = (): JSX.Element => {
                       value={formData.numberOfRooms}
                       onChange={handleChange}
                       autoComplete="off"
-                      className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                      className="mt-1 appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                     />
                   </div>
 
@@ -231,7 +283,7 @@ const HostForm = (): JSX.Element => {
                       value={formData.numberOfBeds}
                       onChange={handleChange}
                       autoComplete="off"
-                      className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                      className="mt-1 appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                     />
                   </div>
 
@@ -248,20 +300,38 @@ const HostForm = (): JSX.Element => {
                       value={formData.numberOfGuests}
                       onChange={handleChange}
                       autoComplete="off"
-                      className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                      className="mt-1 appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="image" className="sr-only">
-                      Avatar
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-1">
+                    <label
+                      htmlFor="kilometers"
+                      className="block text-base font-light text-[#222222]"
+                    >
+                      Km's
+                    </label>
+                    <input
+                      type="text"
+                      id="kilometers"
+                      value={formData.kilometers}
+                      onChange={handleChange}
+                      autoComplete="off"
+                      className="mt-1 appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                    />
+                  </div>
+
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                    <label htmlFor="image" className="">
+                      place images
                     </label>
                     <div className="mt-1">
                       <input
                         id="image"
-                        onChange={handleChange}
+                        onChange={handleImageInputChange}
+                        accept="image/*"
                         type="file"
-                        className="appearance-none block w-full px-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                        className="appearance-none block w-full px-3 py-3.5 rounded-md focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
                       />
                     </div>
                   </div>

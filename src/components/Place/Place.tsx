@@ -1,8 +1,5 @@
-import { IRegisterPlace } from "../../types/places.types";
+import { IPlace } from "../../types/places.types";
 
-interface Props {
-  place: IRegisterPlace;
-}
 const Place = ({
   place: {
     title,
@@ -20,7 +17,9 @@ const Place = ({
     rating,
     kilometers,
   },
-}: Props): JSX.Element => {
+}: {
+  place: IPlace;
+}): JSX.Element => {
   return (
     <>
       <div className="relative w-full min-h-80 aspect-w-1 aspect-h-1 rounded-xl overflow-hidden group-hover:opacity-75 h-[429px] sm:h-[346px] md:h-[276px] lg:h-[301px] xl:h-[301px] 2xl:h-[324px] lg:aspect-none">

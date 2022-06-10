@@ -56,7 +56,7 @@ describe("Given an App component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <PlacesList showAllPlaces={placesMock} />
+            <PlacesList places={placesMock} />
           </Provider>
         </BrowserRouter>
       );
