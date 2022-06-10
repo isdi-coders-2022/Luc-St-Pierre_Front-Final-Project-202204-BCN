@@ -13,7 +13,6 @@ const Place = ({
     numberOfGuests,
     image,
     imageBackup,
-    creator,
     rating,
     kilometers,
   },

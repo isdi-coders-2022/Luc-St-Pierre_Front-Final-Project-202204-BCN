@@ -1,14 +1,14 @@
 import { ChangeEvent, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/store/hooks";
 import { addPlaceThunk } from "../../redux/thunks/placesThunks";
-import { IPlace } from "../../types/places.types";
+import { IRegisterPlaceForm } from "../../types/places.types";
 
 const HostForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const initialForm: IPlace = {
+  const initialForm: IRegisterPlaceForm = {
     title: "",
     description: "",
     address: "",
@@ -21,13 +21,12 @@ const HostForm = (): JSX.Element => {
     numberOfGuests: "",
     country: "",
     image: "",
-    creator: "",
     rating: "",
     kilometers: "",
     category: "",
   };
 
-  const [formData, setFormData] = useState<IPlace>(initialForm);
+  const [formData, setFormData] = useState<IRegisterPlaceForm>(initialForm);
 
   const handleChange = (
     event:
@@ -65,15 +64,14 @@ const HostForm = (): JSX.Element => {
     newFormData.append("numberOfGuests", formData.numberOfGuests);
     newFormData.append("country", formData.country);
     newFormData.append("image", formData.image);
-    newFormData.append("creator", formData.creator);
     newFormData.append("rating", formData.rating);
     newFormData.append("kilometers", formData.kilometers);
     newFormData.append("category", formData.category);
 
-    dispatch(addPlaceThunk(formData));
-    console.log("formData: ", formData);
+    dispatch(addPlaceThunk(newFormData));
+
     setFormData(initialForm);
-    // navigate("/home");
+    navigate("/home");
   };
 
   return (

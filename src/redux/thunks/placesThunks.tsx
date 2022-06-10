@@ -1,6 +1,10 @@
 import axios from "axios";
 import { getAllPlacesResponse } from "../../types/places.types";
 import {
+  setLoadingOffWithMessage,
+  setLoadingOn,
+} from "../../utils/modal/modal";
+import {
   addPlaceActionCreator,
   loadPlacesActionCreator,
 } from "../reducers/features/placesSlice/placesSlice";
@@ -27,21 +31,19 @@ export const loadPlacesThunk =
 
 export const addPlaceThunk =
   (placeData: any) => async (dispatch: AppDispatch) => {
-    console.log("addPlaceThunk");
     try {
-      const {
-        data: { newPlace },
-      } = await axios.post(`${baseUrl}hosts/places`, placeData, {
+      setLoadingOn();
+      const { data } = await axios.post(`${baseUrl}hosts/places`, placeData, {
         headers: { Authorization: `Bearer ${localStorage.token}` },
       });
 
-      console.log("newPlace: ", newPlace);
+      if (data) {
+        setLoadingOffWithMessage("Place created successfully", false);
 
-      if (newPlace) {
-        dispatch(addPlaceActionCreator(newPlace));
+        dispatch(addPlaceActionCreator(data));
         dispatch(loadPlacesThunk(localStorage.token));
       }
-    } catch (error: any) {
-      return error.message;
+    } catch {
+      setLoadingOffWithMessage("Error while creating a new place", true);
     }
   };
