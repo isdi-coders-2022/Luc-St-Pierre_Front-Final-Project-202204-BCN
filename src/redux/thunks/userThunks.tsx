@@ -5,6 +5,10 @@ import {
   ILoginResponse,
   IUserCredentials,
 } from "../../types/user.types";
+import {
+  setLoadingOffWithMessage,
+  setLoadingOn,
+} from "../../utils/modal/modal";
 import { logInActionCreator } from "../reducers/features/userSlice";
 import { AppDispatch } from "../store/store";
 
@@ -13,6 +17,8 @@ const baseUrl = process.env.REACT_APP_API_URL;
 export const loginThunk =
   (userData: IUserCredentials) => async (dispatch: AppDispatch) => {
     try {
+      setLoadingOn();
+
       const {
         data: { token },
       } = await axios.post<ILoginResponse>(`${baseUrl}user/login`, userData);
@@ -31,16 +37,18 @@ export const loginThunk =
         };
 
         dispatch(logInActionCreator(authenticatedUser));
+        setLoadingOffWithMessage("Successful authentication", false);
         localStorage.setItem("token", token);
       }
-    } catch (error: any) {
-      return error.message;
+    } catch {
+      setLoadingOffWithMessage("Error while authenticating", true);
     }
   };
 
 export const registerThunk =
   (userData: any, password: string) => async (dispatch: AppDispatch) => {
     try {
+      setLoadingOn();
       const { data } = await axios.post(`${baseUrl}user/register`, userData);
 
       if (data) {
@@ -48,9 +56,10 @@ export const registerThunk =
           username: data.new_user.username,
           password: password,
         };
+        setLoadingOffWithMessage("User created successfully", false);
         dispatch(loginThunk(newUserData));
       }
-    } catch (error: any) {
-      return error;
+    } catch {
+      setLoadingOffWithMessage("Error while registering", true);
     }
   };
