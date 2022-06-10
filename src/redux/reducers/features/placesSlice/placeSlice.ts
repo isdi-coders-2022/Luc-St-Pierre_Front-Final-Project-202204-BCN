@@ -15,7 +15,6 @@ const initialState: IPlace = {
   numberOfBeds: "",
   numberOfGuests: "",
   country: "",
-  creator: "",
   rating: "",
   kilometers: "",
   category: "",

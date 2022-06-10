@@ -49,7 +49,8 @@ const RegisterForm = (): JSX.Element => {
     newFormData.append("image", formData.image);
 
     dispatch(registerThunk(newFormData, formData.password));
-    setFormData(initialForm);
+    console.log("formData: ", formData);
+    // setFormData(initialForm);
   };
 
   return (
