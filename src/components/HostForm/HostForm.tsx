@@ -1,11 +1,17 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../redux/store/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
 import { addPlaceThunk } from "../../redux/thunks/placesThunks";
 
 import { IRegisterPlaceForm } from "../../types/places.types";
 
-const HostForm = (): JSX.Element => {
+interface Props {
+  placeId?: string
+}
+
+const HostForm = ({ placeId }: Props): JSX.Element => {
+  const placeData = useAppSelector((state) => state.place);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -28,6 +34,10 @@ const HostForm = (): JSX.Element => {
   };
 
   const [formData, setFormData] = useState<IRegisterPlaceForm>(initialForm);
+
+  useEffect(() => {
+    if (placeId)
+  }, []);
 
   const handleChange = (
     event:

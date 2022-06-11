@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import HostForm from "../components/HostForm/HostForm";
 
 const BecomeAHostFormPage = () => {
+  const { placeId } = useParams();
+
   return (
     <div className="flex w-full relative">
       <div className="absolute left-0 w-1/2">
@@ -28,7 +30,7 @@ const BecomeAHostFormPage = () => {
 
       <div className="bg-white h-screen z-0 ml-[50vw] w-1/2 flex-[1_1_50%] text-white">
         <div className="mt-[88px] flex flex-col items-center justify-center mb-[82px] overflow-y-auto px-[48px] h-[calc(100vh_-_calc(88px_+_82px))]">
-          <HostForm />
+          <HostForm placeId={placeId} />
         </div>
 
         <div className="w-1/2 z-10 fixed bottom-0 hidden">
