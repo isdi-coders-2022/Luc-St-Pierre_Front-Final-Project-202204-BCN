@@ -71,10 +71,10 @@ const PlaceDetailsPage = () => {
         </div>
       </div>
 
-      <div className="flex-1 flex items-stretch">
-        <main className="flex-1">
-          <section className="min-w-0 flex-1 h-full flex flex-col lg:order-last pt-12">
-            <div className="h-full flex items-center">
+      <div className="flex-1 flex items-stretch pt-12">
+        <main className="flex-1 w-[58.33333%]">
+          <section className="relative flex-1 h-full flex flex-col lg:order-last">
+            <div className="h-full w-full flex items-center justify-between">
               <div className="pr-6 h-full">
                 <div className="block rounded h-full w-full text-[#222222]">
                   <h2 className="text-[22px] font-semibold">
@@ -112,7 +112,7 @@ const PlaceDetailsPage = () => {
                 </div>
               </div>
 
-              <div className="h-full">
+              <div className="h-full ml-4">
                 <div className="block rounded h-full w-full text-[#222222]">
                   <img src="/assets/avatar.png" alt="" className="h-14 w-14" />
                 </div>
@@ -120,7 +120,7 @@ const PlaceDetailsPage = () => {
             </div>
           </section>
 
-          <section className="min-w-0 flex-1 h-full flex flex-col lg:order-last pt-12">
+          <section className="relative flex-1 h-full flex flex-col lg:order-last">
             <div className="h-full flex items-center">
               <div className="pr-6 h-full">
                 <div className="block rounded h-full w-full text-[#222222]">
@@ -131,14 +131,25 @@ const PlaceDetailsPage = () => {
           </section>
         </main>
 
-        <aside className="hidden w-96 bg-white overflow-y-auto lg:block">
-          <div className="h-full">
-            <div className="p-6 h-full">
-              <div className="block rounded h-full w-full text-gray-200">
-                Aside
+        <aside className="hidden w-[33.33333%] ml-[8.3333%] lg:block">
+          <section className="w-full">
+            <div className="bg-white w-[372px] rounded-xl shadow-[0_6px_16px_0px_rgba(0,0,0,0.12)] border border-[#CCCCCC80]">
+              <div className="p-6 ">
+                <span className="text-[22px] font-semibold text-gray-900">
+                  € {place.price}
+                </span>
+                <span className="ml-1">night</span>
+                <div className="mt-6">
+                  <button
+                    type="submit"
+                    className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#DE3151] hover:bg-[#f43054] focus:outline-none"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
         </aside>
       </div>
     </>
