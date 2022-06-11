@@ -17,7 +17,7 @@ import RegisterPage from "./pages/RegisterPage";
 import { logInActionCreator } from "./redux/reducers/features/userSlice";
 import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
 import { IDecodedToken, IState } from "./types/user.types";
-import PlaceDetailPage from "./pages/PlaceDetailPage";
+import PlaceDetailsPage from "./pages/PlaceDetailsPage";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -85,7 +85,7 @@ const App = () => {
           path="/places/:placeId"
           element={
             <Authenticated>
-              <PlaceDetailPage />
+              <PlaceDetailsPage />
             </Authenticated>
           }
         />

@@ -7,7 +7,7 @@ const baseUrl = process.env.REACT_APP_API_URL;
 export const loadPlaceThunk =
   (placeId: any) => async (dispatch: AppDispatch) => {
     try {
-      const { data } = await axios.post(`${baseUrl}places/${placeId}`, {
+      const { data } = await axios.get(`${baseUrl}places/${placeId}`, {
         headers: { Authorization: `Bearer ${localStorage.token}` },
       });
 
