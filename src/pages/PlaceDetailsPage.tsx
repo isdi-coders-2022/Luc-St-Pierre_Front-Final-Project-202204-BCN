@@ -9,7 +9,6 @@ const PlaceDetailsPage = () => {
 
   const { place } = useAppSelector((state) => state);
 
-  console.log(place);
   useEffect(() => {
     dispatch(loadPlaceThunk(placeId as string));
   }, [dispatch, placeId]);
