@@ -1,7 +1,10 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { IPlace } from "../../types/places.types";
 
 const Place = ({
   place: {
+    id,
     title,
     description,
     address,
@@ -19,8 +22,15 @@ const Place = ({
 }: {
   place: IPlace;
 }): JSX.Element => {
+  const navigate = useNavigate();
+
+  const goToPlaceDetails = (event: React.FormEvent) => {
+    event.preventDefault();
+    navigate(`/places/${id}`);
+  };
+
   return (
-    <>
+    <li className="group relative" onClick={goToPlaceDetails}>
       <div className="relative w-full min-h-80 aspect-w-1 aspect-h-1 rounded-xl overflow-hidden group-hover:opacity-75 h-[429px] sm:h-[346px] md:h-[276px] lg:h-[301px] xl:h-[301px] 2xl:h-[324px] lg:aspect-none">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +80,7 @@ const Place = ({
           </svg>
         </div>
       </div>
-    </>
+    </li>
   );
 };
 

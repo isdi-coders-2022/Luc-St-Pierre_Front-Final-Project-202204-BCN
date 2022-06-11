@@ -5,6 +5,7 @@ export interface IPlaceState {
   places: IPlace;
 }
 export interface IPlace {
+  id?: string;
   title: string;
   description: string;
   address: string;

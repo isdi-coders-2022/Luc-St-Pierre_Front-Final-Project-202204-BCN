@@ -17,6 +17,7 @@ import RegisterPage from "./pages/RegisterPage";
 import { logInActionCreator } from "./redux/reducers/features/userSlice";
 import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
 import { IDecodedToken, IState } from "./types/user.types";
+import PlaceDetailsPage from "./pages/PlaceDetailsPage";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -79,6 +80,16 @@ const App = () => {
             </Authenticated>
           }
         />
+
+        <Route
+          path="/places/:placeId"
+          element={
+            <Authenticated>
+              <PlaceDetailsPage />
+            </Authenticated>
+          }
+        />
+
         <Route
           path="/host/become-a-host/property-type-group"
           element={

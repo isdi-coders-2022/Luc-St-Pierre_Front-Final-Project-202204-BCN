@@ -9,6 +9,7 @@ import PlacesList from "./components/PlacesList/PlacesList";
 
 import { localStorageMock } from "./mocks/localStorageMock";
 import { placesMock } from "./mocks/placesMocks";
+import PlaceDetailsPage from "./pages/PlaceDetailsPage";
 
 const getLocalStorage = localStorageMock;
 
@@ -26,11 +27,11 @@ describe("Given an App component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <App />
+            <PlaceDetailsPage />
           </Provider>
         </BrowserRouter>
       );
-      const expectedText = screen.getByText(/Filters/i);
+      const expectedText = screen.getByText(/PlaceDetailsPage/i);
       expect(expectedText).toBeInTheDocument();
     });
 
