@@ -79,6 +79,16 @@ const App = () => {
             </Authenticated>
           }
         />
+
+        <Route
+          path="/places/:placeId"
+          element={
+            <Authenticated>
+              <PlaceDetailPage />
+            </Authenticated>
+          }
+        />
+
         <Route
           path="/host/become-a-host/property-type-group"
           element={
