@@ -62,6 +62,7 @@ const HostForm = (): JSX.Element => {
     newFormData.append("placeDescription", formData.placeDescription);
     newFormData.append("price", formData.price);
     newFormData.append("numberOfBeds", formData.numberOfBeds);
+    newFormData.append("numberOfRooms", formData.numberOfRooms);
     newFormData.append("numberOfGuests", formData.numberOfGuests);
     newFormData.append("country", formData.country);
     newFormData.append("image", formData.image);
