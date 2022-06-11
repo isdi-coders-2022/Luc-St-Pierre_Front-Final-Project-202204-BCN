@@ -1,12 +1,16 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
-import { addPlaceThunk } from "../../redux/thunks/placesThunks";
+import {
+  addPlaceThunk,
+  updatePlaceThunk,
+} from "../../redux/thunks/placesThunks";
+import { loadPlaceThunk } from "../../redux/thunks/placeThunk";
 
 import { IRegisterPlaceForm } from "../../types/places.types";
 
 interface Props {
-  placeId?: string
+  placeId?: string;
 }
 
 const HostForm = ({ placeId }: Props): JSX.Element => {
@@ -36,8 +40,10 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
   const [formData, setFormData] = useState<IRegisterPlaceForm>(initialForm);
 
   useEffect(() => {
-    if (placeId)
-  }, []);
+    if (placeId) {
+      dispatch(loadPlaceThunk(placeId));
+    }
+  }, [dispatch, placeId]);
 
   const handleChange = (
     event:
@@ -50,6 +56,12 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
       [event.target.id]: event.target.value,
     });
   };
+
+  useEffect(() => {
+    if (placeId) {
+      setFormData(placeData);
+    }
+  }, [placeData, placeId]);
 
   const handleImageInputChange = (
     event: ChangeEvent<HTMLInputElement>
@@ -80,8 +92,12 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
     newFormData.append("kilometers", formData.kilometers);
     newFormData.append("category", formData.category);
 
-    dispatch(addPlaceThunk(newFormData));
+    if (placeId) {
+      dispatch(updatePlaceThunk(placeData.id as string, newFormData));
+      return;
+    }
 
+    dispatch(addPlaceThunk(newFormData));
     setFormData(initialForm);
     navigate("/home");
   };

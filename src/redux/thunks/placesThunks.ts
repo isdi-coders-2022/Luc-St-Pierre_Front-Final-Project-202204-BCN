@@ -71,7 +71,7 @@ export const deletePlaceThunk =
   };
 
 export const updatePlaceThunk =
-  (placeId: string, placeData: IPlace) => async (dispatch: AppDispatch) => {
+  (placeId: string, placeData: any) => async (dispatch: AppDispatch) => {
     try {
       const {
         data: { updatePlace },
