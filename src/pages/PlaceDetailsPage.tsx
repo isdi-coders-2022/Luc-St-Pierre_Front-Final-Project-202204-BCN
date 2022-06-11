@@ -1,29 +1,29 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
+import { useAppDispatch } from "../redux/store/hooks";
 import { loadPlaceThunk } from "../redux/thunks/placeThunk";
 
 const PlaceDetailsPage = () => {
   const { placeId } = useParams();
   const dispatch = useAppDispatch();
 
-  const {
-    title,
-    description,
-    imageBackup,
-    address,
-    city,
-    placeType,
-    placeDescription,
-    price,
-    numberOfRooms,
-    numberOfBeds,
-    numberOfGuests,
-    country,
-    rating,
-    kilometers,
-    category,
-  } = useAppSelector((state) => state.place);
+  // const {
+  //   title,
+  //   description,
+  //   imageBackup,
+  //   address,
+  //   city,
+  //   placeType,
+  //   placeDescription,
+  //   price,
+  //   numberOfRooms,
+  //   numberOfBeds,
+  //   numberOfGuests,
+  //   country,
+  //   rating,
+  //   kilometers,
+  //   category,
+  // } = useAppSelector((state) => state.place);
 
   useEffect(() => {
     dispatch(loadPlaceThunk(placeId as string));
