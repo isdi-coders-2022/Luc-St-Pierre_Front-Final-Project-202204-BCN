@@ -10,6 +10,7 @@ export interface IPlace {
   description: string;
   address: string;
   city: string;
+  creator: string;
   placeType: string;
   placeDescription: string;
   price: string;

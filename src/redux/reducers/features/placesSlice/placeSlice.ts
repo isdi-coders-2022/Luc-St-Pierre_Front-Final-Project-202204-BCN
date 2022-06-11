@@ -8,6 +8,7 @@ const initialState: IPlace = {
   imageBackup: "",
   address: "",
   city: "",
+  creator: "",
   placeType: "",
   placeDescription: "",
   price: "",

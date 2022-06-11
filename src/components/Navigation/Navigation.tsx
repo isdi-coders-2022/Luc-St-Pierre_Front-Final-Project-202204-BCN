@@ -198,7 +198,7 @@ const Navigation = ({
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
-                                  Host your home
+                                  Manage listings
                                 </a>
                               )}
                             </Menu.Item>

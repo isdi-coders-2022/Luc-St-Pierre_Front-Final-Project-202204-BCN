@@ -210,7 +210,7 @@ describe("Given a Navigation component", () => {
       });
       fireEvent.click(openMenuButton);
 
-      const hostHomeText = screen.getByText("Host your home");
+      const hostHomeText = screen.getByText("Manage listings");
 
       userEvent.click(hostHomeText);
 
