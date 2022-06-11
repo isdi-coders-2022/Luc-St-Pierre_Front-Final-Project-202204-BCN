@@ -20,6 +20,11 @@ const PlaceDetailsPage = () => {
     navigate("/home");
   };
 
+  const goToEditForm = (event: React.FormEvent) => {
+    event.stopPropagation();
+    navigate(`/places/edit/${placeId}`);
+  };
+
   return (
     <>
       <section className="pt-6">
