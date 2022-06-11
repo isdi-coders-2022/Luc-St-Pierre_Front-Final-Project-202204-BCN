@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 import { IPlace } from "../../../../types/places.types";
 
 const initialState: IPlace[] = [];
@@ -16,6 +17,11 @@ export const placesSlice = createSlice({
     ],
     deletePlace: (places, action: PayloadAction<string>) =>
       places.filter((place) => place.id !== action.payload),
+
+    updatePlace: (places, action: PayloadAction<IPlace>) =>
+      places.map((place) =>
+        place.id === action.payload.id ? { ...action.payload } : { ...place }
+      ),
   },
 });
 
@@ -23,6 +29,7 @@ export const {
   loadPlaces: loadPlacesActionCreator,
   addPlace: addPlaceActionCreator,
   deletePlace: deletePlaceActionCreator,
+  updatePlace: updatePlaceActionCreator,
 } = placesSlice.actions;
 
 export default placesSlice.reducer;
