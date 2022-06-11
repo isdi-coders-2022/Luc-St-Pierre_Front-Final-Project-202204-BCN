@@ -125,48 +125,6 @@ describe("Given a Navigation component", () => {
     });
   });
 
-  describe("When it's invoked and there is a user authenticated", () => {
-    test("Then it should call navigate with the route '/home'", () => {
-      jest.mock("jwt-decode", () => () => ({
-        user: {
-          id: "629daf60066c9eb6317f409a",
-          name: "lucamino",
-          username: "LearningX",
-          iat: 1654501224,
-          exp: 1654504824,
-          authenticated: true,
-        },
-        places: { allPlaces: [] },
-      }));
-
-      const userMockSlice = createSlice({
-        name: "user",
-        initialState: {
-          id: "629daf60066c9eb6317f409a",
-          name: "lucamino",
-          username: "LearningX",
-          iat: 1654501224,
-          exp: 1654504824,
-          authenticated: true,
-        },
-        reducers: {},
-      });
-      const mockStore = configureStore({
-        reducer: { user: userMockSlice.reducer },
-      });
-
-      render(
-        <BrowserRouter>
-          <Provider store={mockStore}>
-            <App />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      expect(mockUseNavigate).toHaveBeenCalledWith("/home");
-    });
-  });
-
   describe("When it's invoked and user click on the link 'Notifications'", () => {
     test("Then it should invoke the dispatch action logout action creator", async () => {
       saveStorage(
@@ -194,7 +152,7 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(notificationLink);
 
-      expect(global.window.location.href).toContain("http://localhost/login");
+      expect(global.window.location.href).toContain("http://localhost/home");
     });
   });
 
@@ -225,7 +183,7 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(Wishlists);
 
-      expect(global.window.location.href).toContain("http://localhost/login");
+      expect(global.window.location.href).toContain("http://localhost/home");
     });
   });
 
@@ -256,7 +214,7 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(hostHomeText);
 
-      expect(global.window.location.href).toContain("http://localhost/login");
+      expect(global.window.location.href).toContain("http://localhost/home");
     });
   });
 
@@ -287,7 +245,7 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(AccountText);
 
-      expect(global.window.location.href).toContain("http://localhost/login");
+      expect(global.window.location.href).toContain("http://localhost/home");
     });
   });
 
@@ -318,7 +276,7 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(LogOutText);
 
-      expect(global.window.location.href).toContain("http://localhost/login");
+      expect(global.window.location.href).toContain("http://localhost/home");
     });
   });
 
@@ -347,7 +305,7 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(logInText);
 
-      expect(global.window.location.href).toContain("http://localhost/login");
+      expect(global.window.location.href).toContain("http://localhost/home");
     });
   });
 
@@ -376,7 +334,7 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(signUpText);
 
-      expect(global.window.location.href).toContain("http://localhost/login");
+      expect(global.window.location.href).toContain("http://localhost/home");
     });
   });
 
@@ -405,7 +363,7 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(homeYourHomeText);
 
-      expect(global.window.location.href).toContain("http://localhost/login");
+      expect(global.window.location.href).toContain("http://localhost/home");
     });
   });
 
@@ -434,7 +392,7 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(logoutText);
 
-      expect(global.window.location.href).toContain("http://localhost/login");
+      expect(global.window.location.href).toContain("http://localhost/home");
     });
   });
 });

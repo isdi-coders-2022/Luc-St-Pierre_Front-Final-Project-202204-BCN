@@ -85,7 +85,9 @@ const App = () => {
           path="/places/:placeId"
           element={
             <Authenticated>
-              <PlaceDetailsPage />
+              <Layout>
+                <PlaceDetailsPage />
+              </Layout>
             </Authenticated>
           }
         />

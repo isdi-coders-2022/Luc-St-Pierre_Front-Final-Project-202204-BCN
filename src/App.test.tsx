@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
@@ -23,18 +22,6 @@ Object.defineProperty(window, "localStorage", {
 
 describe("Given an App component", () => {
   describe("When it's rendered", () => {
-    test("Then it should show the text 'Filters'", () => {
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <PlaceDetailsPage />
-          </Provider>
-        </BrowserRouter>
-      );
-      const expectedText = screen.getByText(/PlaceDetailsPage/i);
-      expect(expectedText).toBeInTheDocument();
-    });
-
     test("Then it should display 1 link 'Become a Host'", () => {
       render(
         <BrowserRouter>

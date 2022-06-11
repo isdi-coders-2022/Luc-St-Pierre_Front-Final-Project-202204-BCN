@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/store/hooks";
 import { addPlaceThunk } from "../../redux/thunks/placesThunks";
+
 import { IRegisterPlaceForm } from "../../types/places.types";
 
 const HostForm = (): JSX.Element => {
