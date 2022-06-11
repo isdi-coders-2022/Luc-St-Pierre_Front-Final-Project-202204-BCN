@@ -17,7 +17,7 @@ const BecomeAHostPage = () => {
       <div className="fixed top-0 right-0 text-white z-10 w-1/2">
         <div className="h-[88px] flex justify-end items-start p-[32px_48px_0] ">
           <button className="bg-[#222222] text-xs font-semibold px-4 h-8 rounded-full">
-            Exit
+            <NavLink to="/home">Exit</NavLink>
           </button>
         </div>
       </div>
