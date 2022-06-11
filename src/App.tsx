@@ -93,6 +93,15 @@ const App = () => {
         />
 
         <Route
+          path="/become-a-host/:placeId"
+          element={
+            <Authenticated>
+              <BecomeAHostFormPage />
+            </Authenticated>
+          }
+        />
+
+        <Route
           path="/host/become-a-host/property-type-group"
           element={
             <Authenticated>

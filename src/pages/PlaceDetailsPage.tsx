@@ -20,6 +20,11 @@ const PlaceDetailsPage = () => {
     navigate("/home");
   };
 
+  const goToEditForm = (event: React.FormEvent) => {
+    event.stopPropagation();
+    navigate(`/become-a-host/${placeId}`);
+  };
+
   return (
     <>
       <section className="pt-6">
@@ -141,11 +146,30 @@ const PlaceDetailsPage = () => {
         <aside className="hidden w-[33.33333%] ml-[8.3333%] lg:block">
           <section className="w-full">
             <div className="bg-white w-[372px] rounded-xl shadow-[0_6px_16px_0px_rgba(0,0,0,0.12)] border border-[#CCCCCC80]">
-              <div className="p-6 ">
-                <span className="text-[22px] font-semibold text-gray-900">
-                  € {place.price}
-                </span>
-                <span className="ml-1">night</span>
+              <div className="p-6">
+                <div className="flex items-center justify-between">
+                  <span className="text-[22px] font-semibold text-gray-900">
+                    € {place.price}
+                    <span className="ml-1 font-normal text-base">night</span>
+                  </span>
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    onClick={goToEditForm}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                    />
+                  </svg>
+                </div>
+
                 <div className="mt-6">
                   <button
                     type="submit"

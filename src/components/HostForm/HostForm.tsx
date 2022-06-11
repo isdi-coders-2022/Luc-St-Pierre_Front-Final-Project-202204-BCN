@@ -337,10 +337,13 @@ const HostForm = (): JSX.Element => {
                   </div>
                 </div>
               </div>
-              <div className="px-4 py-3 text-right sm:px-6">
+              <div
+                className="px-4 py-4 w-[50%] border-t-2 border-gray-200 text-right sm:px-12 fixed bottom-0
+              right-0"
+              >
                 <button
                   type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-base font-medium rounded-md focus:outline-none text-white bg-[#222222] hover:bg-black"
+                  className="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-base font-medium rounded-md focus:outline-none text-white bg-[#222222] hover:bg-black"
                 >
                   Save
                 </button>

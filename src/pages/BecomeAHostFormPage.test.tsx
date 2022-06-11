@@ -16,7 +16,7 @@ describe("Given a BecomeAHostFormPage component", () => {
       );
 
       const expectedButton = screen.getByRole("button", {
-        name: "Save and exit",
+        name: "Exit",
       });
 
       expect(expectedButton).toBeInTheDocument();

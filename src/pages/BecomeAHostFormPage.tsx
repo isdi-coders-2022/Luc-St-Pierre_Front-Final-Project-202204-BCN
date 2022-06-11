@@ -21,7 +21,7 @@ const BecomeAHostFormPage = () => {
       <div className="fixed top-0 right-0 text-[#222222] z-10 w-1/2">
         <div className="h-[88px] flex justify-end items-start p-[32px_48px_0] ">
           <button className="bg-[#F7F7F7] text-xs font-semibold px-3.5 h-8 rounded-full">
-            Save and exit
+            <NavLink to="/home">Exit</NavLink>
           </button>
         </div>
       </div>
@@ -31,7 +31,7 @@ const BecomeAHostFormPage = () => {
           <HostForm />
         </div>
 
-        <div className="w-1/2 z-10 fixed bottom-0">
+        <div className="w-1/2 z-10 fixed bottom-0 hidden">
           <div className="border-t-2 border-gray-200">
             <div className="flex py-4 justify-between items-center">
               <div className="ml-12">
