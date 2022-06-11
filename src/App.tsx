@@ -17,6 +17,7 @@ import RegisterPage from "./pages/RegisterPage";
 import { logInActionCreator } from "./redux/reducers/features/userSlice";
 import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
 import { IDecodedToken, IState } from "./types/user.types";
+import PlaceDetailPage from "./pages/PlaceDetailPage";
 
 const App = () => {
   const dispatch = useAppDispatch();
