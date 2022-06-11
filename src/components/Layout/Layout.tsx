@@ -15,8 +15,13 @@ const Layout = ({ children }: Props): JSX.Element => {
     <>
       <Navigation userData={userData} />
       {location.pathname === "/home" ? <Categories /> : ""}
-
-      <div className="px-4 sm:px-6 md:px-10 xl:px-20 xl:mx-[150px]">
+      <div
+        className={
+          location.pathname === "/home"
+            ? "px-4 sm:px-6 md:px-10 xl:px-20"
+            : "px-4 sm:px-6 md:px-10 xl:mx-[150px]"
+        }
+      >
         {children}
       </div>
     </>
