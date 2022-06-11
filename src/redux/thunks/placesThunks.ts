@@ -6,6 +6,7 @@ import {
 } from "../../utils/modal/modal";
 import {
   addPlaceActionCreator,
+  deletePlaceActionCreator,
   loadPlacesActionCreator,
 } from "../reducers/features/placesSlice/placesSlice";
 import { AppDispatch } from "../store/store";
@@ -42,6 +43,23 @@ export const addPlaceThunk =
 
         dispatch(addPlaceActionCreator(data));
         dispatch(loadPlacesThunk(localStorage.token));
+      }
+    } catch {
+      setLoadingOffWithMessage("Error while creating a new place", true);
+    }
+  };
+
+export const deletePlaceThunk =
+  (placeId: string) => async (dispatch: AppDispatch) => {
+    try {
+      const { status } = await axios.delete(`${baseUrl}hosts/${placeId}`, {
+        headers: { Authorization: `Bearer ${localStorage.token}` },
+      });
+
+      if (status === 200) {
+        setLoadingOn();
+        dispatch(deletePlaceActionCreator(placeId));
+        setLoadingOffWithMessage("Place deleted successfully", false);
       }
     } catch {
       setLoadingOffWithMessage("Error while creating a new place", true);
