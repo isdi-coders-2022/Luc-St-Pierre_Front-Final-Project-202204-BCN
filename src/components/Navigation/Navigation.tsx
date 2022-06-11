@@ -5,7 +5,7 @@ import { SearchIcon } from "@heroicons/react/solid";
 import getClassNames from "../../utils/getClassNames";
 import { useAppDispatch } from "../../redux/store/hooks";
 import { logOutActionCreator } from "../../redux/reducers/features/userSlice";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { IUser } from "../../types/user.types";
 
 const Navigation = ({
@@ -31,20 +31,25 @@ const Navigation = ({
     >
       {({ open }) => (
         <>
-          <div className="max-w-full mx-auto px-4 sm:px-6 md:px-10 xl:px-20">
+          <div className="max-w-full mx-auto px-4 sm:px-6 md:px-10 xl:px-20 xl:mx-[150px]">
             <div className="flex justify-between h-20">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
-                  <img
-                    className="hidden lg:block h-8 w-auto"
-                    src="../assets/airbnb-logo.png"
-                    alt="airbnb-logo"
-                  />
-                  <img
-                    className="hidden md:block lg:hidden h-8 w-auto"
-                    src="../assets/logo-icon.png"
-                    alt="airbnb-logo"
-                  />
+                  <NavLink to="/home">
+                    <img
+                      className="hidden lg:block h-8 w-auto"
+                      src="../assets/airbnb-logo.png"
+                      alt="airbnb-logo"
+                    />
+                  </NavLink>
+
+                  <NavLink to="/home">
+                    <img
+                      className="hidden md:block lg:hidden h-8 w-auto"
+                      src="../assets/logo-icon.png"
+                      alt="airbnb-logo"
+                    />
+                  </NavLink>
                 </div>
               </div>
 
