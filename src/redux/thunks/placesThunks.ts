@@ -52,9 +52,12 @@ export const addPlaceThunk =
 export const deletePlaceThunk =
   (placeId: string) => async (dispatch: AppDispatch) => {
     try {
-      const { status } = await axios.delete(`${baseUrl}hosts/${placeId}`, {
-        headers: { Authorization: `Bearer ${localStorage.token}` },
-      });
+      const { status } = await axios.delete(
+        `${baseUrl}hosts/places/${placeId}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.token}` },
+        }
+      );
 
       if (status === 200) {
         setLoadingOn();
