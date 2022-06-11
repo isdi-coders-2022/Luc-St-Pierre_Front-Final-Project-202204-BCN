@@ -14,12 +14,15 @@ export const placesSlice = createSlice({
       ...places,
       action.payload,
     ],
+    deletePlace: (places, action: PayloadAction<string>) =>
+      places.filter((place) => place.id !== action.payload),
   },
 });
 
 export const {
   loadPlaces: loadPlacesActionCreator,
   addPlace: addPlaceActionCreator,
+  deletePlace: deletePlaceActionCreator,
 } = placesSlice.actions;
 
 export default placesSlice.reducer;

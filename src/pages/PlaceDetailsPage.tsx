@@ -1,17 +1,24 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
+import { deletePlaceThunk } from "../redux/thunks/placesThunks";
 import { loadPlaceThunk } from "../redux/thunks/placeThunk";
 
 const PlaceDetailsPage = () => {
   const { placeId } = useParams();
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   const { place } = useAppSelector((state) => state);
 
   useEffect(() => {
     dispatch(loadPlaceThunk(placeId as string));
   }, [dispatch, placeId]);
+
+  const deletePlace = (event: React.FormEvent) => {
+    event.stopPropagation();
+    dispatch(deletePlaceThunk(placeId as string));
+    navigate("/home");
+  };
 
   return (
     <>
@@ -143,6 +150,7 @@ const PlaceDetailsPage = () => {
                   <button
                     type="submit"
                     className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#DE3151] hover:bg-[#f43054] focus:outline-none"
+                    onClick={deletePlace}
                   >
                     Delete
                   </button>
