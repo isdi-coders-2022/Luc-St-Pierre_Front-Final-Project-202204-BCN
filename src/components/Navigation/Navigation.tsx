@@ -5,7 +5,7 @@ import { SearchIcon } from "@heroicons/react/solid";
 import getClassNames from "../../utils/getClassNames";
 import { useAppDispatch } from "../../redux/store/hooks";
 import { logOutActionCreator } from "../../redux/reducers/features/userSlice";
-import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { IUser } from "../../types/user.types";
 
 const Navigation = ({
@@ -14,7 +14,6 @@ const Navigation = ({
   userData: IUser;
 }): JSX.Element => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
   const { placeId } = useParams();
 
