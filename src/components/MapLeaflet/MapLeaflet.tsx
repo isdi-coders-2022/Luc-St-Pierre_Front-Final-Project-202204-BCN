@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./MapLeaflet.css";
 
 const MapLeaflet = () => {
@@ -9,9 +9,7 @@ const MapLeaflet = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={[51.505, -0.09]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
+        <Popup>A pretty CSS3 popup. Easily customizable.</Popup>
       </Marker>
     </MapContainer>
   );

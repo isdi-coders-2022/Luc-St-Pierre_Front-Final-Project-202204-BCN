@@ -11,8 +11,6 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.1",
     "@types/node": "^16.11.36",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.5",
     "axios": "^0.27.2",
     "jwt-decode": "^3.1.2",
     "leaflet": "^1.8.0",
@@ -53,8 +51,12 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.2",
     "@types/leaflet": "^1.7.11",
+    "@types/react": "^18.0.12",
+    "@types/react-dom": "^18.0.5",
     "autoprefixer": "^10.4.7",
+    "babel-jest": "^28.1.0",
     "husky": "^7.0.0",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.0.24"
@@ -63,6 +65,9 @@
     "collectCoverageFrom": [
       "!src/index.tsx",
       "!src/reportWebVitals.ts"
+    ],
+    "transformIgnorePatterns": [
+      "/!node_modules\\/react-leaflet/"
     ]
   }
 }
