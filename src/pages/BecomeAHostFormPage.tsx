@@ -1,13 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import HostForm from "../components/HostForm/HostForm";
 
 const BecomeAHostFormPage = () => {
+  const { placeId } = useParams();
+
   return (
     <div className="flex w-full relative">
       <div className="absolute left-0 w-1/2">
         <div className="max-h-full h-screen fixed flex flex-col justify-center bg-gradient-to-b from-[#CF2C79] to-[#531CA3] text-5xl text-white font-semibold">
           <div className="fixed top-8 left-14">
-            <NavLink to="/home">
+            <NavLink to="/hosts/home">
               <img src="/assets/logo-icon-white.png" alt="logo-icon-white" />
             </NavLink>
           </div>
@@ -21,14 +23,14 @@ const BecomeAHostFormPage = () => {
       <div className="fixed top-0 right-0 text-[#222222] z-10 w-1/2">
         <div className="h-[88px] flex justify-end items-start p-[32px_48px_0] ">
           <button className="bg-[#F7F7F7] text-xs font-semibold px-3.5 h-8 rounded-full">
-            <NavLink to="/home">Exit</NavLink>
+            <NavLink to="/hosts/home">Exit</NavLink>
           </button>
         </div>
       </div>
 
       <div className="bg-white h-screen z-0 ml-[50vw] w-1/2 flex-[1_1_50%] text-white">
         <div className="mt-[88px] flex flex-col items-center justify-center mb-[82px] overflow-y-auto px-[48px] h-[calc(100vh_-_calc(88px_+_82px))]">
-          <HostForm />
+          <HostForm placeId={placeId} />
         </div>
 
         <div className="w-1/2 z-10 fixed bottom-0 hidden">

@@ -16,6 +16,11 @@ export const placesSlice = createSlice({
     ],
     deletePlace: (places, action: PayloadAction<string>) =>
       places.filter((place) => place.id !== action.payload),
+
+    updatePlace: (places, action: PayloadAction<IPlace>) =>
+      places.map((place) =>
+        place.id === action.payload.id ? action.payload : place
+      ),
   },
 });
 
@@ -23,6 +28,7 @@ export const {
   loadPlaces: loadPlacesActionCreator,
   addPlace: addPlaceActionCreator,
   deletePlace: deletePlaceActionCreator,
+  updatePlace: updatePlaceActionCreator,
 } = placesSlice.actions;
 
 export default placesSlice.reducer;

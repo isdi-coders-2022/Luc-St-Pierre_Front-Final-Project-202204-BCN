@@ -152,7 +152,9 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(notificationLink);
 
-      expect(global.window.location.href).toContain("http://localhost/home");
+      expect(global.window.location.href).toContain(
+        "http://localhost/hosts/home"
+      );
     });
   });
 
@@ -183,7 +185,9 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(Wishlists);
 
-      expect(global.window.location.href).toContain("http://localhost/home");
+      expect(global.window.location.href).toContain(
+        "http://localhost/hosts/home"
+      );
     });
   });
 
@@ -214,7 +218,9 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(hostHomeText);
 
-      expect(global.window.location.href).toContain("http://localhost/home");
+      expect(global.window.location.href).toContain(
+        "http://localhost/hosts/home"
+      );
     });
   });
 
@@ -245,7 +251,9 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(AccountText);
 
-      expect(global.window.location.href).toContain("http://localhost/home");
+      expect(global.window.location.href).toContain(
+        "http://localhost/hosts/home"
+      );
     });
   });
 
@@ -276,7 +284,9 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(LogOutText);
 
-      expect(global.window.location.href).toContain("http://localhost/home");
+      expect(global.window.location.href).toContain(
+        "http://localhost/hosts/home"
+      );
     });
   });
 
@@ -305,7 +315,9 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(logInText);
 
-      expect(global.window.location.href).toContain("http://localhost/home");
+      expect(global.window.location.href).toContain(
+        "http://localhost/hosts/home"
+      );
     });
   });
 
@@ -334,7 +346,9 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(signUpText);
 
-      expect(global.window.location.href).toContain("http://localhost/home");
+      expect(global.window.location.href).toContain(
+        "http://localhost/hosts/home"
+      );
     });
   });
 
@@ -363,7 +377,9 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(homeYourHomeText);
 
-      expect(global.window.location.href).toContain("http://localhost/home");
+      expect(global.window.location.href).toContain(
+        "http://localhost/hosts/home"
+      );
     });
   });
 
@@ -392,7 +408,9 @@ describe("Given a Navigation component", () => {
 
       userEvent.click(logoutText);
 
-      expect(global.window.location.href).toContain("http://localhost/home");
+      expect(global.window.location.href).toContain(
+        "http://localhost/hosts/home"
+      );
     });
   });
 });

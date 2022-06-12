@@ -31,11 +31,10 @@ const App = () => {
 
   useEffect(() => {
     if (token as string) {
-      const { username, name, email, image, imageBackup }: IDecodedToken =
-        jwtDecode(token as string);
-      dispatch(
-        logInActionCreator({ username, name, email, image, imageBackup })
+      const { username, name, image, imageBackup }: IDecodedToken = jwtDecode(
+        token as string
       );
+      dispatch(logInActionCreator({ username, name, image, imageBackup }));
     }
   }, [dispatch, token, authenticated, baseUrl]);
 
@@ -43,9 +42,9 @@ const App = () => {
     <>
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to="/user/login" />} />
         <Route
-          path="/login"
+          path="/user/login"
           element={
             <AuthenticationCheck>
               <LoginPage />
@@ -53,7 +52,7 @@ const App = () => {
           }
         />
         <Route
-          path="/register"
+          path="/user/register"
           element={
             <AuthenticationCheck>
               <RegisterPage />
@@ -62,7 +61,7 @@ const App = () => {
         />
 
         <Route
-          path="/home"
+          path="/hosts/home"
           element={
             <Authenticated>
               <Layout>

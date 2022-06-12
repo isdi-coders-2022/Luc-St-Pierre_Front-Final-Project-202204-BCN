@@ -5,7 +5,7 @@ import { SearchIcon } from "@heroicons/react/solid";
 import getClassNames from "../../utils/getClassNames";
 import { useAppDispatch } from "../../redux/store/hooks";
 import { logOutActionCreator } from "../../redux/reducers/features/userSlice";
-import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { IUser } from "../../types/user.types";
 
 const Navigation = ({
@@ -14,7 +14,6 @@ const Navigation = ({
   userData: IUser;
 }): JSX.Element => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
   const { placeId } = useParams();
 
@@ -23,7 +22,6 @@ const Navigation = ({
   const handleLogout = () => {
     dispatch(logOutActionCreator());
     localStorage.removeItem("token");
-    navigate("/home");
   };
 
   const classMargin =
@@ -42,7 +40,7 @@ const Navigation = ({
             <div className="flex justify-between h-20">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
-                  <NavLink to="/home">
+                  <NavLink to="/hosts/home">
                     <img
                       className="hidden lg:block h-8 w-auto"
                       src="../assets/airbnb-logo.png"
@@ -50,7 +48,7 @@ const Navigation = ({
                     />
                   </NavLink>
 
-                  <NavLink to="/home">
+                  <NavLink to="/hosts/home">
                     <img
                       className="hidden md:block lg:hidden h-8 w-auto"
                       src="../assets/logo-icon.png"
@@ -238,7 +236,7 @@ const Navigation = ({
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="/register"
+                                  href="/user/register"
                                   className={getClassNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
@@ -251,7 +249,7 @@ const Navigation = ({
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="/login"
+                                  href="/user/login"
                                   className={getClassNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"

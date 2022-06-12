@@ -11,7 +11,7 @@ const Authenticated = ({ children }: Props) => {
 
   useEffect(() => {
     if (!token) {
-      navigate("/login");
+      navigate("/user/login");
     }
   }, [navigate, token]);
 

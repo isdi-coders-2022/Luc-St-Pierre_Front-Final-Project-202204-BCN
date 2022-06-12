@@ -8,6 +8,7 @@ import {
   addPlaceActionCreator,
   deletePlaceActionCreator,
   loadPlacesActionCreator,
+  updatePlaceActionCreator,
 } from "../reducers/features/placesSlice/placesSlice";
 import { AppDispatch } from "../store/store";
 
@@ -66,5 +67,27 @@ export const deletePlaceThunk =
       }
     } catch {
       setLoadingOffWithMessage("Error while creating a new place", true);
+    }
+  };
+
+export const updatePlaceThunk =
+  (placeId: string, placeData: any) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
+    try {
+      setLoadingOn();
+      const { data } = await axios.put(
+        `${baseUrl}hosts/places/${placeId}`,
+        placeData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      if (data) {
+        dispatch(updatePlaceActionCreator(data));
+        setLoadingOffWithMessage("Place updated successfully", false);
+      }
+    } catch {
+      setLoadingOffWithMessage("Error while trying to update place", true);
     }
   };
