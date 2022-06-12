@@ -63,7 +63,7 @@ const categories = [
 
 const Categories = () => {
   return (
-    <div className="bg-white border-0 md:border-b-2 md:border-gray-100 pt-4">
+    <div className="sticky top-20 bg-white shadow pt-4 z-50">
       <div className="flex items-center justify-between max-w-full sm:px-6 md:px-10 xl:px-20">
         <div className="flex justify-between h-[78px] max-w-[1440px] space-x-10">
           {categories.map((category) => {
