@@ -8,7 +8,6 @@ import PlacesList from "./components/PlacesList/PlacesList";
 
 import { localStorageMock } from "./mocks/localStorageMock";
 import { placesMock } from "./mocks/placesMocks";
-import PlaceDetailsPage from "./pages/PlaceDetailsPage";
 
 const getLocalStorage = localStorageMock;
 
