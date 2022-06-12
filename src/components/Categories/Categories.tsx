@@ -63,12 +63,15 @@ const categories = [
 
 const Categories = () => {
   return (
-    <div className="sticky top-20 bg-white shadow pt-4 z-50">
+    <div className="absolute right-0 left-0 top-[5.5rem] bg-white shadow z-[100]">
       <div className="flex items-center justify-between max-w-full sm:px-6 md:px-10 xl:px-20">
         <div className="flex justify-between h-[78px] max-w-[1440px] space-x-10">
-          {categories.map((category) => {
+          {categories.map((category, index) => {
             return (
-              <button className="flex flex-col items-center justify-center pt-1">
+              <button
+                key={index}
+                className="flex flex-col items-center justify-center pt-1"
+              >
                 <span className="flex flex-col justify-center items-center">
                   <img
                     src={`${category.image}`}
