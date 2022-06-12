@@ -4,6 +4,14 @@ export interface IinitialState {
 export interface IPlaceState {
   places: IPlace;
 }
+
+export interface IStatePlaces {
+  places: IPlace[];
+  pages: number;
+  currentPage: number;
+  perPageCount: number;
+}
+
 export interface IPlace {
   id?: string;
   title: string;
