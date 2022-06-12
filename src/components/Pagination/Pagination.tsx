@@ -37,7 +37,7 @@ const Pagination = () => {
 
   return (
     <nav
-      className="fixed bottom-0 right-0 left-0 bg-white px-10 py-3 flex items-center justify-between border-t border-gray-200"
+      className="fixed bottom-0 right-0 left-0 bg-white px-4 sm:px-6 md:px-10 xl:px-20 py-2 flex items-center justify-between border-t border-gray-200"
       aria-label="Pagination"
     >
       <div className="hidden sm:block">
@@ -50,13 +50,13 @@ const Pagination = () => {
       <div className="flex-1 flex justify-between sm:justify-end">
         <button
           onClick={previousPage}
-          className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          className="relative inline-flex items-center px-4 py-1 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           Previous
         </button>
         <button
           onClick={nextPage}
-          className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          className="ml-3 relative inline-flex items-center px-4 py-1 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           Next
         </button>
