@@ -23,7 +23,6 @@ const Navigation = ({
   const handleLogout = () => {
     dispatch(logOutActionCreator());
     localStorage.removeItem("token");
-    navigate("/hosts/home");
   };
 
   const classMargin =

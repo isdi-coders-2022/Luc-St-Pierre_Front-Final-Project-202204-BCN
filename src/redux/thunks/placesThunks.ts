@@ -72,22 +72,22 @@ export const deletePlaceThunk =
 
 export const updatePlaceThunk =
   (placeId: string, placeData: any) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
     try {
-      const {
-        data: { updatePlace },
-      } = await axios.put(`${baseUrl}hosts/places/${placeId}`, {
-        headers: { Authorization: `Bearer ${localStorage.token}` },
-      });
+      setLoadingOn();
+      const { data } = await axios.put(
+        `${baseUrl}hosts/places/${placeId}`,
+        placeData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
-      if (updatePlace) {
-        setLoadingOn();
-        dispatch(updatePlaceActionCreator(updatePlace));
+      if (data) {
+        dispatch(updatePlaceActionCreator(data));
         setLoadingOffWithMessage("Place updated successfully", false);
       }
     } catch {
-      setLoadingOffWithMessage(
-        `Error while trying to update place ${placeId}`,
-        true
-      );
+      setLoadingOffWithMessage("Error while trying to update place", true);
     }
   };

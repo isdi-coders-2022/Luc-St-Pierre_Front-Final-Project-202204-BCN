@@ -5,7 +5,6 @@ const initialState: IState = {
   userData: {
     username: "",
     name: "",
-    email: "",
     image: "",
     imageBackup: "",
   },
@@ -24,7 +23,6 @@ export const userSlice = createSlice({
       userData: {
         username: "",
         name: "",
-        email: "",
         image: "",
         imageBackup: "",
       },

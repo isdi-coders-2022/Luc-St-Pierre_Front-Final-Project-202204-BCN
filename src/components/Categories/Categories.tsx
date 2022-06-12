@@ -6,7 +6,7 @@ const Categories = () => {
           <button className="flex flex-col items-center justify-center pt-1">
             <span className="flex flex-col justify-center items-center">
               <img
-                src="assets/airbnb-icons/islands.jpeg"
+                src="/assets/airbnb-icons/islands.jpeg"
                 height={24}
                 width={24}
                 alt=""
@@ -20,7 +20,7 @@ const Categories = () => {
           <button className="flex flex-col items-center justify-center pt-1">
             <span className="flex flex-col justify-center items-center">
               <img
-                src="assets/airbnb-icons/beach.jpeg"
+                src="/assets/airbnb-icons/beach.jpeg"
                 height={24}
                 width={24}
                 alt=""

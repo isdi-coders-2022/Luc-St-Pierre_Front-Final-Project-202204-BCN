@@ -11,7 +11,6 @@ describe("Given a userSlice reducer", () => {
         userData: {
           username: "",
           name: "",
-          email: "",
           image: "",
           imageBackup: "",
         },
@@ -49,7 +48,6 @@ describe("Given a userSlice reducer", () => {
         userData: {
           username: "",
           name: "",
-          email: "",
           image: "",
           imageBackup: "",
         },

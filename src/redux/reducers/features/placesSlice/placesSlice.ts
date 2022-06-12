@@ -19,7 +19,7 @@ export const placesSlice = createSlice({
 
     updatePlace: (places, action: PayloadAction<IPlace>) =>
       places.map((place) =>
-        place.id === action.payload.id ? { ...action.payload } : { ...place }
+        place.id === action.payload.id ? action.payload : place
       ),
   },
 });
