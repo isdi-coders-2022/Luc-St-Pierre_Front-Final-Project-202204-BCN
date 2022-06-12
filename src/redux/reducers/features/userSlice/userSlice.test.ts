@@ -1,4 +1,4 @@
-import { mockUserAuthenticated } from "../../../mocks/mockUser";
+import { mockUserAuthenticated } from "../../../../mocks/mockUser";
 import userReducer, {
   logInActionCreator,
   logOutActionCreator,

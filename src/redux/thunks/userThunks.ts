@@ -10,7 +10,7 @@ import {
   setLoadingOn,
 } from "../../utils/modal/modal";
 
-import { logInActionCreator } from "../reducers/features/userSlice";
+import { logInActionCreator } from "../reducers/features/userSlice/userSlice";
 import { AppDispatch } from "../store/store";
 
 const baseUrl = process.env.REACT_APP_API_URL;

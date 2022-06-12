@@ -14,10 +14,10 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 
-import { logInActionCreator } from "./redux/reducers/features/userSlice";
 import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
 import { IDecodedToken, IState } from "./types/user.types";
 import PlaceDetailsPage from "./pages/PlaceDetailsPage";
+import { logInActionCreator } from "./redux/reducers/features/userSlice/userSlice";
 
 const App = () => {
   const dispatch = useAppDispatch();
