@@ -25,7 +25,7 @@ const BecomeAHostPage = () => {
       <div className="bg-[#000] h-screen z-0 ml-[50vw] w-1/2 flex-[1_1_50%] text-white">
         <div className="mt-[88px] flex flex-col items-center justify-center mb-[82px] overflow-y-auto px-[48px] h-[calc(100%_-_calc(88px_+_82px))]">
           <h1 className="max-w-[480px] text-center text-5xl font-semibold mb-8">
-            Become a Host in 10 easy steps
+            Become a Host in 1 easy form
           </h1>
 
           <div>

@@ -12,6 +12,11 @@ export interface IStatePlaces {
   perPageCount: number;
 }
 
+export interface ILocation {
+  type: string;
+  coordinates: number[];
+}
+
 export interface IPlace {
   id?: string;
   title: string;
@@ -31,6 +36,7 @@ export interface IPlace {
   rating: string;
   kilometers: string;
   category: string;
+  location: ILocation;
 }
 
 export interface IRegisterPlaceForm {
@@ -49,6 +55,7 @@ export interface IRegisterPlaceForm {
   rating: string;
   kilometers: string;
   category: string;
+  location: ILocation;
 }
 
 export interface getAllPlacesResponse {

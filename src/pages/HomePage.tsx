@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import MapLeaflet from "../components/MapLeaflet/MapLeaflet";
+
 import Pagination from "../components/Pagination/Pagination";
 import PlacesList from "../components/PlacesList/PlacesList";
+import MapLeaflet from "../components/MapLeaflet/MapLeaflet";
 
 import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
 import { loadPlacesThunk } from "../redux/thunks/placesThunks";
@@ -20,7 +21,11 @@ function HomePage() {
 
   return (
     <div>
-      {showMap ? <MapLeaflet /> : <PlacesList places={places} />}
+      {showMap ? (
+        <MapLeaflet places={places} />
+      ) : (
+        <PlacesList places={places} />
+      )}
 
       <Pagination />
       <div className="fixed w-full left-0 right-0 bottom-0 z-50 mb-24">
