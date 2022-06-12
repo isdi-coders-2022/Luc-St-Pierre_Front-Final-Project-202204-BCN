@@ -33,6 +33,31 @@ const PlaceDetailsPage = () => {
             {place.title}
           </h1>
         </div>
+        <div className="flex space-x-6">
+          <span className="inline-flex items-center text-sm">
+            <button
+              type="button"
+              className="inline-flex space-x-0.5 text-gray-400 hover:text-gray-500"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="text-[#222222]"
+              >
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span className="font-medium text-gray-900">4.8</span>
+              <span className="sr-only">likes</span>
+            </button>
+          </span>
+          <span className="inline-flex items-center text-sm">
+            <span className="font-medium text-[#222222] underline">
+              {place.city}, {place.country}
+            </span>
+            <span className="sr-only">replies</span>
+          </span>
+        </div>
       </section>
 
       <div className="mt-6 max-w-7xl grid grid-cols-4 gap-x-2">
@@ -84,11 +109,11 @@ const PlaceDetailsPage = () => {
       </div>
 
       <div className="flex-1 flex items-stretch pt-12">
-        <main className="flex-1 w-[58.33333%]">
-          <section className="relative flex-1 h-full flex flex-col lg:order-last">
+        <main className="flex-1 w-[58.33333%] divide-y divide-solid">
+          <section className="relative flex-1 flex flex-col lg:order-last pb-8">
             <div className="h-full w-full flex items-center justify-between">
-              <div className="pr-6 h-full">
-                <div className="block rounded h-full w-full text-[#222222]">
+              <div className="pr-6">
+                <div className="block rounded w-full text-[#222222]">
                   <h2 className="text-[22px] font-semibold">
                     Private room in island hosted by The Arctic Hideaway
                   </h2>
@@ -124,19 +149,36 @@ const PlaceDetailsPage = () => {
                 </div>
               </div>
 
-              <div className="h-full ml-4">
-                <div className="block rounded h-full w-full text-[#222222]">
+              <div className="ml-4">
+                <div className="block roundedw-full text-[#222222]">
                   <img src="/assets/avatar.png" alt="" className="h-14 w-14" />
                 </div>
               </div>
             </div>
           </section>
 
-          <section className="relative flex-1 h-full flex flex-col lg:order-last">
-            <div className="h-full flex items-center">
-              <div className="pr-6 h-full">
-                <div className="block rounded h-full w-full text-[#222222]">
-                  <p className="text-base">{place.description}</p>
+          <section className="relative flex-1 flex flex-col lg:order-last py-8">
+            <div className="flex items-center">
+              <div className="pr-6">
+                <div className="block rounded w-full text-[#222222]">
+                  <p className="text-base">{place.placeDescription}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="relative flex-1 flex flex-col lg:order-last py-8">
+            <div className="flex items-center">
+              <div className="pr-6">
+                <div className="mb-4">
+                  <img src="/assets/aircover.webp" alt="aircover" width={123} />
+                </div>
+                <div className="block rounded w-full text-[#222222]">
+                  <p className="text-base">
+                    Every booking includes free protection from Host
+                    cancellations, listing inaccuracies, and other issues like
+                    trouble checking in.
+                  </p>
                 </div>
               </div>
             </div>
