@@ -1,18 +1,16 @@
-import { useCallback, useEffect } from "react";
+// import { useCallback, useEffect } from "react";
 import {
   setDecrementPageActionCreator,
   setIncrementPageActionCreator,
-  setPageCountActionCreator,
+  // setPageCountActionCreator,
   setPaginationActionCreator,
 } from "../../redux/reducers/features/paginationSlice/paginationSlice";
-import { loadPlacesActionCreator } from "../../redux/reducers/features/placesSlice/placesSlice";
+// import { loadPlacesActionCreator } from "../../redux/reducers/features/placesSlice/placesSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
 
 const Pagination = () => {
   const dispatch = useAppDispatch();
-  const { pages, currentPage, perPageCount } = useAppSelector(
-    (state) => state.pagination
-  );
+  const { pages, currentPage } = useAppSelector((state) => state.pagination);
   const { places } = useAppSelector((state) => state.places);
   const totalPlaces = places.length;
 
@@ -50,20 +48,18 @@ const Pagination = () => {
         </p>
       </div>
       <div className="flex-1 flex justify-between sm:justify-end">
-        <a
+        <button
           onClick={previousPage}
-          href="#"
           className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           Previous
-        </a>
-        <a
+        </button>
+        <button
           onClick={nextPage}
-          href="#"
           className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           Next
-        </a>
+        </button>
       </div>
     </nav>
   );
