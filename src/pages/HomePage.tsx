@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Pagination from "../components/Pagination/Pagination";
 import PlacesList from "../components/PlacesList/PlacesList";
 
 import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
@@ -6,7 +7,7 @@ import { loadPlacesThunk } from "../redux/thunks/placesThunks";
 
 function HomePage() {
   const dispatch = useAppDispatch();
-  const places = useAppSelector((state) => state.places);
+  const { places } = useAppSelector((state) => state.places);
 
   const token = localStorage.getItem("token");
 
@@ -17,6 +18,7 @@ function HomePage() {
   return (
     <div>
       <PlacesList places={places} />
+      <Pagination />
     </div>
   );
 }
