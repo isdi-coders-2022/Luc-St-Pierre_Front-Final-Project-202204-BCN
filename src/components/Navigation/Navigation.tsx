@@ -4,9 +4,9 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import getClassNames from "../../utils/getClassNames";
 import { useAppDispatch } from "../../redux/store/hooks";
-import { logOutActionCreator } from "../../redux/reducers/features/userSlice/userSlice";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import { IUser } from "../../types/user.types";
+import { logOutActionCreator } from "../../redux/reducers/features/userSlice/userSlice";
 
 const Navigation = ({
   userData: { username, image, imageBackup },
@@ -30,7 +30,7 @@ const Navigation = ({
   return (
     <Disclosure
       as="nav"
-      className="bg-white border-0 md:border-b-2 md:border-gray-100 z-50"
+      className="fixed top-0 left-0 right-0 bg-white border-0 md:border-b-2 md:border-gray-100 z-[100]"
     >
       {({ open }) => (
         <>
