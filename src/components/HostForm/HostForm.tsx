@@ -35,6 +35,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
     rating: "",
     kilometers: "",
     category: "",
+    location: { type: "Point", coordinates: [] },
   };
 
   const [formData, setFormData] = useState<IRegisterPlaceForm>(initialForm);
