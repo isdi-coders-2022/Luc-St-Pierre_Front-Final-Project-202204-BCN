@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import MapLeaflet from "../components/MapLeaflet/MapLeaflet";
 import Pagination from "../components/Pagination/Pagination";
 import PlacesList from "../components/PlacesList/PlacesList";
 
@@ -17,6 +18,7 @@ function HomePage() {
 
   return (
     <div>
+      {/* <MapLeaflet /> */}
       <PlacesList places={places} />
       <Pagination />
       <div className="fixed w-full left-0 right-0 bottom-0 z-50 mb-24">
