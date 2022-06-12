@@ -14,10 +14,10 @@ const Layout = ({ children }: Props): JSX.Element => {
   return (
     <>
       <Navigation userData={userData} />
-      {location.pathname === "/home" ? <Categories /> : ""}
+      {location.pathname === "/hosts/home" ? <Categories /> : ""}
       <div
         className={
-          location.pathname === "/home"
+          location.pathname === "/hosts/home"
             ? "px-4 sm:px-6 md:px-10 xl:px-20"
             : "px-4 sm:px-6 md:px-10 xl:mx-[12.5rem]"
         }

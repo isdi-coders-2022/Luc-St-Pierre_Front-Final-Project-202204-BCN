@@ -43,9 +43,9 @@ const App = () => {
     <>
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to="/user/login" />} />
         <Route
-          path="/login"
+          path="/user/login"
           element={
             <AuthenticationCheck>
               <LoginPage />
@@ -53,7 +53,7 @@ const App = () => {
           }
         />
         <Route
-          path="/register"
+          path="/user/register"
           element={
             <AuthenticationCheck>
               <RegisterPage />
@@ -62,7 +62,7 @@ const App = () => {
         />
 
         <Route
-          path="/home"
+          path="/hosts/home"
           element={
             <Authenticated>
               <Layout>

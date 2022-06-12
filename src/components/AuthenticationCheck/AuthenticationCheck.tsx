@@ -11,7 +11,7 @@ const AuthenticationCheck = ({ children }: Props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (authenticated) navigate("/home");
+    if (authenticated) navigate("/hosts/home");
   }, [authenticated, navigate]);
 
   if (!authenticated) {

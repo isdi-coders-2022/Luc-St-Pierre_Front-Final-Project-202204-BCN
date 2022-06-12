@@ -92,14 +92,12 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
     newFormData.append("kilometers", formData.kilometers);
     newFormData.append("category", formData.category);
 
-    if (placeId) {
-      dispatch(updatePlaceThunk(placeData.id as string, newFormData));
-      return;
-    }
+    placeId
+      ? dispatch(updatePlaceThunk(placeData.id as string, newFormData))
+      : dispatch(addPlaceThunk(newFormData));
 
-    dispatch(addPlaceThunk(newFormData));
     setFormData(initialForm);
-    navigate("/home");
+    navigate("/hosts/home");
   };
 
   return (

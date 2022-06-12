@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 import { IPlace } from "../../../../types/places.types";
 
 const initialState: IPlace[] = [];

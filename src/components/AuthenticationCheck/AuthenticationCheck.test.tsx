@@ -22,7 +22,7 @@ describe("Given a AuthenticationCheck wrapper component", () => {
         </AuthenticationCheck>
       );
 
-      expect(mockUseNavigate).toHaveBeenCalledWith("/home");
+      expect(mockUseNavigate).toHaveBeenCalledWith("/hosts/home");
     });
 
     test("Then it should render it's children when the use is authenticated", () => {

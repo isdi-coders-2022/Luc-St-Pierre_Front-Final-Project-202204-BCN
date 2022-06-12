@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAllPlacesResponse, IPlace } from "../../types/places.types";
+import { getAllPlacesResponse } from "../../types/places.types";
 import {
   setLoadingOffWithMessage,
   setLoadingOn,

@@ -23,7 +23,7 @@ const LoginForm = (): JSX.Element => {
   };
 
   const navigateToRegister = () => {
-    navigate("/register");
+    navigate("/user/register");
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {

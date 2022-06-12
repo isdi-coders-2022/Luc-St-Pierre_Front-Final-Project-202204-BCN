@@ -35,7 +35,7 @@ const RegisterForm = (): JSX.Element => {
   };
 
   const navigateToLogin = () => {
-    navigate("/login");
+    navigate("/user/login");
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
