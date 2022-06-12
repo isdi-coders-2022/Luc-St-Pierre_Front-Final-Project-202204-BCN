@@ -16,6 +16,10 @@ export const placesMock = [
     rating: "4.88",
     isListed: true,
     kilometers: "343",
-    category: "Nationall parks",
+    category: "National parks",
+    location: {
+      type: "Point",
+      coordinates: [41.3874, 2.1686],
+    },
   },
 ];

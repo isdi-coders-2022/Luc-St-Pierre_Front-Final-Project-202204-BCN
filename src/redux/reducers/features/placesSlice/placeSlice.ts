@@ -19,6 +19,7 @@ const initialState: IPlace = {
   rating: "",
   kilometers: "",
   category: "",
+  location: { type: "Point", coordinates: [] },
 };
 
 export const placeSlice = createSlice({

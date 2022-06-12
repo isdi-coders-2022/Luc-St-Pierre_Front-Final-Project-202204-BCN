@@ -214,9 +214,21 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                       autoComplete="off"
                       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] sm:text-sm"
                     >
-                      <option>House</option>
-                      <option>Loft</option>
-                      <option>Unique</option>
+                      <option>Islands</option>
+                      <option>Beach</option>
+                      <option>Amazing pools</option>
+                      <option>OMG!</option>
+                      <option>National parks</option>
+                      <option>Chalets</option>
+                      <option>Design</option>
+                      <option>Arctic</option>
+                      <option>Tiny homes</option>
+                      <option>Treehouses</option>
+                      <option>Surfing</option>
+                      <option>Amazing views</option>
+                      <option>Lakefront</option>
+                      <option>Camping</option>
+                      <option>Shared homes</option>
                     </select>
                   </div>
 
