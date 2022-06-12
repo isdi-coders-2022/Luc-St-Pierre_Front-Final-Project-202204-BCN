@@ -4,7 +4,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import getClassNames from "../../utils/getClassNames";
 import { useAppDispatch } from "../../redux/store/hooks";
-import { logOutActionCreator } from "../../redux/reducers/features/userSlice";
+import { logOutActionCreator } from "../../redux/reducers/features/userSlice/userSlice";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import { IUser } from "../../types/user.types";
 

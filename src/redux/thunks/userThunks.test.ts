@@ -1,5 +1,5 @@
 import { mockUserAuthenticated } from "../../mocks/mockUser";
-import { logInActionCreator } from "../reducers/features/userSlice";
+import { logInActionCreator } from "../reducers/features/userSlice/userSlice";
 import { loginThunk } from "./userThunks";
 
 jest.mock("jwt-decode", () => () => ({
