@@ -1,37 +1,50 @@
-// import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import {
   setDecrementPageActionCreator,
   setIncrementPageActionCreator,
-  // setPageCountActionCreator,
-  setPaginationActionCreator,
+  setPageCountActionCreator,
+  // setPerPageCountActionCreator,
 } from "../../redux/reducers/features/paginationSlice/paginationSlice";
 // import { loadPlacesActionCreator } from "../../redux/reducers/features/placesSlice/placesSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
+import { IPlace } from "../../types/places.types";
 
-const Pagination = () => {
+interface Props {
+  places: IPlace[];
+}
+
+const Pagination = ({ places }: Props) => {
   const dispatch = useAppDispatch();
-  const { pages, currentPage } = useAppSelector((state) => state.pagination);
-  const { places } = useAppSelector((state) => state.places);
+
+  let { pages, currentPage, perPageCount } = useAppSelector(
+    (state) => state.pagination
+  );
+
   const totalPlaces = places.length;
 
-  // useEffect(() => {
-  //   let count = Math.ceil(places.length / perPageCount);
-  //   dispatch(setPageCountActionCreator(count));
-  //   setPartialData();
-  // }, [dispatch, perPageCount, places.length]);
+  useEffect(() => {
+    let numberOfPages = Math.floor(
+      (places.length + perPageCount - 1) / perPageCount
+    );
 
-  // const setPartialData = useCallback(() => {
-  //   const partialData = places.slice(pages, pages + perPageCount);
-  //   dispatch(loadPlacesActionCreator(partialData));
-  // }, [dispatch, pages, perPageCount, places]);
+    dispatch(setPageCountActionCreator(numberOfPages));
+
+    // let start = pages * perPageCount - (perPageCount - 1);
+    // const partialData = places.slice(pages, pages + perPageCount);
+    // let items = places.slice(pages * perPageCount, (pages + 1) * perPageCount);
+
+    // pagesRef = Math.min(start + perPageCount - 1, totalPlaces);
+
+    // dispatch(loadPlacesActionCreator(items));
+  }, [dispatch, pages, perPageCount, places, totalPlaces]);
 
   const nextPage = () => {
-    dispatch(setPaginationActionCreator());
+    // dispatch(setPageCountActionCreator());
     dispatch(setIncrementPageActionCreator());
   };
 
   const previousPage = () => {
-    dispatch(setPaginationActionCreator());
+    // dispatch(setPageCountActionCreator());
     dispatch(setDecrementPageActionCreator());
   };
 

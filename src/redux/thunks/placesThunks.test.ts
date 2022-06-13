@@ -36,14 +36,12 @@ describe("Given a loadPlacesThunk middleware", () => {
       ];
 
       const dispatch = jest.fn();
-      const token = "token";
 
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.get = jest
         .fn()
         .mockResolvedValue({ data: { places }, status: 200 });
 
-      const thunk = loadPlacesThunk(token);
+      const thunk = loadPlacesThunk();
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
@@ -54,10 +52,7 @@ describe("Given a loadPlacesThunk middleware", () => {
     test("Then it should not call dispatch", async () => {
       const dispatch = jest.fn();
 
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("");
-      const token = "token";
-
-      const thunk = loadPlacesThunk(token);
+      const thunk = loadPlacesThunk();
       await thunk(dispatch);
 
       expect(dispatch).not.toHaveBeenCalled();
