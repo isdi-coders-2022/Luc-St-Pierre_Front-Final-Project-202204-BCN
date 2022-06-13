@@ -42,10 +42,10 @@ describe("Given a PlaceDetailsPage component", () => {
       );
 
       const title = screen.getByRole("heading", { name: expectTitle });
-      const city = screen.getByRole("button", { name: expectedButton });
+      const button = screen.getByRole("button", { name: expectedButton });
 
       expect(title).toBeInTheDocument();
-      expect(city).toBeInTheDocument();
+      expect(button).toBeInTheDocument();
     });
   });
 });
