@@ -1,7 +1,14 @@
 import axios from "axios";
 import { newPlaceMock, placesMock } from "../../mocks/placesMocks";
-import { addPlaceActionCreator } from "../reducers/features/placesSlice/placesSlice";
-import { addPlaceThunk, loadPlacesThunk } from "./placesThunks";
+import {
+  addPlaceActionCreator,
+  deletePlaceActionCreator,
+} from "../reducers/features/placesSlice/placesSlice";
+import {
+  addPlaceThunk,
+  deletePlaceThunk,
+  loadPlacesThunk,
+} from "./placesThunks";
 
 describe("Given a loadPlacesThunk middleware", () => {
   describe("When it's called with a token", () => {
@@ -67,6 +74,25 @@ describe("Given a addPlaceThunk middleware", () => {
       axios.post = jest.fn().mockResolvedValue({ data: placesMock[0] });
 
       const thunk = addPlaceThunk(newPlaceMock);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+});
+
+describe("Given a deletePlaceThunk middleware", () => {
+  describe("When it's called with an Id", () => {
+    test("Then it should call the dispatch with the delete action with the place Id received", async () => {
+      const id = "ejsd02449b";
+      const dispatch = jest.fn();
+      const action = deletePlaceActionCreator(id);
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      axios.delete = jest.fn().mockResolvedValue({});
+
+      const thunk = deletePlaceThunk(id);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(action);
