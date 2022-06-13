@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import HostForm from "./HostForm";
@@ -50,9 +51,11 @@ describe("Given a HostForm component", () => {
     },
     reducers: {},
   });
+
   const mockStore = configureStore({
     reducer: { user: userMockSlice.reducer },
   });
+
   describe("When it's invoked", () => {
     test("Then it should return the expected radio button 'Apartment'", () => {
       render(
@@ -85,6 +88,38 @@ describe("Given a HostForm component", () => {
       const selects = screen.getAllByRole("combobox");
       expect(inputs).toHaveLength(expectedNumberOfInputs);
       expect(selects).toHaveLength(expectNumberOfSelects);
+    });
+  });
+
+  describe("When it's invoked with all the fields filled and user click the 'Save' button", () => {
+    test("Then the dispatch with the setFormData should be invoked", () => {
+      render(
+        <BrowserRouter>
+          <Provider store={mockStore}>
+            <HostForm />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const inputs = screen.getAllByRole("textbox");
+      const category = screen.getByLabelText("Category");
+      const city = screen.getByLabelText("City");
+      const country = screen.getByLabelText("Country");
+      const placeType = screen.getByLabelText("Place type");
+
+      const button = screen.getByRole("button", { name: "Save" });
+
+      inputs.forEach((input) => {
+        userEvent.type(input, "test");
+      });
+
+      userEvent.selectOptions(category, "Beach");
+      userEvent.selectOptions(city, "Barcelona");
+      userEvent.selectOptions(country, "Spain");
+      userEvent.selectOptions(placeType, "House");
+      userEvent.click(button);
+
+      expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });
