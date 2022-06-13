@@ -38,7 +38,7 @@ describe("Given an App component", () => {
     });
 
     test("Then it should display 1 link 'Language and region'", () => {
-      const expectedNumberOfPlaces = 1;
+      const expectedNumberOfPlaces = 2;
 
       render(
         <BrowserRouter>

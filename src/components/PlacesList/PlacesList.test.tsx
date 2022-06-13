@@ -8,7 +8,7 @@ import PlacesList from "./PlacesList";
 describe("Given a PlacesList component", () => {
   describe("When it's rendered with a list of 1 place", () => {
     test("Then it should return", () => {
-      const expectedNumberOfPlaces = 1;
+      const expectedNumberOfPlaces = 2;
 
       render(
         <BrowserRouter>
