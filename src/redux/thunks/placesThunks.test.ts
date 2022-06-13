@@ -131,4 +131,17 @@ describe("Given a updatePlaceThunk middleware", () => {
       expect(dispatch).toHaveBeenCalledWith(action);
     });
   });
+
+  describe("when it's called with no token", () => {
+    test("Then it should not call the dispatch function", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("");
+
+      const thunk = updatePlaceThunk(placesMock[0].creator, newPlaceMock);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
 });
