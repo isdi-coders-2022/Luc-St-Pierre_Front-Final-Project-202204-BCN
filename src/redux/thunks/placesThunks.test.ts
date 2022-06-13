@@ -113,6 +113,20 @@ describe("Given a deletePlaceThunk middleware", () => {
       expect(dispatch).toHaveBeenCalledWith(action);
     });
   });
+
+  describe("when it's called with an placeId with no token", () => {
+    test("Then it should not call the dispatch function", async () => {
+      const id = "222";
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("");
+
+      const thunk = deletePlaceThunk(id);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
 });
 
 describe("Given a updatePlaceThunk middleware", () => {

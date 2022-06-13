@@ -52,14 +52,17 @@ export const addPlaceThunk =
 
 export const deletePlaceThunk =
   (placeId: string) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
     try {
-      setLoadingOn();
-      await axios.delete(`${baseUrl}hosts/places/${placeId}`, {
-        headers: { Authorization: `Bearer ${localStorage.token}` },
-      });
+      if (token) {
+        setLoadingOn();
+        await axios.delete(`${baseUrl}hosts/places/${placeId}`, {
+          headers: { Authorization: `Bearer ${localStorage.token}` },
+        });
 
-      dispatch(deletePlaceActionCreator(placeId));
-      setLoadingOffWithMessage("Place deleted successfully", false);
+        dispatch(deletePlaceActionCreator(placeId));
+        setLoadingOffWithMessage("Place deleted successfully", false);
+      }
     } catch {
       setLoadingOffWithMessage("Error while creating a new place", true);
     }
