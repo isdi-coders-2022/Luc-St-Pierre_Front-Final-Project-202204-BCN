@@ -42,7 +42,7 @@ const App = () => {
     <>
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<Navigate to="/user/login" />} />
+        <Route path="/" element={<Navigate to="/hosts/home" />} />
         <Route
           path="/user/login"
           element={
@@ -63,11 +63,9 @@ const App = () => {
         <Route
           path="/hosts/home"
           element={
-            <Authenticated>
-              <Layout>
-                <HomePage />
-              </Layout>
-            </Authenticated>
+            <Layout>
+              <HomePage />
+            </Layout>
           }
         />
 

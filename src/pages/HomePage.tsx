@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import Pagination from "../components/Pagination/Pagination";
 import PlacesList from "../components/PlacesList/PlacesList";
 import MapLeaflet from "../components/MapLeaflet/MapLeaflet";
 
@@ -13,11 +12,9 @@ function HomePage() {
   const dispatch = useAppDispatch();
   const { places } = useAppSelector((state) => state.places);
 
-  const token = localStorage.getItem("token");
-
   useEffect(() => {
-    dispatch(loadPlacesThunk(token as string));
-  }, [dispatch, token]);
+    dispatch(loadPlacesThunk());
+  }, [dispatch]);
 
   return (
     <div>
@@ -27,7 +24,6 @@ function HomePage() {
         <PlacesList places={places} />
       )}
 
-      <Pagination />
       <div className="fixed w-full left-0 right-0 bottom-0 z-50 mb-24">
         <div className="flex justify-center">
           <button

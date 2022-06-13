@@ -28,7 +28,7 @@ const paginationSlice = createSlice({
       ...places,
       currentPage: 1,
     }),
-    setPagination: (places): IStatePlaces => ({
+    setPerPageCount: (places): IStatePlaces => ({
       ...places,
       perPageCount: places.perPageCount + 8,
     }),
@@ -44,7 +44,7 @@ export const {
   setIncrementPage: setIncrementPageActionCreator,
   setDecrementPage: setDecrementPageActionCreator,
   resetCurrentPage: resetCurrentPageActionCreator,
-  setPagination: setPaginationActionCreator,
+  setPerPageCount: setPerPageCountActionCreator,
   resetPagination: resetPaginationActionCreator,
 } = paginationSlice.actions;
 

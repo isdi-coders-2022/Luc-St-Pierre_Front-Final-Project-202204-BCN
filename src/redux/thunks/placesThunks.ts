@@ -14,22 +14,17 @@ import { AppDispatch } from "../store/store";
 
 const baseUrl = process.env.REACT_APP_API_URL;
 
-export const loadPlacesThunk =
-  (token: string) => async (dispatch: AppDispatch) => {
-    try {
-      const {
-        data: { places },
-      } = await axios.get<getAllPlacesResponse>(`${baseUrl}hosts/places`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+export const loadPlacesThunk = () => async (dispatch: AppDispatch) => {
+  try {
+    const {
+      data: { places },
+    } = await axios.get<getAllPlacesResponse>(`${baseUrl}hosts/places`);
 
-      dispatch(loadPlacesActionCreator(places));
-    } catch (error: any) {
-      return error.message;
-    }
-  };
+    dispatch(loadPlacesActionCreator(places));
+  } catch (error: any) {
+    return error.message;
+  }
+};
 
 export const addPlaceThunk =
   (placeData: any) => async (dispatch: AppDispatch) => {
@@ -43,7 +38,7 @@ export const addPlaceThunk =
         setLoadingOffWithMessage("Place created successfully", false);
 
         dispatch(addPlaceActionCreator(data));
-        dispatch(loadPlacesThunk(localStorage.token));
+        // dispatch(loadPlacesThunk());
       }
     } catch {
       setLoadingOffWithMessage("Error while creating a new place", true);
