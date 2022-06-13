@@ -36,21 +36,6 @@ describe("Given an App component", () => {
 
       expect(expectedText).toBeInTheDocument();
     });
-
-    test("Then it should display 1 link 'Language and region'", () => {
-      const expectedNumberOfPlaces = 2;
-
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <PlacesList places={placesMock} />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const listElements = screen.getAllByRole("listitem");
-      expect(listElements).toHaveLength(expectedNumberOfPlaces);
-    });
   });
 
   describe("When it's invoked with a login page and a token in the local storage", () => {

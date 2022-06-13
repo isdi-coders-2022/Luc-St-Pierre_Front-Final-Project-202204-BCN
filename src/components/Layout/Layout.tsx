@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useAppSelector } from "../../redux/store/hooks";
 import Categories from "../Categories/Categories";
 import Navigation from "../Navigation/Navigation";
@@ -12,6 +12,7 @@ const Layout = ({ children }: Props): JSX.Element => {
   const { userData } = useAppSelector((state) => state.user);
   const { places } = useAppSelector((state) => state.places);
   const location = useLocation();
+  const { placeId } = useParams();
 
   return (
     <>
@@ -26,7 +27,11 @@ const Layout = ({ children }: Props): JSX.Element => {
       >
         {children}
       </div>
-      <Pagination places={places} />
+      {location.pathname === `/places/${placeId}` ? (
+        ""
+      ) : (
+        <Pagination places={places} />
+      )}
     </>
   );
 };

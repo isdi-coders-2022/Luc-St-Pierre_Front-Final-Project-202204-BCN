@@ -56,25 +56,6 @@ describe("Given a Navigation component", () => {
 
       expect(expectedLinks[0]).toBeInTheDocument();
     });
-
-    test("Then it should display 1 button 'Language and region'", () => {
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <Layout>
-              <HomePage />
-            </Layout>
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const expectedLinks = screen.queryAllByRole("link");
-      userEvent.click(expectedLinks[0]);
-
-      const SignUp = screen.getAllByText("Open user menu");
-
-      expect(SignUp[0]).toBeInTheDocument();
-    });
   });
 
   test("Then it should display the menu items button", () => {

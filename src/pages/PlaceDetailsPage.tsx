@@ -106,7 +106,7 @@ const PlaceDetailsPage = () => {
         </div>
       </div>
 
-      <div className="flex-1 flex items-stretch pt-12">
+      <div className="flex-1 flex items-stretch pt-12 pb-8">
         <main className="flex-1 w-[58.33333%] divide-y divide-solid">
           <section className="relative flex-1 flex flex-col lg:order-last pb-8">
             <div className="h-full w-full flex items-center justify-between">
