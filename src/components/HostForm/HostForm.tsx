@@ -148,7 +148,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                       htmlFor="address"
                       className="block text-base font-light text-[#222222]"
                     >
-                      address
+                      Address
                     </label>
                     <input
                       type="text"
@@ -277,7 +277,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                       htmlFor="price"
                       className="block text-base font-light text-[#222222]"
                     >
-                      price
+                      Price
                     </label>
                     <input
                       type="text"
@@ -359,16 +359,20 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   </div>
 
                   <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                    <label htmlFor="image" className="">
-                      place images
+                    <label
+                      htmlFor="image"
+                      className="block text-base font-light text-[#222222]"
+                    >
+                      Upload images
                     </label>
-                    <div className="mt-1">
+
+                    <div className="mt-2">
                       <input
                         id="image"
                         onChange={handleImageInputChange}
                         accept="image/*"
                         type="file"
-                        className="appearance-none block w-full px-3 py-3.5 rounded-md focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                        className="bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       />
                     </div>
                   </div>
