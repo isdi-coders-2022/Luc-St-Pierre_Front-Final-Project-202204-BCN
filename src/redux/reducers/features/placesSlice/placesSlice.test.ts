@@ -1,8 +1,12 @@
 import { placesMock } from "../../../../mocks/placesMocks";
-import placesReducer, { loadPlacesActionCreator } from "./placesSlice";
+
+import placesReducer, {
+  loadPlacesActionCreator,
+  addPlaceActionCreator,
+} from "./placesSlice";
 
 describe("Given a placesReducer reducer", () => {
-  describe("When it's invoked with an unknown actin and an initial state", () => {
+  describe("When it's invoked with an unknown action and an initial state", () => {
     test("Then it should return the same initial state", async () => {
       const action = {
         type: "places/unknownAction",
@@ -35,6 +39,24 @@ describe("Given a placesReducer reducer", () => {
       const { places } = placesReducer(initialState, action);
 
       expect(places).toEqual(placesMock);
+    });
+  });
+
+  describe("When it receives an initial state with a new place and a addPlace action as a payload", () => {
+    test("Then it should return a new places state with the new place added", async () => {
+      const expectedLength = 1;
+      const action = addPlaceActionCreator(placesMock[0]);
+
+      const initialState = {
+        places: [],
+        pages: 0,
+        currentPage: 1,
+        perPageCount: 8,
+      };
+
+      const { places } = placesReducer(initialState, action);
+
+      expect(places).toHaveLength(expectedLength);
     });
   });
 });
