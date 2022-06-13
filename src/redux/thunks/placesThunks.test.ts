@@ -1,5 +1,16 @@
 import axios from "axios";
-import { loadPlacesThunk } from "./placesThunks";
+import { newPlaceMock, placesMock } from "../../mocks/placesMocks";
+import {
+  addPlaceActionCreator,
+  deletePlaceActionCreator,
+  updatePlaceActionCreator,
+} from "../reducers/features/placesSlice/placesSlice";
+import {
+  addPlaceThunk,
+  deletePlaceThunk,
+  loadPlacesThunk,
+  updatePlaceThunk,
+} from "./placesThunks";
 
 describe("Given a loadPlacesThunk middleware", () => {
   describe("When it's called with a token", () => {
@@ -47,6 +58,101 @@ describe("Given a loadPlacesThunk middleware", () => {
       const token = "token";
 
       const thunk = loadPlacesThunk(token);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a addPlaceThunk middleware", () => {
+  describe("When it's called with a place to create", () => {
+    test("Then it should call the dispatch with the new created place", async () => {
+      const dispatch = jest.fn();
+      const action = addPlaceActionCreator(placesMock[0]);
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      axios.post = jest.fn().mockResolvedValue({ data: placesMock[0] });
+
+      const thunk = addPlaceThunk(newPlaceMock);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+
+  describe("when it's called with no token", () => {
+    test("Then it should not call the dispatch function", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("");
+
+      const thunk = addPlaceThunk(newPlaceMock);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a deletePlaceThunk middleware", () => {
+  describe("When it's called with an Id", () => {
+    test("Then it should call the dispatch with the delete action with the place Id received", async () => {
+      const id = "ejsd02449b";
+      const dispatch = jest.fn();
+      const action = deletePlaceActionCreator(id);
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      axios.delete = jest.fn().mockResolvedValue({});
+
+      const thunk = deletePlaceThunk(id);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+
+  describe("when it's called with an placeId with no token", () => {
+    test("Then it should not call the dispatch function", async () => {
+      const id = "222";
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("");
+
+      const thunk = deletePlaceThunk(id);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a updatePlaceThunk middleware", () => {
+  describe("When it's called with an Id to update a place", () => {
+    test("Then it should call the dispatch with the new place updated", async () => {
+      const dispatch = jest.fn();
+      const action = updatePlaceActionCreator(placesMock[0]);
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      axios.put = jest.fn().mockResolvedValue({ data: placesMock[0] });
+
+      const thunk = updatePlaceThunk(placesMock[0].creator, newPlaceMock);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+
+  describe("when it's called with no token", () => {
+    test("Then it should not call the dispatch function", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("");
+
+      const thunk = updatePlaceThunk(placesMock[0].creator, newPlaceMock);
       await thunk(dispatch);
 
       expect(dispatch).not.toHaveBeenCalled();

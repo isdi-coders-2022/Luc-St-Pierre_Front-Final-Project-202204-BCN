@@ -46,3 +46,27 @@ export const placesMock = [
     },
   },
 ];
+
+export const newPlaceMock = {
+  title: "Madrid",
+  description: "This is Madrid",
+  image: "abcd.jpeg",
+  address: "34 Llurai",
+  city: "Mongat",
+  placeType: "House",
+  placeDescription: "casa",
+  price: "86",
+  numberOfRooms: "3",
+  numberOfBeds: "2",
+  numberOfGuests: "3",
+  country: "Canada",
+  creator: "629b88b726b95714b076c40r",
+  rating: "4.88",
+  isListed: true,
+  kilometers: "343",
+  category: "National parks",
+  location: {
+    type: "Point",
+    coordinates: [41.3874, 2.1686],
+  },
+};

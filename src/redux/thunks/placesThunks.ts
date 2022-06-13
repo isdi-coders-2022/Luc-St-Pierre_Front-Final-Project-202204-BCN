@@ -52,16 +52,14 @@ export const addPlaceThunk =
 
 export const deletePlaceThunk =
   (placeId: string) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
     try {
-      const { status } = await axios.delete(
-        `${baseUrl}hosts/places/${placeId}`,
-        {
-          headers: { Authorization: `Bearer ${localStorage.token}` },
-        }
-      );
-
-      if (status === 200) {
+      if (token) {
         setLoadingOn();
+        await axios.delete(`${baseUrl}hosts/places/${placeId}`, {
+          headers: { Authorization: `Bearer ${localStorage.token}` },
+        });
+
         dispatch(deletePlaceActionCreator(placeId));
         setLoadingOffWithMessage("Place deleted successfully", false);
       }
