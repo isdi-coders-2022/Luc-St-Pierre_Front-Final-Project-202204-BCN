@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import Pagination from "../components/Pagination/Pagination";
 import PlacesList from "../components/PlacesList/PlacesList";
 import MapLeaflet from "../components/MapLeaflet/MapLeaflet";
 
