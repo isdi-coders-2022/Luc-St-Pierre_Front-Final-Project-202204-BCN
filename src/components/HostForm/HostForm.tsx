@@ -112,7 +112,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="title"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Title
                     </label>
@@ -129,7 +129,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="description"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Description
                     </label>
@@ -146,7 +146,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="address"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Address
                     </label>
@@ -163,7 +163,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="country"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Country
                     </label>
@@ -183,7 +183,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="city"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       City
                     </label>
@@ -203,7 +203,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="category"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Category
                     </label>
@@ -235,7 +235,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="placeType"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Place type
                     </label>
@@ -258,7 +258,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6">
                     <label
                       htmlFor="placeDescription"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Place description
                     </label>
@@ -275,7 +275,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-6 lg:col-span-1">
                     <label
                       htmlFor="price"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Price
                     </label>
@@ -293,7 +293,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3 lg:col-span-1">
                     <label
                       htmlFor="numberOfRooms"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Rooms
                     </label>
@@ -310,7 +310,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3 lg:col-span-1">
                     <label
                       htmlFor="numberOfBeds"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Beds
                     </label>
@@ -327,7 +327,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3 lg:col-span-1">
                     <label
                       htmlFor="numberOfGuests"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Guests
                     </label>
@@ -344,7 +344,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3 lg:col-span-1">
                     <label
                       htmlFor="kilometers"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Km's
                     </label>
@@ -361,7 +361,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                   <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                     <label
                       htmlFor="image"
-                      className="block text-base font-light text-[#222222]"
+                      className="block text-base font-normal text-[#222222]"
                     >
                       Upload images
                     </label>
