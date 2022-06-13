@@ -1,5 +1,7 @@
 import axios from "axios";
-import { loadPlacesThunk } from "./placesThunks";
+import { newPlaceMock, placesMock } from "../../mocks/placesMocks";
+import { addPlaceActionCreator } from "../reducers/features/placesSlice/placesSlice";
+import { addPlaceThunk, loadPlacesThunk } from "./placesThunks";
 
 describe("Given a loadPlacesThunk middleware", () => {
   describe("When it's called with a token", () => {
@@ -50,6 +52,24 @@ describe("Given a loadPlacesThunk middleware", () => {
       await thunk(dispatch);
 
       expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a addPlaceThunk middleware", () => {
+  describe("When it's called with a place to create", () => {
+    test("Then it should call the dispatch with the new created place", async () => {
+      const dispatch = jest.fn();
+      const action = addPlaceActionCreator(placesMock[0]);
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      axios.post = jest.fn().mockResolvedValue({ data: placesMock[0] });
+
+      const thunk = addPlaceThunk(newPlaceMock);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
     });
   });
 });
