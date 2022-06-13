@@ -140,19 +140,6 @@ const Navigation = ({
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="/notifications"
-                                  className={getClassNames(
-                                    active ? "bg-gray-100" : "",
-                                    "block px-4 py-3 text-sm text-[#222222]"
-                                  )}
-                                >
-                                  Notifications
-                                </a>
-                              )}
-                            </Menu.Item>
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
                                   href="/wishlists"
                                   className={getClassNames(
                                     active ? "bg-gray-100" : "",
