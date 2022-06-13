@@ -27,7 +27,7 @@ const PlaceDetailsPage = () => {
 
   return (
     <>
-      <section className="pt-6">
+      <section className="pt-24">
         <div>
           <h1 className="text-[#222222] text-[26px] font-semibold">
             {place.title}
