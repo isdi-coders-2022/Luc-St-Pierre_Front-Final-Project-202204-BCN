@@ -3,11 +3,13 @@ import { newPlaceMock, placesMock } from "../../mocks/placesMocks";
 import {
   addPlaceActionCreator,
   deletePlaceActionCreator,
+  updatePlaceActionCreator,
 } from "../reducers/features/placesSlice/placesSlice";
 import {
   addPlaceThunk,
   deletePlaceThunk,
   loadPlacesThunk,
+  updatePlaceThunk,
 } from "./placesThunks";
 
 describe("Given a loadPlacesThunk middleware", () => {
@@ -93,6 +95,24 @@ describe("Given a deletePlaceThunk middleware", () => {
       axios.delete = jest.fn().mockResolvedValue({});
 
       const thunk = deletePlaceThunk(id);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+});
+
+describe("Given a updatePlaceThunk middleware", () => {
+  describe("When it's called with an Id to update a place", () => {
+    test("Then it should call the dispatch with the new place updated", async () => {
+      const dispatch = jest.fn();
+      const action = updatePlaceActionCreator(placesMock[0]);
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      axios.put = jest.fn().mockResolvedValue({ data: placesMock[0] });
+
+      const thunk = updatePlaceThunk(placesMock[0].creator, newPlaceMock);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(action);
