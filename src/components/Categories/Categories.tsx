@@ -1,76 +1,28 @@
-const categories = [
-  {
-    title: "Islands",
-    image: "/assets/airbnb-icons/islands.jpeg",
-  },
-  {
-    title: "Beach",
-    image: "/assets/airbnb-icons/beach.jpeg",
-  },
-  {
-    title: "Amazing pools",
-    image: "/assets/airbnb-icons/Amazing-views.jpeg",
-  },
-  {
-    title: "OMG!",
-    image: "/assets/airbnb-icons/OMG!.jpeg",
-  },
-  {
-    title: "National parks",
-    image: "/assets/airbnb-icons/national-parks.jpeg",
-  },
-  {
-    title: "Chalets",
-    image: "/assets/airbnb-icons/Amazing-views.jpeg",
-  },
-  {
-    title: "Design",
-    image: "/assets/airbnb-icons/OMG!.jpeg",
-  },
-  {
-    title: "Arctic",
-    image: "/assets/airbnb-icons/national-parks.jpeg",
-  },
-  {
-    title: "Tiny homes",
-    image: "/assets/airbnb-icons/Tiny-homes.jpeg",
-  },
-  {
-    title: "Design",
-    image: "/assets/airbnb-icons/Treehouses.jpeg",
-  },
-  {
-    title: "Surfing",
-    image: "/assets/airbnb-icons/Surfing.jpeg",
-  },
-  {
-    title: "Amazing views",
-    image: "/assets/airbnb-icons/Amazing-views.jpeg",
-  },
-  {
-    title: "Lakefront",
-    image: "/assets/airbnb-icons/Lakefront.jpeg",
-  },
-  {
-    title: "Camping",
-    image: "/assets/airbnb-icons/Camping.jpeg",
-  },
-  {
-    title: "Shared homes",
-    image: "/assets/airbnb-icons/Shared-homes.jpeg",
-  },
-];
+type CategoriesProps<T> = {
+  categories: Readonly<T[]>;
+  selectedCategory?: Readonly<T>;
+  onSelectCategory: (category: T) => void;
+};
 
-const Categories = () => {
+const Categories = <
+  T extends {
+    title: string;
+    image: string;
+  }
+>(
+  props: CategoriesProps<T>
+) => {
+  const { categories, onSelectCategory } = props;
   return (
     <div className="absolute right-0 left-0 top-[5.5rem] bg-white shadow z-[99]">
       <div className="flex items-center justify-between max-w-full sm:px-6 md:px-10 xl:px-20">
-        <div className="flex justify-between h-[78px] max-w-[1440px] space-x-10">
+        <div className="flex justify-between h-[78px] max-w-[1440px] space-x-10 overflow-x-auto">
           {categories.map((category, index) => {
             return (
               <button
                 key={index}
-                className="flex flex-col items-center justify-center pt-1"
+                className="flex flex-col items-center flex-shrink-0 justify-center pt-1"
+                onClick={() => onSelectCategory(category)}
               >
                 <span className="flex flex-col justify-center items-center">
                   <img

@@ -8,6 +8,7 @@ export interface IState {
 }
 
 export interface IUser {
+  id: string;
   username: string;
   name: string;
   image: string;

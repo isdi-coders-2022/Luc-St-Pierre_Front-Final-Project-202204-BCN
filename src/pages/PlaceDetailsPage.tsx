@@ -8,7 +8,9 @@ const PlaceDetailsPage = () => {
   const { placeId } = useParams();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { place } = useAppSelector((state) => state);
+  const place = useAppSelector((state) => state.place);
+  const userId = useAppSelector((state) => state.user.userData?.id);
+  const userImage = useAppSelector((state) => state.user.userData?.image);
 
   useEffect(() => {
     dispatch(loadPlaceThunk(placeId as string));
@@ -24,6 +26,25 @@ const PlaceDetailsPage = () => {
     event.stopPropagation();
     navigate(`/become-a-host/${placeId}`);
   };
+
+  const isUserPlaceOwner = place?.creator === userId;
+
+  const fillImagePlaceholders = (images: { downloadURL: string }[]) => {
+    const total = 4;
+    const remaining = total - images.length;
+    if (remaining === 0) return images;
+    const imgs = [...images];
+    for (let i = 0; i < remaining; i++) {
+      imgs.push({
+        downloadURL:
+          "https://firebasestorage.googleapis.com/v0/b/airbnb-eed3e.appspot.com/o/1654881776507-design_photo_1_2.webp?alt=media&token=0e4f42d3-29e3-4f92-817e-0f6827ad9d46",
+      });
+    }
+
+    return imgs;
+  };
+
+  const images = fillImagePlaceholders(place.image.slice(1, 5));
 
   return (
     <>
@@ -58,51 +79,27 @@ const PlaceDetailsPage = () => {
         </div>
       </section>
 
-      <div className="mt-6 max-w-7xl grid grid-cols-4 gap-x-2">
-        <div className="max-h-[413px] col-span-2 aspect-w-3 aspect-h-8 overflow-hidden block rounded-tl-lg rounded-bl-lg">
+      <div className="mt-6 max-w-7xl grid grid-cols-12 gap-2">
+        <div className="max-h-[413px] col-span-12 md:col-span-6 aspect-w-3 aspect-h-8 overflow-hidden block rounded-tl-lg rounded-bl-lg">
           <img
-            src={
-              place.imageBackup
-                ? place.imageBackup
-                : "/images/generic-record.png"
-            }
+            src={place.image[0]?.downloadURL || "/images/generic-record.png"}
             alt="Two each of gray, white, and black shirts laying flat."
             className="w-full h-full object-center object-cover"
           />
         </div>
 
-        <div className="col-start-3 grid grid-cols-1 gap-y-2">
-          <div className="aspect-w-3 aspect-h-2 overflow-hidden">
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/airbnb-eed3e.appspot.com/o/1654881776507-design_photo_1_2.webp?alt=media&token=0e4f42d3-29e3-4f92-817e-0f6827ad9d46"
-              alt="Model wearing plain black basic tee."
-              className="w-full h-full object-center object-cover"
-            />
-          </div>
-          <div className="aspect-w-3 aspect-h-2 overflow-hidden">
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/airbnb-eed3e.appspot.com/o/1654881776507-design_photo_1_2.webp?alt=media&token=0e4f42d3-29e3-4f92-817e-0f6827ad9d46"
-              alt="Model wearing plain gray basic tee."
-              className="w-full h-full object-center object-cover"
-            />
-          </div>
-        </div>
-
-        <div className="col-start-4 grid grid-cols-1 gap-y-2">
-          <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-tr-lg">
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/airbnb-eed3e.appspot.com/o/1654881776507-design_photo_1_2.webp?alt=media&token=0e4f42d3-29e3-4f92-817e-0f6827ad9d46"
-              alt="Model wearing plain black basic tee."
-              className="w-full h-full object-center object-cover"
-            />
-          </div>
-          <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-br-lg">
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/airbnb-eed3e.appspot.com/o/1654881776507-design_photo_1_2.webp?alt=media&token=0e4f42d3-29e3-4f92-817e-0f6827ad9d46"
-              alt="Model wearing plain gray basic tee."
-              className="w-full h-full object-center object-cover"
-            />
-          </div>
+        <div className="col-span-12 md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {images.map((image, idx) => {
+            return (
+              <div key={idx} className="aspect-w-3 aspect-h-2 overflow-hidden">
+                <img
+                  src={image?.downloadURL}
+                  alt="Model wearing plain black basic tee."
+                  className="w-full h-full object-center object-cover"
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -169,7 +166,7 @@ const PlaceDetailsPage = () => {
             <div className="flex items-center">
               <div className="pr-6">
                 <div className="mb-4">
-                  <img src="/assets/aircover.webp" alt="aircover" width={123} />
+                  <img src={userImage} alt="aircover" width={123} />
                 </div>
                 <div className="block rounded w-full text-[#222222]">
                   <p className="text-base">
@@ -193,32 +190,37 @@ const PlaceDetailsPage = () => {
                     <span className="ml-1 font-normal text-base">night</span>
                   </span>
 
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 cursor-pointer hover:text-[#484848]"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    onClick={goToEditForm}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                    />
-                  </svg>
+                  {isUserPlaceOwner ? (
+                    <button onClick={goToEditForm}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 cursor-pointer hover:text-[#484848]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        />
+                      </svg>
+                    </button>
+                  ) : null}
                 </div>
 
-                <div className="mt-6">
-                  <button
-                    type="submit"
-                    className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#DE3151] hover:bg-[#f43054] focus:outline-none"
-                    onClick={deletePlace}
-                  >
-                    Delete
-                  </button>
-                </div>
+                {isUserPlaceOwner ? (
+                  <div className="mt-6">
+                    <button
+                      type="submit"
+                      className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#DE3151] hover:bg-[#f43054] focus:outline-none"
+                      onClick={deletePlace}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ) : null}
               </div>
             </div>
           </section>

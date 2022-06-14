@@ -8,14 +8,14 @@ describe("Given a PlaceDetailsPage component", () => {
   describe("When invoked with the place 'Madrid'", () => {
     test("Then it should render an place Card", () => {
       const expectTitle = "House near beaches";
-      const expectedButton = "Delete";
+      const expectedImageNamef = "aircover";
 
       const loadPlacesAction = {
         type: "place/loadPlace",
         payload: {
           title: "House near beaches",
           description: "This is a description",
-          image: "abcd.jpeg",
+          image: [{ downloadURL: "abcd.jpeg" }],
           address: "34 Llurai",
           city: "Mongat",
           placeType: "House",
@@ -42,10 +42,10 @@ describe("Given a PlaceDetailsPage component", () => {
       );
 
       const title = screen.getByRole("heading", { name: expectTitle });
-      const button = screen.getByRole("button", { name: expectedButton });
+      const img = screen.getByRole("img", { name: expectedImageNamef });
 
       expect(title).toBeInTheDocument();
-      expect(button).toBeInTheDocument();
+      expect(img).toBeInTheDocument();
     });
   });
 });
