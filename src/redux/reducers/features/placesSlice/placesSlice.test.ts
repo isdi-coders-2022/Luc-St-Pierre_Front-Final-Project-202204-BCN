@@ -85,7 +85,7 @@ describe("Given a placesReducer reducer", () => {
       const updatedNote = {
         title: "Canada places",
         description: "This is a description",
-        image: "abcd.jpeg",
+        image: [{ downloadURL: "abcd.jpeg" }],
         address: "34 Llurai",
         city: "Mongat",
         placeType: "House",

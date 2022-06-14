@@ -2,7 +2,7 @@ export const placesMock = [
   {
     title: "House near beaches",
     description: "This is a description",
-    image: "abcd.jpeg",
+    image: [{ downloadURL: "abcd.jpeg" }],
     address: "34 Llurai",
     city: "Mongat",
     placeType: "House",
@@ -25,7 +25,7 @@ export const placesMock = [
   {
     title: "House near beaches",
     description: "This is a description",
-    image: "abcd.jpeg",
+    image: [{ downloadURL: "abcd.jpeg" }],
     address: "34 Llurai",
     city: "Mongat",
     placeType: "House",
@@ -50,7 +50,7 @@ export const placesMock = [
 export const newPlaceMock = {
   title: "Madrid",
   description: "This is Madrid",
-  image: "abcd.jpeg",
+  image: [{ downloadURL: "abcd.jpeg" }],
   address: "34 Llurai",
   city: "Mongat",
   placeType: "House",

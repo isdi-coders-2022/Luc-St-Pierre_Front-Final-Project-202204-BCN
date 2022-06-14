@@ -4,7 +4,7 @@ import { IPlace } from "../../../../types/places.types";
 const initialState: IPlace = {
   title: "",
   description: "",
-  image: "",
+  image: [],
   imageBackup: "",
   address: "",
   city: "",

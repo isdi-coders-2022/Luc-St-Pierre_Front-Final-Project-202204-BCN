@@ -47,7 +47,7 @@ const Place = ({
           />
         </svg>
         <img
-          src={image ? imageBackup : "/images/generic-place.png"}
+          src={image[0].downloadURL || "/images/generic-place.png"}
           alt={title}
           className="w-full h-full object-center object-cover lg:w-full lg:h-full"
         />

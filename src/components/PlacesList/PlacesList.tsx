@@ -33,7 +33,7 @@ const PlacesList = ({ places }: Props) => {
 
     return places.slice(start, end);
   }, [currentPage, places, selectedCategory]);
-  console.log({ pagedPlaces });
+
   const onSetSelectedCategory = (category: Category) => {
     console.log("on set selected", category);
     setCurrentPage(1);
