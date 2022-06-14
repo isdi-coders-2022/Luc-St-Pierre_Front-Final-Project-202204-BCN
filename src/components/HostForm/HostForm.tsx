@@ -8,10 +8,6 @@ import {
 import { loadPlaceThunk } from "../../redux/thunks/placeThunk";
 
 import { IRegisterPlaceForm } from "../../types/places.types";
-import {
-  setLoadingOffWithMessage,
-  setLoadingOn,
-} from "../../utils/modal/modal";
 
 interface Props {
   placeId?: string;
@@ -97,7 +93,6 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    setLoadingOn();
 
     const newFormData = new FormData();
     newFormData.append("title", formData.title);
