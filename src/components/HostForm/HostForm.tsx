@@ -170,8 +170,8 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
 
       navigate("/hosts/home");
       setFormData(initialForm);
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      return error.message;
     }
   };
 
