@@ -42,7 +42,7 @@ describe("Given a PlaceDetailsPage component", () => {
       );
 
       const title = screen.getByRole("heading", { name: expectTitle });
-      const image = screen.getByRole("image", { name: expectedImageName });
+      const image = screen.getByRole("img", { name: expectedImageName });
 
       expect(title).toBeInTheDocument();
       expect(image).toBeInTheDocument();
