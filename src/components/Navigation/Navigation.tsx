@@ -202,7 +202,7 @@ const Navigation = ({
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="/user/register"
+                                  href="/user/login"
                                   className={getClassNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
@@ -215,7 +215,7 @@ const Navigation = ({
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="/user/login"
+                                  href="/user/register"
                                   className={getClassNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
