@@ -4,10 +4,8 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
 import Layout from "./components/Layout/Layout";
 import HomePage from "./pages/HomePage";
-import PlacesList from "./components/PlacesList/PlacesList";
 
 import { localStorageMock } from "./mocks/localStorageMock";
-import { placesMock } from "./mocks/placesMocks";
 
 const getLocalStorage = localStorageMock;
 

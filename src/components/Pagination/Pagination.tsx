@@ -1,51 +1,25 @@
-import { useEffect } from "react";
-import {
-  setDecrementPageActionCreator,
-  setIncrementPageActionCreator,
-  setPageCountActionCreator,
-  // setPerPageCountActionCreator,
-} from "../../redux/reducers/features/paginationSlice/paginationSlice";
-// import { loadPlacesActionCreator } from "../../redux/reducers/features/placesSlice/placesSlice";
-import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
-import { IPlace } from "../../types/places.types";
+type PaginationProps<T> = {
+  items: T[];
+  onNext: (page: number) => void;
+  onPrev: (page: number) => void;
+  currentPage: number;
+  pages: number;
+  perPageCount: number;
+};
 
-interface Props {
-  places: IPlace[];
-}
+const Pagination = <T extends unknown>(props: PaginationProps<T>) => {
+  const { pages, currentPage, onPrev, onNext, items } = props;
 
-const Pagination = ({ places }: Props) => {
-  const dispatch = useAppDispatch();
-
-  let { pages, currentPage, perPageCount } = useAppSelector(
-    (state) => state.pagination
-  );
-
-  const totalPlaces = places.length;
-
-  useEffect(() => {
-    let numberOfPages = Math.floor(
-      (places.length + perPageCount - 1) / perPageCount
-    );
-
-    dispatch(setPageCountActionCreator(numberOfPages));
-
-    // let start = pages * perPageCount - (perPageCount - 1);
-    // const partialData = places.slice(pages, pages + perPageCount);
-    // let items = places.slice(pages * perPageCount, (pages + 1) * perPageCount);
-
-    // pagesRef = Math.min(start + perPageCount - 1, totalPlaces);
-
-    // dispatch(loadPlacesActionCreator(items));
-  }, [dispatch, pages, perPageCount, places, totalPlaces]);
+  const totalItems = items.length;
 
   const nextPage = () => {
-    // dispatch(setPageCountActionCreator());
-    dispatch(setIncrementPageActionCreator());
+    if (currentPage === pages) return;
+    onNext(currentPage + 1);
   };
 
   const previousPage = () => {
-    // dispatch(setPageCountActionCreator());
-    dispatch(setDecrementPageActionCreator());
+    if (currentPage === 1) return;
+    onPrev(currentPage - 1);
   };
 
   return (
@@ -57,7 +31,7 @@ const Pagination = ({ places }: Props) => {
         <p className="text-sm text-[#222222]">
           Showing <span className="font-medium">{currentPage}</span> to{" "}
           <span className="font-medium">{pages}</span> of{" "}
-          <span className="font-medium">{totalPlaces}</span> results
+          <span className="font-medium">{totalItems}</span> results
         </p>
       </div>
       <div className="flex-1 flex justify-between sm:justify-end">
