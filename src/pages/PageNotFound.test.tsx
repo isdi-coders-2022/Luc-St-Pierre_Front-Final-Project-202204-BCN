@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { mockNavigate } from "../mocks/mockHooks";
@@ -28,6 +29,24 @@ describe("Given a PageNotFound component", () => {
 
       expect(text1).toBeInTheDocument();
       expect(text2).toBeInTheDocument();
+    });
+  });
+
+  describe("When it's invoked and user click on the 'Go back home' button", () => {
+    test("Then the useNavigate hook should be called", () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <PageNotFound />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const button = screen.getByRole("button", { name: "Go back home" });
+
+      userEvent.click(button);
+
+      expect(mockNavigate).toHaveBeenCalled();
     });
   });
 });
