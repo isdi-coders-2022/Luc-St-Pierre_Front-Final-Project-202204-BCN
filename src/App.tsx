@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
 import { IDecodedToken, IState } from "./types/user.types";
 import PlaceDetailsPage from "./pages/PlaceDetailsPage";
 import { logInActionCreator } from "./redux/reducers/features/userSlice/userSlice";
+import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -106,6 +107,7 @@ const App = () => {
             </Authenticated>
           }
         />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </>
   );
