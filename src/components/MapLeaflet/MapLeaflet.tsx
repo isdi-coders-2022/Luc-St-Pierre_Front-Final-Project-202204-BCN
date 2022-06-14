@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { IPlace } from "../../types/places.types";
 import Categories from "../Categories/Categories";
+import Pagination from "../Pagination/Pagination";
 import { categories } from "../PlacesList/categoryOptions";
 import "./MapLeaflet.css";
 
@@ -107,6 +108,15 @@ const MapLeaflet = ({ places }: Props) => {
           );
         })}
       </MapContainer>
+
+      <Pagination
+        items={places}
+        pages={numberOfPages}
+        perPageCount={perPageCount}
+        currentPage={currentPage}
+        onNext={setCurrentPage}
+        onPrev={setCurrentPage}
+      />
     </>
   );
 };
