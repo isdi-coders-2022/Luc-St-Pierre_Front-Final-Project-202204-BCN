@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
 import { deletePlaceThunk } from "../redux/thunks/placesThunks";
 import { loadPlaceThunk } from "../redux/thunks/placeThunk";
-import { IPlace } from "../types/places.types";
 
 const PlaceDetailsPage = () => {
   const { placeId } = useParams();
@@ -31,7 +30,6 @@ const PlaceDetailsPage = () => {
   const isUserPlaceOwner = place?.creator === userId;
 
   const fillImagePlaceholders = (images: { downloadURL: string }[]) => {
-    console.log("check img", images);
     const total = 4;
     const remaining = total - images.length;
     if (remaining === 0) return images;
@@ -93,7 +91,7 @@ const PlaceDetailsPage = () => {
         <div className="col-span-12 md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-2">
           {images.map((image, idx) => {
             return (
-              <div className="aspect-w-3 aspect-h-2 overflow-hidden" key={idx}>
+              <div key={idx} className="aspect-w-3 aspect-h-2 overflow-hidden">
                 <img
                   src={image?.downloadURL}
                   alt="Model wearing plain black basic tee."
