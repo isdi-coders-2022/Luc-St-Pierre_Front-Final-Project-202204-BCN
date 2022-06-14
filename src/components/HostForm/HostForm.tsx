@@ -18,6 +18,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [disableButton, setDisableButton] = useState<boolean>(false);
 
   const initialForm: IRegisterPlaceForm = {
     title: "",
@@ -39,6 +40,23 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
   };
 
   const [formData, setFormData] = useState<IRegisterPlaceForm>(initialForm);
+
+  useEffect(() => {
+    if (
+      formData.title !== "" &&
+      formData.description !== "" &&
+      formData.address !== "" &&
+      formData.placeDescription !== "" &&
+      formData.price !== "" &&
+      formData.numberOfBeds !== "" &&
+      formData.numberOfRooms !== "" &&
+      formData.numberOfGuests !== "" &&
+      formData.rating !== "" &&
+      formData.kilometers !== ""
+    ) {
+      setDisableButton(false);
+    }
+  }, [formData]);
 
   useEffect(() => {
     if (placeId) {
@@ -372,6 +390,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                         onChange={handleImageInputChange}
                         accept="image/*"
                         type="file"
+                        multiple
                         className="bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       />
                     </div>
@@ -384,9 +403,12 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
               >
                 <button
                   type="submit"
-                  className="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-base font-medium rounded-md focus:outline-none text-white bg-[#222222] hover:bg-black"
+                  className={`inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-base font-medium rounded-md focus:outline-none text-white bg-[#222222] hover:bg-black ${
+                    disableButton ? "disabled:opacity-25" : ""
+                  }`}
+                  disabled={disableButton ? true : false}
                 >
-                  Save
+                  {disableButton ? "Please fill all the info" : "Save"}
                 </button>
               </div>
             </div>
