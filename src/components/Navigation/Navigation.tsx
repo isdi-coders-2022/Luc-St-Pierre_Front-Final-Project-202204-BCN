@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
@@ -9,7 +8,7 @@ import { IUser } from "../../types/user.types";
 import { logOutActionCreator } from "../../redux/reducers/features/userSlice/userSlice";
 
 const Navigation = ({
-  userData: { username, image, imageBackup },
+  userData: { image, imageBackup },
 }: {
   userData: IUser;
 }): JSX.Element => {

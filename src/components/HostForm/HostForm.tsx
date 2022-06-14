@@ -161,8 +161,8 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
         ? dispatch(updatePlaceThunk(placeId, newFormData))
         : dispatch(addPlaceThunk(newFormData)));
 
-      // setFormData(initialForm);
       navigate("/hosts/home");
+      setFormData(initialForm);
     } catch (error) {
       console.error(error);
     }
@@ -217,14 +217,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                     >
                       Address
                     </label>
-                    {/* <input
-                      type="text"
-                      id="address"
-                      value={formData.address}
-                      onChange={handleChange}
-                      autoComplete="off"
-                      className="mt-1 appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
-                    /> */}
+
                     <Autocomplete
                       query={addressQuery}
                       setQuery={onChangeAddressQuery}
@@ -243,17 +236,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                     >
                       Country
                     </label>
-                    {/* <select
-                      id="country"
-                      value={formData.country}
-                      onChange={handleChange}
-                      autoComplete="off"
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] sm:text-sm"
-                    >
-                      <option>Canada</option>
-                      <option>Spain</option>
-                      <option>France</option>
-                    </select> */}
+
                     <input
                       id="country"
                       value={formData.country}
