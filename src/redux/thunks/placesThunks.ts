@@ -38,7 +38,6 @@ export const addPlaceThunk =
         setLoadingOffWithMessage("Place created successfully", false);
 
         dispatch(addPlaceActionCreator(data));
-        // dispatch(loadPlacesThunk());
       }
     } catch {
       setLoadingOffWithMessage("Error while creating a new place", true);
