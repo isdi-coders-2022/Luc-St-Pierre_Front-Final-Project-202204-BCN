@@ -1,13 +1,14 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
+import { geocode, type GeocodeRequest } from "nominatim-browser";
 import {
   addPlaceThunk,
   updatePlaceThunk,
 } from "../../redux/thunks/placesThunks";
 import { loadPlaceThunk } from "../../redux/thunks/placeThunk";
-
-import { IRegisterPlaceForm } from "../../types/places.types";
+import Autocomplete from "../common/form/autocomplete/Autocomplete";
+import { IOpenStreetPlace, IRegisterPlaceForm } from "../../types/places.types";
 
 interface Props {
   placeId?: string;
@@ -40,6 +41,10 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
   };
 
   const [formData, setFormData] = useState<IRegisterPlaceForm>(initialForm);
+  const [addressQuery, setAddressQuery] = useState("");
+  const [addressSuggestions, setAddressSuggestions] = useState<
+    Array<IOpenStreetPlace>
+  >([]);
 
   useEffect(() => {
     if (
@@ -63,6 +68,45 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
       dispatch(loadPlaceThunk(placeId));
     }
   }, [dispatch, placeId]);
+
+  const searchAddressSuggestions = async (params: GeocodeRequest) => {
+    const response = await geocode({
+      ...params,
+      addressdetails: true,
+    });
+
+    setAddressSuggestions(response);
+  };
+
+  const onChangeAddressQuery = (address: string) => {
+    // const { city, country } = formData;
+    searchAddressSuggestions({
+      // city,
+      // country,
+      street: address,
+    });
+    setAddressQuery(address);
+  };
+
+  const onAddressChange = (address: IOpenStreetPlace) => {
+    const {
+      display_name,
+      lat,
+      lon,
+      address: { country, city, town, village },
+    } = address;
+
+    setFormData((formData) => ({
+      ...formData,
+      address: display_name,
+      location: {
+        type: "Point",
+        coordinates: [lat, lon],
+      },
+      city: city || town || village || formData.city,
+      country: country || formData.country,
+    }));
+  };
 
   const handleChange = (
     event:
@@ -91,32 +135,37 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
     });
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    try {
+      const newFormData = new FormData();
+      newFormData.append("title", formData.title);
+      newFormData.append("description", formData.description);
+      newFormData.append("address", JSON.stringify(formData.address));
+      newFormData.append("city", formData.city);
+      newFormData.append("placeType", formData.placeType);
+      newFormData.append("placeDescription", formData.placeDescription);
+      newFormData.append("price", formData.price);
+      newFormData.append("numberOfBeds", formData.numberOfBeds);
+      newFormData.append("numberOfRooms", formData.numberOfRooms);
+      newFormData.append("numberOfGuests", formData.numberOfGuests);
+      newFormData.append("country", formData.country);
+      newFormData.append("image", formData.image);
+      newFormData.append("rating", formData.rating);
+      newFormData.append("kilometers", formData.kilometers);
+      newFormData.append("category", formData.category);
+      newFormData.append("lat", String(formData.location.coordinates[0]));
+      newFormData.append("lon", String(formData.location.coordinates[1]));
 
-    const newFormData = new FormData();
-    newFormData.append("title", formData.title);
-    newFormData.append("description", formData.description);
-    newFormData.append("address", formData.address);
-    newFormData.append("city", formData.city);
-    newFormData.append("placeType", formData.placeType);
-    newFormData.append("placeDescription", formData.placeDescription);
-    newFormData.append("price", formData.price);
-    newFormData.append("numberOfBeds", formData.numberOfBeds);
-    newFormData.append("numberOfRooms", formData.numberOfRooms);
-    newFormData.append("numberOfGuests", formData.numberOfGuests);
-    newFormData.append("country", formData.country);
-    newFormData.append("image", formData.image);
-    newFormData.append("rating", formData.rating);
-    newFormData.append("kilometers", formData.kilometers);
-    newFormData.append("category", formData.category);
+      await (placeId
+        ? dispatch(updatePlaceThunk(placeId, newFormData))
+        : dispatch(addPlaceThunk(newFormData)));
 
-    placeId
-      ? dispatch(updatePlaceThunk(placeData.id as string, newFormData))
-      : dispatch(addPlaceThunk(newFormData));
-
-    setFormData(initialForm);
-    navigate("/hosts/home");
+      // setFormData(initialForm);
+      navigate("/hosts/home");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -168,13 +217,22 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                     >
                       Address
                     </label>
-                    <input
+                    {/* <input
                       type="text"
                       id="address"
                       value={formData.address}
                       onChange={handleChange}
                       autoComplete="off"
                       className="mt-1 appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] font-light sm:text-base placeholder-[#333333]"
+                    /> */}
+                    <Autocomplete
+                      query={addressQuery}
+                      setQuery={onChangeAddressQuery}
+                      selected={formData.address}
+                      setSelected={onAddressChange}
+                      options={addressSuggestions}
+                      keyExtractor={(item) => (item ? item.place_id : "")}
+                      renderItem={(item) => (item ? item.display_name : "")}
                     />
                   </div>
 
@@ -185,7 +243,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                     >
                       Country
                     </label>
-                    <select
+                    {/* <select
                       id="country"
                       value={formData.country}
                       onChange={handleChange}
@@ -195,7 +253,14 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                       <option>Canada</option>
                       <option>Spain</option>
                       <option>France</option>
-                    </select>
+                    </select> */}
+                    <input
+                      id="country"
+                      value={formData.country}
+                      onChange={handleChange}
+                      autoComplete="off"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] sm:text-sm"
+                    />
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">
@@ -205,17 +270,13 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                     >
                       City
                     </label>
-                    <select
+                    <input
                       id="city"
                       value={formData.city}
                       onChange={handleChange}
                       autoComplete="off"
                       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] sm:text-sm"
-                    >
-                      <option>Barcelona</option>
-                      <option>Madrid</option>
-                      <option>Girona</option>
-                    </select>
+                    />
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">

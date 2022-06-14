@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { IPlace } from "../../types/places.types";
 import "./MapLeaflet.css";
@@ -7,6 +8,12 @@ interface Props {
 }
 
 const MapLeaflet = ({ places }: Props) => {
+  console.log({ places });
+  const markers = useMemo(() => {
+    return places.filter((place) => place.location?.coordinates.length);
+  }, [places]);
+
+  console.log("markers?", markers);
   return (
     <MapContainer center={[50, 15]} zoom={3} scrollWheelZoom={true}>
       <TileLayer
@@ -14,11 +21,14 @@ const MapLeaflet = ({ places }: Props) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {places.map((place: IPlace, index) => (
-        <Marker key={index} position={[41.3874, 2.1686]}>
-          <Popup>A pretty CSS3 popup. Easily customizable.</Popup>
-        </Marker>
-      ))}
+      {markers.map((place: IPlace, index) => {
+        const [lat, lng] = place.location.coordinates as [number, number];
+        return (
+          <Marker key={index} position={[lat, lng]}>
+            <Popup>{place.address}</Popup>
+          </Marker>
+        );
+      })}
     </MapContainer>
   );
 };
