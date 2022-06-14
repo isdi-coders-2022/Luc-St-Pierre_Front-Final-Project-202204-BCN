@@ -4,6 +4,7 @@ import { logInActionCreator } from "../reducers/features/userSlice/userSlice";
 import { loginThunk } from "./userThunks";
 
 jest.mock("jwt-decode", () => () => ({
+  id: "1",
   username: "LearningX",
   name: "lucamino",
   email: "lucamino@gmail.com",

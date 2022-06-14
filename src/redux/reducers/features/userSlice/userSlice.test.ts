@@ -48,6 +48,7 @@ describe("Given a userSlice reducer", () => {
 
       const expectedState = {
         userData: {
+          id: "",
           username: "",
           name: "",
           image: "",
