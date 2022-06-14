@@ -10,12 +10,13 @@ describe("Given a PlaceDetailsPage component", () => {
       const expectTitle = "House near beaches";
       const expectedImageName = "aircover";
 
+
       const loadPlacesAction = {
         type: "place/loadPlace",
         payload: {
           title: "House near beaches",
           description: "This is a description",
-          image: "abcd.jpeg",
+          image: [{ downloadURL: "abcd.jpeg" }],
           address: "34 Llurai",
           city: "Mongat",
           placeType: "House",
@@ -46,6 +47,8 @@ describe("Given a PlaceDetailsPage component", () => {
 
       expect(title).toBeInTheDocument();
       expect(image).toBeInTheDocument();
+
+
     });
   });
 });

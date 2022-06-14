@@ -31,7 +31,9 @@ export interface IPlace {
   numberOfBeds: string;
   numberOfGuests: string;
   country: string;
-  image: string;
+  image: {
+    downloadURL: string;
+  }[];
   imageBackup?: string;
   rating: string;
   kilometers: string;
@@ -51,7 +53,7 @@ export interface IRegisterPlaceForm {
   numberOfBeds: string;
   numberOfGuests: string;
   country: string;
-  image: string | File;
+  image: string[] | File[];
   rating: string;
   kilometers: string;
   category: string;

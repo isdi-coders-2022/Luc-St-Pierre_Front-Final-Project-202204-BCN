@@ -33,7 +33,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
     numberOfBeds: "",
     numberOfGuests: "",
     country: "",
-    image: "",
+    image: [],
     rating: "",
     kilometers: "",
     category: "",
@@ -122,16 +122,21 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
 
   useEffect(() => {
     if (placeId) {
-      setFormData(placeData);
+      setFormData({
+        ...placeData,
+        image: placeData.image.map(({ downloadURL }) => downloadURL),
+      });
     }
   }, [placeData, placeId]);
 
   const handleImageInputChange = (
     event: ChangeEvent<HTMLInputElement>
   ): void => {
+    console.log("check", event.target.files);
+    const { files } = event.target;
     setFormData({
       ...formData,
-      image: event.target.files?.[0] as File,
+      image: files ? Array.from(files) : [],
     });
   };
 
@@ -150,7 +155,9 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
       newFormData.append("numberOfRooms", formData.numberOfRooms);
       newFormData.append("numberOfGuests", formData.numberOfGuests);
       newFormData.append("country", formData.country);
-      newFormData.append("image", formData.image);
+      formData.image.forEach((image) => {
+        newFormData.append("image", image);
+      });
       newFormData.append("rating", formData.rating);
       newFormData.append("kilometers", formData.kilometers);
       newFormData.append("category", formData.category);
