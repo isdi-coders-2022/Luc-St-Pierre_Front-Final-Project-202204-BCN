@@ -10,15 +10,21 @@ import {
   loadPlacesActionCreator,
   updatePlaceActionCreator,
 } from "../reducers/features/placesSlice/placesSlice";
+import {
+  setLoadingOffActionCreator,
+  setLoadingOnActionCreator,
+} from "../reducers/features/uiSlice/uiSlice";
 import { AppDispatch } from "../store/store";
 
 const baseUrl = process.env.REACT_APP_API_URL;
 
 export const loadPlacesThunk = () => async (dispatch: AppDispatch) => {
   try {
+    dispatch(setLoadingOnActionCreator());
     const {
       data: { places },
     } = await axios.get<getAllPlacesResponse>(`${baseUrl}hosts/places`);
+    dispatch(setLoadingOffActionCreator());
 
     dispatch(loadPlacesActionCreator(places));
   } catch (error: any) {

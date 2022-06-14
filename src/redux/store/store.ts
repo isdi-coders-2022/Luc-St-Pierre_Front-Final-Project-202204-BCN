@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import placeReducer from "../reducers/features/placesSlice/placeSlice";
 import placesReducer from "../reducers/features/placesSlice/placesSlice";
+import uiReducer from "../reducers/features/uiSlice/uiSlice";
 import userReducer from "../reducers/features/userSlice/userSlice";
 
 export const store = configureStore({
@@ -8,6 +9,7 @@ export const store = configureStore({
     user: userReducer,
     places: placesReducer,
     place: placeReducer,
+    ui: uiReducer,
   },
 });
 
