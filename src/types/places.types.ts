@@ -14,7 +14,7 @@ export interface IStatePlaces {
 
 export interface ILocation {
   type: string;
-  coordinates: number[];
+  coordinates: number[] | string[];
 }
 
 export interface IPlace {
@@ -60,4 +60,37 @@ export interface IRegisterPlaceForm {
 
 export interface getAllPlacesResponse {
   places: IPlace[];
+}
+
+export interface IOpenStreetPlace {
+  place_id: number;
+  licence: string;
+  osm_type: string;
+  osm_id: number;
+  boundingbox: string[];
+  lat: string;
+  lon: string;
+  display_name: string;
+  class: string;
+  type: string;
+  importance: number;
+  icon: string;
+  address: IAddress;
+}
+
+export interface IAddress {
+  tourism: string;
+  road: string;
+  neighbourhood: string;
+  suburb: string;
+  city_district: string;
+  city: string;
+  town: string;
+  village: string;
+  county: string;
+  state: string;
+  region: string;
+  postcode: string;
+  country: string;
+  country_code: string;
 }
