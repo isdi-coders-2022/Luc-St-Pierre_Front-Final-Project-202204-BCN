@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom";
 import { useAppSelector } from "../../redux/store/hooks";
-// import Categories from "../Categories/Categories";
 import Navigation from "../Navigation/Navigation";
 
 interface Props {
@@ -14,7 +13,6 @@ const Layout = ({ children }: Props): JSX.Element => {
   return (
     <>
       <Navigation userData={userData} />
-      {/* {location.pathname === "/hosts/home" ? <Categories /> : ""} */}
       <div
         className={
           location.pathname === "/hosts/home"
