@@ -23,19 +23,6 @@ const MapLeaflet = ({ places }: Props) => {
     (places.length + perPageCount - 1) / perPageCount
   );
 
-  const pagedPlaces = useMemo(() => {
-    const start = (currentPage - 1) * perPageCount;
-    const end = start + perPageCount;
-
-    if (selectedCategory) {
-      return places
-        .filter((place) => place.category === selectedCategory.title)
-        .slice(start, end);
-    }
-
-    return places.slice(start, end);
-  }, [currentPage, places, selectedCategory]);
-
   const onSetSelectedCategory = (category: Category) => {
     setCurrentPage(1);
     setSelectedCategory(selectedCategory === category ? undefined : category);
