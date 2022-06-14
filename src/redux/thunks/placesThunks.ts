@@ -57,8 +57,9 @@ export const deletePlaceThunk =
         dispatch(deletePlaceActionCreator(placeId));
         setLoadingOffWithMessage("Place deleted successfully", false);
       }
-    } catch {
+    } catch (error: any) {
       setLoadingOffWithMessage("Error while creating a new place", true);
+      return error.message;
     }
   };
 
