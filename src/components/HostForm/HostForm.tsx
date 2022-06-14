@@ -136,6 +136,8 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
       newFormData.append("rating", formData.rating);
       newFormData.append("kilometers", formData.kilometers);
       newFormData.append("category", formData.category);
+      newFormData.append("lat", String(formData.location.coordinates[0]));
+      newFormData.append("lon", String(formData.location.coordinates[1]));
 
       await (placeId
         ? dispatch(updatePlaceThunk(placeId, newFormData))
