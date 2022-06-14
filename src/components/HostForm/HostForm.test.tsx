@@ -72,9 +72,9 @@ describe("Given a HostForm component", () => {
       expect(expectedText).toBeInTheDocument();
     });
 
-    test("Then it should render 9 inputs fields and 4 selects inputs", () => {
-      const expectedNumberOfInputs = 9;
-      const expectNumberOfSelects = 4;
+    test("Then it should render 10 inputs fields and 3 selects inputs", () => {
+      const expectedNumberOfInputs = 10;
+      const expectNumberOfSelects = 3;
 
       render(
         <BrowserRouter>
@@ -103,10 +103,7 @@ describe("Given a HostForm component", () => {
 
       const inputs = screen.getAllByRole("textbox");
       const category = screen.getByLabelText("Category");
-      const city = screen.getByLabelText("City");
-      const country = screen.getByLabelText("Country");
       const placeType = screen.getByLabelText("Place type");
-
       const button = screen.getByRole("button", { name: "Save" });
 
       inputs.forEach((input) => {
@@ -114,8 +111,6 @@ describe("Given a HostForm component", () => {
       });
 
       userEvent.selectOptions(category, "Beach");
-      userEvent.selectOptions(city, "Barcelona");
-      userEvent.selectOptions(country, "Spain");
       userEvent.selectOptions(placeType, "House");
       userEvent.click(button);
 
