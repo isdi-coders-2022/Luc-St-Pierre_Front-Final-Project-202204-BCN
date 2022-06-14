@@ -40,8 +40,9 @@ export const addPlaceThunk =
         dispatch(addPlaceActionCreator(data));
         // dispatch(loadPlacesThunk());
       }
-    } catch {
+    } catch (error) {
       setLoadingOffWithMessage("Error while creating a new place", true);
+      throw error;
     }
   };
 
@@ -80,7 +81,8 @@ export const updatePlaceThunk =
         dispatch(updatePlaceActionCreator(data));
         setLoadingOffWithMessage("Place updated successfully", false);
       }
-    } catch {
+    } catch (error) {
       setLoadingOffWithMessage("Error while trying to update place", true);
+      throw error;
     }
   };

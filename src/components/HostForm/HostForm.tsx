@@ -117,32 +117,35 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
     });
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    try {
+      const newFormData = new FormData();
+      newFormData.append("title", formData.title);
+      newFormData.append("description", formData.description);
+      newFormData.append("address", JSON.stringify(formData.address));
+      newFormData.append("city", formData.city);
+      newFormData.append("placeType", formData.placeType);
+      newFormData.append("placeDescription", formData.placeDescription);
+      newFormData.append("price", formData.price);
+      newFormData.append("numberOfBeds", formData.numberOfBeds);
+      newFormData.append("numberOfRooms", formData.numberOfRooms);
+      newFormData.append("numberOfGuests", formData.numberOfGuests);
+      newFormData.append("country", formData.country);
+      newFormData.append("image", formData.image);
+      newFormData.append("rating", formData.rating);
+      newFormData.append("kilometers", formData.kilometers);
+      newFormData.append("category", formData.category);
 
-    const newFormData = new FormData();
-    newFormData.append("title", formData.title);
-    newFormData.append("description", formData.description);
-    newFormData.append("address", JSON.stringify(formData.address));
-    newFormData.append("city", formData.city);
-    newFormData.append("placeType", formData.placeType);
-    newFormData.append("placeDescription", formData.placeDescription);
-    newFormData.append("price", formData.price);
-    newFormData.append("numberOfBeds", formData.numberOfBeds);
-    newFormData.append("numberOfRooms", formData.numberOfRooms);
-    newFormData.append("numberOfGuests", formData.numberOfGuests);
-    newFormData.append("country", formData.country);
-    newFormData.append("image", formData.image);
-    newFormData.append("rating", formData.rating);
-    newFormData.append("kilometers", formData.kilometers);
-    newFormData.append("category", formData.category);
+      await (placeId
+        ? dispatch(updatePlaceThunk(placeId, newFormData))
+        : dispatch(addPlaceThunk(newFormData)));
 
-    placeId
-      ? dispatch(updatePlaceThunk(placeData.id as string, newFormData))
-      : dispatch(addPlaceThunk(newFormData));
-
-    setFormData(initialForm);
-    navigate("/hosts/home");
+      // setFormData(initialForm);
+      navigate("/hosts/home");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -220,7 +223,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                     >
                       Country
                     </label>
-                    <select
+                    {/* <select
                       id="country"
                       value={formData.country}
                       onChange={handleChange}
@@ -230,7 +233,14 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                       <option>Canada</option>
                       <option>Spain</option>
                       <option>France</option>
-                    </select>
+                    </select> */}
+                    <input
+                      id="country"
+                      value={formData.country}
+                      onChange={handleChange}
+                      autoComplete="off"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] sm:text-sm"
+                    />
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">
@@ -240,17 +250,13 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                     >
                       City
                     </label>
-                    <select
+                    <input
                       id="city"
                       value={formData.city}
                       onChange={handleChange}
                       autoComplete="off"
                       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#222222] focus:border-[#222222] sm:text-sm"
-                    >
-                      <option>Barcelona</option>
-                      <option>Madrid</option>
-                      <option>Girona</option>
-                    </select>
+                    />
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">
