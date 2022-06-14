@@ -3,7 +3,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import getClassNames from "../../utils/getClassNames";
 import { useAppDispatch } from "../../redux/store/hooks";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { IUser } from "../../types/user.types";
 import { logOutActionCreator } from "../../redux/reducers/features/userSlice/userSlice";
 
@@ -13,6 +13,7 @@ const Navigation = ({
   userData: IUser;
 }): JSX.Element => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
   const { placeId } = useParams();
 
@@ -21,6 +22,7 @@ const Navigation = ({
   const handleLogout = () => {
     dispatch(logOutActionCreator());
     localStorage.removeItem("token");
+    navigate("/hosts/home");
   };
 
   const classMargin =

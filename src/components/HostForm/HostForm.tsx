@@ -132,7 +132,6 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
   const handleImageInputChange = (
     event: ChangeEvent<HTMLInputElement>
   ): void => {
-    console.log("check", event.target.files);
     const { files } = event.target;
     setFormData({
       ...formData,

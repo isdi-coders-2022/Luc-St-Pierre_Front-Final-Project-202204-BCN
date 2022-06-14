@@ -35,7 +35,6 @@ const PlacesList = ({ places }: Props) => {
   }, [currentPage, places, selectedCategory]);
 
   const onSetSelectedCategory = (category: Category) => {
-    console.log("on set selected", category);
     setCurrentPage(1);
     setSelectedCategory(selectedCategory === category ? undefined : category);
   };
