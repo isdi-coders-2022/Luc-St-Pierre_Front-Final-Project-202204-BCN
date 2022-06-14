@@ -47,17 +47,6 @@ describe("Given a loadPlacesThunk middleware", () => {
       expect(dispatch).toHaveBeenCalled();
     });
   });
-
-  describe("When it's called and there's no token", () => {
-    test("Then it should not call dispatch", async () => {
-      const dispatch = jest.fn();
-
-      const thunk = loadPlacesThunk();
-      await thunk(dispatch);
-
-      expect(dispatch).not.toHaveBeenCalled();
-    });
-  });
 });
 
 describe("Given a addPlaceThunk middleware", () => {
