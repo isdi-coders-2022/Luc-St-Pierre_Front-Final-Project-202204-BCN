@@ -9,6 +9,7 @@ describe("Given a userSlice reducer", () => {
     test("Then it should return the user", () => {
       const initialState = {
         userData: {
+          id: "",
           username: "",
           name: "",
           image: "",
@@ -35,6 +36,7 @@ describe("Given a userSlice reducer", () => {
     test("Then it should return a empty state with authenticated set to false", () => {
       const initialState = {
         userData: {
+          id: "1",
           username: "LearningX",
           name: "lucamino",
           email: "lucamino@gmail.com",

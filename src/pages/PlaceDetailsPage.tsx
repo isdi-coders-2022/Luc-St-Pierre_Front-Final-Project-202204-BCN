@@ -8,7 +8,8 @@ const PlaceDetailsPage = () => {
   const { placeId } = useParams();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { place } = useAppSelector((state) => state);
+  const place = useAppSelector((state) => state.place);
+  const userId = useAppSelector((state) => state.user.userData?.id);
 
   useEffect(() => {
     dispatch(loadPlaceThunk(placeId as string));
@@ -24,6 +25,8 @@ const PlaceDetailsPage = () => {
     event.stopPropagation();
     navigate(`/become-a-host/${placeId}`);
   };
+
+  const isUserPlaceOwner = place?.creator === userId;
 
   return (
     <>
@@ -193,32 +196,37 @@ const PlaceDetailsPage = () => {
                     <span className="ml-1 font-normal text-base">night</span>
                   </span>
 
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 cursor-pointer hover:text-[#484848]"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    onClick={goToEditForm}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                    />
-                  </svg>
+                  {isUserPlaceOwner ? (
+                    <button onClick={goToEditForm}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 cursor-pointer hover:text-[#484848]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        />
+                      </svg>
+                    </button>
+                  ) : null}
                 </div>
 
-                <div className="mt-6">
-                  <button
-                    type="submit"
-                    className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#DE3151] hover:bg-[#f43054] focus:outline-none"
-                    onClick={deletePlace}
-                  >
-                    Delete
-                  </button>
-                </div>
+                {isUserPlaceOwner ? (
+                  <div className="mt-6">
+                    <button
+                      type="submit"
+                      className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#DE3151] hover:bg-[#f43054] focus:outline-none"
+                      onClick={deletePlace}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ) : null}
               </div>
             </div>
           </section>

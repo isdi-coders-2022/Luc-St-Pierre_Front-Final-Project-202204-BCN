@@ -25,10 +25,11 @@ export const loginThunk =
       } = await axios.post<ILoginResponse>(`${baseUrl}user/login`, userData);
 
       if (token) {
-        const { username, name, email, image, imageBackup }: IDecodedToken =
+        const { id, username, name, email, image, imageBackup }: IDecodedToken =
           jwtDecode(token);
 
         const authenticatedUser = {
+          id,
           username,
           name,
           email,
