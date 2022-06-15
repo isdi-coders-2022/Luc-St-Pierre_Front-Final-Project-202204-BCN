@@ -38,6 +38,12 @@ const RegisterForm = (): JSX.Element => {
     navigate("/user/login");
   };
 
+  const disableButton =
+    formData.name === "" ||
+    formData.username === "" ||
+    formData.email === "" ||
+    formData.password === "";
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
@@ -160,7 +166,10 @@ const RegisterForm = (): JSX.Element => {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#DE3151] hover:bg-[#f43054] focus:outline-none"
+                className={`w-full flex justify-center py-3.5 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#DE3151] hover:bg-[#f43054] focus:outline-none ${
+                  disableButton ? "disabled:opacity-25" : ""
+                }`}
+                disabled={disableButton}
               >
                 Sign up
               </button>

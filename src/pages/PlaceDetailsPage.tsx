@@ -88,10 +88,15 @@ const PlaceDetailsPage = () => {
           />
         </div>
 
-        <div className="col-span-12 md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <div className="max-h-[413px] col-span-12 md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-2">
           {images.map((image, idx) => {
             return (
-              <div key={idx} className="aspect-w-3 aspect-h-2 overflow-hidden">
+              <div
+                key={idx}
+                className={`aspect-w-3 aspect-h-2 overflow-hidden ${
+                  idx === 3 ? "rounded-br-lg" : ""
+                } ${idx === 1 ? "rounded-tr-lg" : ""}`}
+              >
                 <img
                   src={image?.downloadURL}
                   alt="Model wearing plain black basic tee."
@@ -170,7 +175,7 @@ const PlaceDetailsPage = () => {
             <div className="flex items-center">
               <div className="pr-6">
                 <div className="mb-4">
-                  <img src={userImage} alt="aircover" width={123} />
+                  <img src="/assets/aircover.webp" alt="aircover" width={123} />
                 </div>
                 <div className="block rounded w-full text-[#222222]">
                   <p className="text-base">

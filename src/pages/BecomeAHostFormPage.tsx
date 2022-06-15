@@ -22,7 +22,7 @@ const BecomeAHostFormPage = () => {
 
       <div className="fixed top-0 right-0 text-[#222222] z-10 w-1/2">
         <div className="h-[88px] flex justify-between items-center p-[32px_48px_0] ">
-          <h2 className="text-[#222222] text-3xl font-semibold">
+          <h2 className="text-[#222222] text-3xl font-semibold ml-6">
             Airbnb Host Form
           </h2>
           <button className="bg-[#F7F7F7] text-xs font-semibold px-3.5 h-8 rounded-full">
