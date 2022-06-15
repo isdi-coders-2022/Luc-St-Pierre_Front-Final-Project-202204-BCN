@@ -10,7 +10,6 @@ const PlaceDetailsPage = () => {
   const navigate = useNavigate();
   const place = useAppSelector((state) => state.place);
   const userId = useAppSelector((state) => state.user.userData?.id);
-  // const userImage = useAppSelector((state) => state.user.userData?.image);
 
   useEffect(() => {
     dispatch(loadPlaceThunk(placeId as string));
