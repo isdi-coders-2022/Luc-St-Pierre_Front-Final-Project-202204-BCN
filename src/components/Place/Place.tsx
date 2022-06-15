@@ -31,7 +31,7 @@ const Place = ({
 
   return (
     <li className="group relative" onClick={goToPlaceDetails}>
-      <div className="relative w-full min-h-80 aspect-w-1 aspect-h-1 rounded-xl overflow-hidden group-hover:opacity-75 h-[429px] sm:h-[346px] md:h-[276px] lg:h-[301px] xl:h-[301px] 2xl:h-[324px] lg:aspect-none">
+      <div className="relative w-full min-h-80 aspect-w-1 aspect-h-1 rounded-xl overflow-hidden group-hover:opacity-75 h-[429px] sm:h-[346px] md:h-[276px] lg:h-[301px] sm:max-h-[306px] xl:h-[301px] 2xl:h-[324px] lg:aspect-none">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-7 w-7 absolute cursor-pointer top-3.5 right-3.5"

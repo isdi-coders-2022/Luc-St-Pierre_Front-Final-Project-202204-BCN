@@ -50,7 +50,7 @@ const PlaceDetailsPage = () => {
     <>
       <section className="pt-24">
         <div>
-          <h1 className="text-[#222222] text-[26px] font-semibold">
+          <h1 className="text-[#222222] leading-10 text-[26px] font-semibold">
             {place.title}
           </h1>
         </div>

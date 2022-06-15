@@ -32,7 +32,9 @@ const Navigation = ({
   };
 
   const classMargin =
-    location.pathname === `/places/${placeId}` ? "xl:mx-[7.5rem]" : "xl:px-20";
+    location.pathname === `/places/${placeId}`
+      ? "xl:mx-[7.5rem] 2xl:px-[7.5rem]"
+      : "lg:px-20";
 
   return (
     <Disclosure
