@@ -15,7 +15,7 @@ const Categories = <
   const { categories, onSelectCategory } = props;
   return (
     <div className="absolute right-0 left-0 top-[5.5rem] bg-white shadow z-[99]">
-      <div className="flex items-center justify-between max-w-full sm:px-6 md:px-10 xl:px-20">
+      <div className="flex items-center justify-between max-w-full px-4 sm:px-6 md:px-10 xl:px-20">
         <div className="flex justify-between h-[78px] max-w-[1440px] space-x-10 overflow-x-auto">
           {categories.map((category, index) => {
             return (
