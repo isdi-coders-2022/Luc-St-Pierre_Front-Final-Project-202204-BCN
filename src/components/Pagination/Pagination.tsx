@@ -1,4 +1,3 @@
-import { Link, NavLink } from "react-router-dom";
 import MobileNav from "../common/form/autocomplete/MobileNav";
 
 type PaginationProps<T> = {
