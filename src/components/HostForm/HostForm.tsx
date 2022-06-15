@@ -19,7 +19,6 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  // const [disableButton, setDisableButton] = useState<boolean>(false);
 
   const initialForm: IRegisterPlaceForm = {
     title: "",
@@ -76,7 +75,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
       address: { country, city, town, village },
     } = address;
 
-    setFormData((formData) => ({
+    setFormData(() => ({
       ...formData,
       address: display_name,
       location: {
