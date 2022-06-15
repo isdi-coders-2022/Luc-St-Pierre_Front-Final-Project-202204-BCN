@@ -26,7 +26,7 @@ const Pagination = <T extends unknown>(props: PaginationProps<T>) => {
 
   return (
     <nav
-      className="fixed bottom-0 right-0 left-0 bg-white px-6 sm:px-6 md:px-10 xl:px-20 py-2.5 sm:py-3.5 flex items-center justify-between border-t border-gray-200"
+      className="fixed bottom-0 right-0 left-0 bg-white px-6 sm:px-6 md:px-10 xl:px-20 py-2.5 sm:py-3.5 md:py-1.5 flex items-center justify-between border-t border-gray-200"
       aria-label="Pagination"
     >
       <div className="hidden md:block">
