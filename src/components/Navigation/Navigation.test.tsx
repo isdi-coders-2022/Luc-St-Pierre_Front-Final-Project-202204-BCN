@@ -166,37 +166,6 @@ describe("Given a Navigation component", () => {
     });
   });
 
-  describe("When it's invoked and user click on the link 'Account'", () => {
-    test("Then it should invoke the dispatch action logout action creator", async () => {
-      saveStorage(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWRhZjYwMDY2YzllYjYzMTdmNDA5YSIsIm5hbWUiOiJsdWNhbWlubyIsInVzZXJuYW1lIjoiTGVhcm5pbmdYIiwiaWF0IjoxNjU0NTAxMjI0LCJleHAiOjE2NTQ1MDQ4MjR9.AMUNN7ZH6lu5vgXu7ZXzkN6UdYdR3kWbj7rZyRPkRao"
-      );
-
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <Navigation userData={userData} />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      expect(window.localStorage.getItem("token")).toBe(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWRhZjYwMDY2YzllYjYzMTdmNDA5YSIsIm5hbWUiOiJsdWNhbWlubyIsInVzZXJuYW1lIjoiTGVhcm5pbmdYIiwiaWF0IjoxNjU0NTAxMjI0LCJleHAiOjE2NTQ1MDQ4MjR9.AMUNN7ZH6lu5vgXu7ZXzkN6UdYdR3kWbj7rZyRPkRao"
-      );
-
-      const openMenuButton = screen.getByRole("button", {
-        name: "Open user menu",
-      });
-      fireEvent.click(openMenuButton);
-
-      const AccountText = screen.getByText("Account");
-
-      userEvent.click(AccountText);
-
-      expect(global.window.location.href).toContain("http://localhost/");
-    });
-  });
-
   describe("When it's invoked and user click on the link 'Log out'", () => {
     test("Then it should invoke the dispatch action logout action creator", async () => {
       saveStorage(
