@@ -17,7 +17,7 @@ const Layout = ({ children }: Props): JSX.Element => {
         className={
           location.pathname === "/hosts/home"
             ? "px-6 sm:px-6 md:px-10 xl:px-20"
-            : "px-6 sm:px-6 md:px-10 xl:mx-[12.5rem]"
+            : "px-6 sm:px-6 md:px-10 xl:mx-[7.5rem]"
         }
       >
         {children}

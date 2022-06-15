@@ -103,7 +103,7 @@ const PlaceDetailsPage = () => {
         </div>
       </div>
 
-      <div className="flex-1 flex items-stretch pt-12 pb-8">
+      <div className="flex-1 flex items-stretch justify-between pt-12 pb-8">
         <main className="flex-1 w-[58.33333%] divide-y divide-solid">
           <section className="relative flex-1 flex flex-col lg:order-last pb-8">
             <div className="h-full w-full flex items-center justify-between">
@@ -145,8 +145,12 @@ const PlaceDetailsPage = () => {
               </div>
 
               <div className="ml-4">
-                <div className="block roundedw-full text-[#222222]">
-                  <img src="/assets/avatar.png" alt="" className="h-14 w-14" />
+                <div className="block rounded-full h-14 w-14  text-[#222222]">
+                  <img
+                    src="/assets/avatar.png"
+                    alt=""
+                    className="h-full w=full "
+                  />
                 </div>
               </div>
             </div>
@@ -181,7 +185,7 @@ const PlaceDetailsPage = () => {
         </main>
 
         <aside className="hidden w-[33.33333%] ml-[8.3333%] lg:block">
-          <section className="w-full">
+          <section className="">
             <div className="bg-white w-[372px] rounded-xl shadow-[0_6px_16px_0px_rgba(0,0,0,0.12)] border border-[#CCCCCC80]">
               <div className="p-6">
                 <div className="flex items-center justify-between">
