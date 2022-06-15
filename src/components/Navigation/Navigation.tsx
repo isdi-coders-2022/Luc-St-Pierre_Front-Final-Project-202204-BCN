@@ -3,7 +3,13 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import getClassNames from "../../utils/getClassNames";
 import { useAppDispatch } from "../../redux/store/hooks";
-import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { IUser } from "../../types/user.types";
 import { logOutActionCreator } from "../../redux/reducers/features/userSlice/userSlice";
 
@@ -141,15 +147,15 @@ const Navigation = ({
                           <div className="border-0 border-b-2 py-1 border-gray-100">
                             <Menu.Item>
                               {({ active }) => (
-                                <a
-                                  href="/wishlists"
+                                <Link
+                                  to="/wishlists"
                                   className={getClassNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
                                   Wishlists
-                                </a>
+                                </Link>
                               )}
                             </Menu.Item>
                           </div>
@@ -157,28 +163,15 @@ const Navigation = ({
                           <div className="border-0 border-b-2 py-1 border-gray-100">
                             <Menu.Item>
                               {({ active }) => (
-                                <a
-                                  href="/host/become-a-host"
+                                <Link
+                                  to="/host/become-a-host"
                                   className={getClassNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
                                   Manage listings
-                                </a>
-                              )}
-                            </Menu.Item>
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  href="/account"
-                                  className={getClassNames(
-                                    active ? "bg-gray-100" : "",
-                                    "block px-4 py-3 text-sm text-[#222222]"
-                                  )}
-                                >
-                                  Account
-                                </a>
+                                </Link>
                               )}
                             </Menu.Item>
                           </div>
@@ -203,28 +196,28 @@ const Navigation = ({
                           <div className="border-0 border-b-2 py-1 border-gray-100">
                             <Menu.Item>
                               {({ active }) => (
-                                <a
-                                  href="/user/login"
+                                <Link
+                                  to="/user/login"
                                   className={getClassNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
                                   Log in
-                                </a>
+                                </Link>
                               )}
                             </Menu.Item>
                             <Menu.Item>
                               {({ active }) => (
-                                <a
-                                  href="/user/register"
+                                <Link
+                                  to="/user/register"
                                   className={getClassNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
                                   Sign up
-                                </a>
+                                </Link>
                               )}
                             </Menu.Item>
                           </div>
@@ -232,15 +225,15 @@ const Navigation = ({
                           <div className="py-1 border-gray-100">
                             <Menu.Item>
                               {({ active }) => (
-                                <a
-                                  href="/become"
+                                <Link
+                                  to="/become"
                                   className={getClassNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-3 text-sm text-[#222222]"
                                   )}
                                 >
                                   Host your home
-                                </a>
+                                </Link>
                               )}
                             </Menu.Item>
                             <Menu.Item>
