@@ -42,12 +42,12 @@ const LoginForm = (): JSX.Element => {
             </p>
           </div>
 
-          <h2 className="my-5 px-8 sm:px-6 text-[22px] font-medium text-gray-900">
+          <h2 className="my-5 px-8 lg:px-6 text-[22px] font-medium text-gray-900">
             Welcome to Airbnb
           </h2>
         </div>
 
-        <div className="px-8 sm:px-6">
+        <div className="px-8 lg:px-6">
           <form className="space-y-6" onSubmit={handleSubmit} noValidate>
             <div>
               <label htmlFor="username" className="sr-only">
