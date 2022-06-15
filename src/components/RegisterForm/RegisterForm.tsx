@@ -55,7 +55,7 @@ const RegisterForm = (): JSX.Element => {
 
   return (
     <div className="sm:mx-auto sm:w-full sm:max-w-[568px]">
-      <div className="bg-white pb-8 shadow-3xl border border-[#e8ebed] sm:rounded-xl">
+      <div className="bg-white pb-8 lg:shadow-3xl md:border md:border-[#999999] lg:border lg:border-[#e8ebed] sm:rounded-xl">
         <div className="sm:mx-auto sm:w-full sm:max-w-[568px]">
           <div className="px-4 sm:px-6 border-b-2 border-[#EBEBEB]">
             <p className="py-5 text-center text-base font-extrabold text-[#222222]">
@@ -63,12 +63,12 @@ const RegisterForm = (): JSX.Element => {
             </p>
           </div>
 
-          <h2 className="my-5 px-4 sm:px-6 text-[22px] font-medium text-gray-900">
+          <h2 className="my-5 px-8 lg:px-6 text-[22px] font-medium text-gray-900">
             Welcome to Airbnb
           </h2>
         </div>
 
-        <div className="px-4 sm:px-6">
+        <div className="px-8 lg:px-6">
           <form className="space-y-6" onSubmit={handleSubmit} noValidate>
             <div>
               <label htmlFor="name" className="sr-only">

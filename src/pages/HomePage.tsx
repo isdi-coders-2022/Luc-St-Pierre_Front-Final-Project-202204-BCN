@@ -28,7 +28,7 @@ function HomePage() {
         <div className="flex justify-center">
           <button
             type="button"
-            className="inline-flex items-center h-[48px] px-6 py-3 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-black cursor-pointer hover:scale-[1.03] transition-all duration-300 focus:outline-none"
+            className="hidden md:inline-flex items-center h-[48px] px-6 py-3 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-black cursor-pointer hover:scale-[1.03] transition-all duration-300 focus:outline-none"
             onClick={() => setShowMap(!showMap)}
           >
             {showMap ? "Show list" : "Show map"}
