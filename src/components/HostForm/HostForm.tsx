@@ -19,7 +19,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [disableButton, setDisableButton] = useState<boolean>(false);
+  // const [disableButton, setDisableButton] = useState<boolean>(false);
 
   const initialForm: IRegisterPlaceForm = {
     title: "",
@@ -47,23 +47,6 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
   >([]);
 
   useEffect(() => {
-    if (
-      formData.title !== "" &&
-      formData.description !== "" &&
-      formData.address !== "" &&
-      formData.placeDescription !== "" &&
-      formData.price !== "" &&
-      formData.numberOfBeds !== "" &&
-      formData.numberOfRooms !== "" &&
-      formData.numberOfGuests !== "" &&
-      formData.rating !== "" &&
-      formData.kilometers !== ""
-    ) {
-      setDisableButton(false);
-    }
-  }, [formData]);
-
-  useEffect(() => {
     if (placeId) {
       dispatch(loadPlaceThunk(placeId));
     }
@@ -79,10 +62,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
   };
 
   const onChangeAddressQuery = (address: string) => {
-    // const { city, country } = formData;
     searchAddressSuggestions({
-      // city,
-      // country,
       street: address,
     });
     setAddressQuery(address);
@@ -426,12 +406,12 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                     />
                   </div>
 
-                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <div className="col-span-6 sm:col-span-6 lg:col-span-6">
                     <label
                       htmlFor="image"
                       className="block text-base font-normal text-[#222222]"
                     >
-                      Upload images
+                      A minimum of 5 images are required
                     </label>
 
                     <div className="mt-2">
@@ -441,7 +421,7 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
                         accept="image/*"
                         type="file"
                         multiple
-                        className="bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="block center my-2.5 p-2.5 w-96 text-sm text-white bg-[#CE2B79] rounded-lg border border-gray-300 focus-border-input file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-[#222222] hover:file:bg-violet-100"
                       />
                     </div>
                   </div>
@@ -453,12 +433,9 @@ const HostForm = ({ placeId }: Props): JSX.Element => {
               >
                 <button
                   type="submit"
-                  className={`inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-base font-medium rounded-md focus:outline-none text-white bg-[#222222] hover:bg-black ${
-                    disableButton ? "disabled:opacity-25" : ""
-                  }`}
-                  disabled={disableButton ? true : false}
+                  className={`inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-base font-medium rounded-md focus:outline-none text-white bg-[#222222] hover:bg-black`}
                 >
-                  {disableButton ? "Please fill all the info" : "Save"}
+                  Save
                 </button>
               </div>
             </div>
