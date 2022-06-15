@@ -24,7 +24,6 @@ import Spinner from "./components/Spinner/Spinner";
 const App = () => {
   const dispatch = useAppDispatch();
   const { loading } = useAppSelector((state) => state.ui);
-  console.log(loading);
 
   const { authenticated } = useAppSelector(
     (state: { user: IState }) => state.user
@@ -44,7 +43,7 @@ const App = () => {
   return (
     <>
       <ToastContainer />
-      <Spinner />
+      {loading && <Spinner />}
       <Routes>
         <Route path="/" element={<Navigate to="/hosts/home" />} />
         <Route
