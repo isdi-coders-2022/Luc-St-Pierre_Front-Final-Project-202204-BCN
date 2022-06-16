@@ -114,7 +114,7 @@ const PlaceDetailsPage = () => {
               <div className="pr-6">
                 <div className="block rounded w-full text-[#222222]">
                   <h2 className="text-[22px] font-semibold">
-                    Private room in island hosted by The Arctic Hideaway
+                    {place.description}
                   </h2>
 
                   <ol className="flex space-x-1">
@@ -151,9 +151,9 @@ const PlaceDetailsPage = () => {
               <div className="ml-4">
                 <div className="block rounded-full h-14 w-14  text-[#222222]">
                   <img
-                    src="/assets/avatar.png"
+                    src="/assets/avatar-face.jpeg"
                     alt=""
-                    className="h-full w=full "
+                    className="h-full w=full rounded-full"
                   />
                 </div>
               </div>
