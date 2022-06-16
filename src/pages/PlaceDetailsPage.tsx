@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
 import { deletePlaceThunk } from "../redux/thunks/placesThunks";
