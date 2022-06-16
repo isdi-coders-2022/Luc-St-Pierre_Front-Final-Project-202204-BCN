@@ -19,11 +19,13 @@ import { IDecodedToken, IState } from "./types/user.types";
 import PlaceDetailsPage from "./pages/PlaceDetailsPage";
 import { logInActionCreator } from "./redux/reducers/features/userSlice/userSlice";
 import PageNotFound from "./pages/PageNotFound";
-import Spinner from "./components/Spinner/Spinner";
+
+import Modal from "./components/Modal/Modal";
+import Loading from "./components/Loading/Loading";
 
 const App = () => {
   const dispatch = useAppDispatch();
-  const { loading } = useAppSelector((state) => state.ui);
+  const { loading, modal } = useAppSelector((state) => state.ui);
 
   const { authenticated } = useAppSelector(
     (state: { user: IState }) => state.user
@@ -42,8 +44,10 @@ const App = () => {
 
   return (
     <>
+      {modal && <Modal />}
+      {loading && <Loading />}
       <ToastContainer />
-      {loading && <Spinner />}
+
       <Routes>
         <Route path="/" element={<Navigate to="/hosts/home" />} />
         <Route
