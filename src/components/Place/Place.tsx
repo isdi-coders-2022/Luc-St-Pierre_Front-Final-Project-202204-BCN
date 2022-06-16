@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../redux/store/hooks";
+import { loadPlaceThunk } from "../../redux/thunks/placeThunk";
 import { IPlace } from "../../types/places.types";
 
 const Place = ({
@@ -23,9 +25,11 @@ const Place = ({
   place: IPlace;
 }): JSX.Element => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const goToPlaceDetails = (event: React.FormEvent) => {
+  const goToPlaceDetails = async (event: React.FormEvent) => {
     event.preventDefault();
+    await dispatch(loadPlaceThunk(id as string));
     navigate(`/places/${id}`);
   };
 
