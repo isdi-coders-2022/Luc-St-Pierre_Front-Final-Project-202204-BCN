@@ -49,7 +49,10 @@ const MapLeaflet = ({ places }: Props) => {
           return (
             <Marker key={index} position={[lat, lng]}>
               <Popup>
-                <div className="flex flex-col rounded-lg overflow-hidden">
+                <a
+                  href={`/places/${place.id}`}
+                  className="flex flex-col rounded-lg overflow-hidden"
+                >
                   <div className="flex-shrink-0">
                     <img
                       className="h-48 w-full object-cover"
@@ -89,7 +92,7 @@ const MapLeaflet = ({ places }: Props) => {
                       </svg>
                     </div>
                   </div>
-                </div>
+                </a>
               </Popup>
             </Marker>
           );
