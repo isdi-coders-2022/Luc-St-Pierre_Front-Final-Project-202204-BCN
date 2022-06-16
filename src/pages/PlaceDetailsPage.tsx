@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
 import { deletePlaceThunk } from "../redux/thunks/placesThunks";
+import { loadPlaceThunk } from "../redux/thunks/placeThunk";
 
 const PlaceDetailsPage = () => {
   const { placeId } = useParams();
@@ -8,6 +10,10 @@ const PlaceDetailsPage = () => {
   const navigate = useNavigate();
   const place = useAppSelector((state) => state.place);
   const userId = useAppSelector((state) => state.user.userData?.id);
+
+  useEffect(() => {
+    dispatch(loadPlaceThunk(placeId as string));
+  }, [dispatch, placeId]);
 
   const deletePlace = (event: React.FormEvent) => {
     event.stopPropagation();
